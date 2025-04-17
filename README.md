@@ -76,6 +76,11 @@ The game will now log in automatically when launched from PortMaster-compatible 
 |select| mode text (on) |
 |start| mode text (off) |
 
+#### Controller Support Status
+Controller mapping is currently being tested using gptokeyb2. However, not all builds of libSDL2-2.0.so.0 support analog stick input properly, which may limit functionality on some devices.
+
+As an alternative, work is in progress to support the original gptokeyb, which is not affected by SDL2 stick issues—but it does not support keyboard simulation, which limits input emulation in other ways.
+
 ---
 
 ## 💬 Credits & Links
