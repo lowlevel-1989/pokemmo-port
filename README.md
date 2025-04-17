@@ -68,6 +68,8 @@ The game will now log in automatically when launched from PortMaster-compatible 
 |B| B|
 |X| show trainer card |
 |Y| show bag |
+|R2| show friends list |
+|l2| show pokedex |
 |R1| mouse left |
 |l1| mouse right |
 |start| menu |
