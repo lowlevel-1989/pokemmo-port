@@ -93,7 +93,9 @@ fi
 $ESUDO mount -o loop "$controlfolder/libs/${java_runtime}.squashfs" "${JAVA_HOME}"
 export PATH="$JAVA_HOME/bin:$PATH"
 
-$GPTOKEYB  "java" -c "./controls.gptk" &
+GPTOKEYB="$ESUDO $controlfolder/gptokeyb2"
+
+$GPTOKEYB  "java" -c "./controls.ini" &
 
 if [ "$westonpack" -eq 1 ]; then 
 $ESUDO env $weston_dir/westonwrap.sh drm gl kiosk virgl \
