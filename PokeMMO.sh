@@ -102,7 +102,7 @@ java -Xms128M -Xmx384M -Dfile.encoding="UTF-8" -cp PokeMMO.exe com.pokeemu.clien
 #Clean up after ourselves
 $ESUDO $weston_dir/westonwrap.sh cleanup
 else
-PATH="$PATH" JAVA_HOME="$JAVA_HOME" java -Xms128M -Xmx384M -Dfile.encoding="UTF-8" -cp PokeMMO.exe com.pokeemu.client.Client
+PATH="$PATH" JAVA_HOME="$JAVA_HOME" XDG_SESSION_TYPE="x11" java -Xms128M -Xmx384M -Dfile.encoding="UTF-8" -cp PokeMMO.exe com.pokeemu.client.Client
 fi
 
 if [[ "$PM_CAN_MOUNT" != "N" ]]; then

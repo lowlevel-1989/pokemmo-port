@@ -49,7 +49,7 @@ Launch the game and use the in-game menu to locate your ROM files.
 
 ---
 
-### 🎮 Login Without Keyboard Input
+### 🎮 Login Without Keyboard Input (Testing)
 
 To avoid typing your username and password every time:
 
@@ -98,8 +98,8 @@ The game will now log in automatically when launched from PortMaster-compatible 
 |select+right| mouse right |
 
 #### Controller Support Status
-Controller mapping is currently being tested using `gptokeyb` and `gptokeyb2`. However, not all builds of `libSDL2-2.0.so.0` support analog stick input properly, which may limit functionality on some devices.
 
+Only the version with `gptokeyb2` supports the virtual keyboard.
 
 ---
 
