@@ -71,13 +71,13 @@ The game will now log in automatically when launched from PortMaster-compatible 
 |B| B|
 |X| show trainer card |
 |Y| show bag |
-|R2| show friends list |
-|L2| show pokedex |
+|R2| show pokedex |
+|L2| mode dpad mouse |
 |R1| mouse left |
 |L1| mouse right |
 |start| menu |
 |select| mode text (on) |
-|start| mode text (off) |
+|start| mode text/mouse (off) |
 
 ### Controls gptokeyb
 
@@ -99,6 +99,7 @@ The game will now log in automatically when launched from PortMaster-compatible 
 
 #### Controller Support Status
 Controller mapping is currently being tested using `gptokeyb` and `gptokeyb2`. However, not all builds of `libSDL2-2.0.so.0` support analog stick input properly, which may limit functionality on some devices.
+
 
 ---
 
