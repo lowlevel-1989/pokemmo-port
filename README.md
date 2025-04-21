@@ -8,13 +8,7 @@ PokeMMO is a fan-made multiplayer online game that brings together multiple gene
 
 ### 1. Install the Port
 
-
-Create a `.zip` that includes only the following files from this repository:
-
-- `PokeMMO.sh`  
-- `PokeMMO` (the folder containing the port resources)
-
-Place the `.zip` into:  
+Download pokemmo.zip Place the `.zip` into:  
 `/PortMaster/autoinstall`
 
 Launch **PortMaster**. It will automatically install the port.

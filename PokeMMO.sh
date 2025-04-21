@@ -25,8 +25,9 @@ source $controlfolder/funcs.txt
 
 export LD_LIBRARY_PATH="$controlfolder:$GAMEDIR/libs:$LD_LIBRARY_PATH"
 
-$ESUDO chmod 666 /dev/tty1
-$ESUDO chmod 666 /dev/uinput
+[ -f "${controlfolder}/mod_${CFW_NAME}.txt" ] && source "${controlfolder}/mod_${CFW_NAME}.txt"
+
+get_controls
 
 GAMEDIR=/$directory/ports/PokeMMO
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
@@ -96,13 +97,14 @@ export PATH="$JAVA_HOME/bin:$PATH"
 $GPTOKEYB  "java" -c "./controls.gptk" &
 
 if [ "$westonpack" -eq 1 ]; then 
-$ESUDO env $weston_dir/westonwrap.sh drm gl kiosk virgl \
+$ESUDO env CRUSTY_SHOW_CURSOR=1 $weston_dir/westonwrap.sh drm gl kiosk virgl \
 PATH="$PATH" JAVA_HOME="$JAVA_HOME" XDG_DATA_HOME="$GAMEDIR" WAYLAND_DISPLAY= \
-java -Xms128M -Xmx384M -Dfile.encoding="UTF-8" -cp PokeMMO.exe com.pokeemu.client.Client
+java -Xms128M -Xmx384M -Dorg.lwjgl.util.Debug=true -Dfile.encoding="UTF-8" -cp "libs/*:PokeMMO.exe" com.pokeemu.client.Client
 #Clean up after ourselves
 $ESUDO $weston_dir/westonwrap.sh cleanup
 else
-PATH="$PATH" JAVA_HOME="$JAVA_HOME" XDG_SESSION_TYPE="x11" java -Xms128M -Xmx384M -Dfile.encoding="UTF-8" -cp PokeMMO.exe com.pokeemu.client.Client
+PATH="$PATH" CRUSTY_SHOW_CURSOR=1 JAVA_HOME="$JAVA_HOME" XDG_SESSION_TYPE="x11" java -Xms128M -Xmx384M -Dorg.lwjgl.util.Debug=true -Dfile.encoding="UTF-8" -cp "libs/*:PokeMMO.exe" com.pokeemu.client.Client
+
 fi
 
 if [[ "$PM_CAN_MOUNT" != "N" ]]; then
