@@ -44,7 +44,7 @@ Launch the game and use the in-game menu to locate your ROM files.
 ---
 
 
-### 🎮 Login Without Keyboard Input (Testing)
+### 🎮 Login Without Keyboard Input
 
 If your device does not have a keyboard, you can try one of the following methods to log in:
 
@@ -56,7 +56,7 @@ Temporarily connect a physical keyboard (USB or Bluetooth), log in as usual, and
 
 Type your password in the **username** field, then **copy and paste** it into the password field. This allows you to use system copy/paste functions even without a keyboard.
 
-#### ✅ Option 3: Autologin Using Saved Credentials
+#### ✅ Option 3: Autologin Using Saved Credentials (Testing)
 
 1. Log in on your PC with the **"Remember Me"** option enabled.  
 2. This will generate a file at:  
