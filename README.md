@@ -97,8 +97,16 @@ Only the version with `gptokeyb2` supports the virtual keyboard.
 
 ---
 
-## 💬 Credits & Links
+## Thanks
+
+- Jeod
+- BinaryCounter
+- ddrsoul
+- lil gabo
+- Fran
+
+## Refs
 
 - Official site: [https://pokemmo.com](https://pokemmo.com)  
 - Port suggestion on PortMaster: [View Suggestion](https://suggestions.portmaster.games/suggestion-details?id=ab4f9b6b87314eba96536a86804d7235)
-
+---

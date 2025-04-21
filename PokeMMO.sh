@@ -23,8 +23,6 @@ source $controlfolder/control.txt
 source $controlfolder/device_info.txt
 source $controlfolder/funcs.txt
 
-export LD_LIBRARY_PATH="$controlfolder:$GAMEDIR/libs:$LD_LIBRARY_PATH"
-
 [ -f "${controlfolder}/mod_${CFW_NAME}.txt" ] && source "${controlfolder}/mod_${CFW_NAME}.txt"
 
 get_controls

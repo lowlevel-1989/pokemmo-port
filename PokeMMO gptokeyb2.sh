@@ -90,6 +90,10 @@ fi
 $ESUDO mount -o loop "$controlfolder/libs/${java_runtime}.squashfs" "${JAVA_HOME}"
 export PATH="$JAVA_HOME/bin:$PATH"
 
+if [[ -n "$ESUDO" ]]; then
+    ESUDO="$ESUDO LD_LIBRARY_PATH=$controlfolder"
+fi
+
 GPTOKEYB="$ESUDO $controlfolder/gptokeyb2"
 
 $GPTOKEYB "java" -c "./controls.ini" &
