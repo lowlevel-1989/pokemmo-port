@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<themes>
+
+  <!-- Customization GUI -->
+  <theme name="customize-widget" ref="base-frame">
+    <param name="border"><border>5,5,5,5</border></param>
+    <param name="minWidth"><int>640</int></param>
+    <param name="minHeight"><int>450</int></param>
+  </theme>
+
+  <theme name="customization-label" ref="label" allowWildcard="true">
+    <param name="font"><font>pb-dark</font></param>
+    <param name="textAlignment"><enum type="alignment">center</enum></param>
+    <param name="background"><image>ui-header.background</image></param>
+    <param name="border"><border>3,3</border></param>
+    <param name="minWidth"><int>150</int></param>
+    <param name="minHeight"><int>41</int></param>
+  </theme>
+
+  <theme name="customization-color" ref="button" allowWildcard="true">
+    <param name="font"><font>pb-dark</font></param>
+    <param name="textAlignment"><enum type="alignment">center</enum></param>
+    <param name="background"><image>none</image></param>
+  </theme>
+
+  <theme name="color-dialog" ref="-defaults" allowWildcard="true">
+    <param name="font"><font>pb-dark</font></param>
+    <param name="background"><image>none</image></param>
+    <param name="border"><border>50,0,0,0</border></param>
+    <param name="defaultGap"><dimension>5,5</dimension></param>
+    <param name="smallGap"><dimension>8,8</dimension></param>
+    <param name="mediumGap"><dimension>10,10</dimension></param>
+    <param name="largeGap"><dimension>15,15</dimension></param>
+    <param name="namedGaps"><map/></param>
+  </theme>
+
+  <theme name="color-button" ref="button" allowWildcard="true">
+    <param name="font"><font>pb-dark</font></param>
+    <param name="textAlignment"><enum type="alignment">center</enum></param>
+    <param name="background"><image>color-picker.background</image></param>
+    <param name="minWidth"><int>20</int></param>
+    <param name="minHeight"><int>20</int></param>
+  </theme>
+
+</themes>
+
+

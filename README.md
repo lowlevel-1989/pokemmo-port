@@ -6,6 +6,13 @@ PokeMMO is a fan-made multiplayer online game that brings together multiple gene
 
 ## 🛠 Installation Instructions
 
+### CFW Tests:
+- [] AmberELEC
+- [X] ArkOS
+- [X] Rocknix
+- [~] MuOS
+- [] Knulli
+
 ### 1. Install the Port
 
 Download pokemmo.zip Place the `.zip` into:  
@@ -26,11 +33,21 @@ Download the **portable version**, extract it, and copy these into:
 - `PokeMMO.exe`  
 - `data/` folder
 
+⚠️  Make sure not to replace the existing shaders folder, as it contains optimized shaders.
+Replacing them may negatively impact performance on low-end devices.
+
 ---
 
 ### 3. Add Required and Optional ROMs
 
-Launch the game and use the in-game menu to locate your ROM files.
+To add the ROMs, place them inside the PokeMMO/roms folder and set the following values in `main.properties`:
+~~~
+client.roms.nds=roms/pokemon_black.nds  
+client.roms.em=roms/pokemon_emerald.gba  
+client.roms.fr=roms/pokemon_firered.gba  
+client.roms.nds2=roms/pokemon_platinum.nds  
+client.roms.nds3=roms/pokemon_heartgold.nds
+~~~
 
 **Required ROM:**  
 - Pokémon Black or White (Version 1)
@@ -55,14 +72,6 @@ Temporarily connect a physical keyboard (USB or Bluetooth), log in as usual, and
 #### 📝 Option 2: Type Password in Username Field (thanks ddrsoul)
 
 Type your password in the **username** field, then **copy and paste** it into the password field. This allows you to use system copy/paste functions even without a keyboard.
-
-#### ✅ Option 3: Autologin Using Saved Credentials (Testing)
-
-1. Log in on your PC with the **"Remember Me"** option enabled.  
-2. This will generate a file at:  
-   `config/savedcredentials.properties`  
-3. Copy that file to your PortMaster device at:  
-   `/roms/ports/PokeMMO/config/`
 
 The game will now automatically log in when launched on PortMaster-compatible devices.
 
