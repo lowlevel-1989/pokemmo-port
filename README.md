@@ -114,10 +114,6 @@ To finish and exit keyboard mode, press the Start button.
 |R1| mouse left |
 |L1| mouse right |
 |start| menu |
-|select+up| mouse up |
-|select+down| mouse down |
-|select+left| mouse left |
-|select+right| mouse right |
 
 #### Controller Support Status
 
