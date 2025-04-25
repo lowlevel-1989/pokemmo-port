@@ -37,7 +37,7 @@
 	<include filename="/data/themes/default/ui/link.xml"/>
 	<include filename="/data/themes/default/ui/misc.xml"/>
 	<include filename="/data/themes/default/ui/broker.xml"/>
-	<include filename="ui/console.xml"/>
+	<include filename="/data/themes/default/ui/pc.xml"/>
 	<include filename="/data/themes/default/ui/staff.xml"/>
 	<include filename="/data/themes/default/main-widgets.xml"/>
 </themes>

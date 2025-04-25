@@ -99,22 +99,22 @@ GPTOKEYB="$ESUDO $controlfolder/gptokeyb2"
 $GPTOKEYB "java" -c "./controls.ini" &
 
 if [ "$CFW_NAME" == "muOS" ]; then
-  COMMAND="CRUSTY_SHOW_CURSOR=1 SDL_NO_SIGNAL_HANDLERS=1 WRAPPED_LIBRARY_PATH=\"$GAMEDIR/libs:$LD_LIBRARY_PATH\" WESTON_HEADLESS_WIDTH=\"$DISPLAY_WIDTH\" WESTON_HEADLESS_HEIGHT=\"$DISPLAY_HEIGHT\" $weston_dir/westonwrap.sh headless noop kiosk crusty_glx_gl4es"
-  PATCH="PokeMMO.exe"
+  COMMAND="CRUSTY_SHOW_CURSOR=1 $weston_dir/westonwrap.sh headless noop kiosk crusty_glx_gl4es"
+  PATCH="hack.jar:PokeMMO.exe"
 else
   COMMAND="CRUSTY_SHOW_CURSOR=1 $weston_dir/westonwrap.sh drm gl kiosk virgl"
-  PATCH="libs/*:PokeMMO.exe"
+  PATCH="libs/*:hack.jar:PokeMMO.exe"
 fi
 
 if [ "$westonpack" -eq 1 ]; then 
 $ESUDO env $COMMAND \
-PATH="$PATH" JAVA_HOME="$JAVA_HOME" XDG_SESSION_TYPE="x11" XDG_DATA_HOME="$GAMEDIR" WAYLAND_DISPLAY= \
+PATH="$PATH" JAVA_HOME="$JAVA_HOME" XDG_SESSION_TYPE="x11" GAMEDIR="$GAMEDIR" XDG_DATA_HOME="$GAMEDIR" WAYLAND_DISPLAY= \
 java -Xms128M -Xmx384M -Dorg.lwjgl.util.Debug=true -Dfile.encoding="UTF-8" -cp "${PATCH}" com.pokeemu.client.Client
 
 #Clean up after ourselves
 $ESUDO $weston_dir/westonwrap.sh cleanup
 else
-PATH="$PATH" CRUSTY_SHOW_CURSOR=1 JAVA_HOME="$JAVA_HOME" XDG_SESSION_TYPE="x11" java -Xms128M -Xmx384M -Dorg.lwjgl.util.Debug=true -Dfile.encoding="UTF-8" -cp "${PATCH}" com.pokeemu.client.Client
+PATH="$PATH" CRUSTY_SHOW_CURSOR=1 JAVA_HOME="$JAVA_HOME" GAMEDIR="$GAMEDIR" XDG_SESSION_TYPE="x11" java -Xms128M -Xmx384M -Dorg.lwjgl.util.Debug=true -Dfile.encoding="UTF-8" -cp "${PATCH}" com.pokeemu.client.Client
 
 fi
 

@@ -65,11 +65,15 @@ client.roms.nds3=roms/pokemon_heartgold.nds
 
 If your device does not have a keyboard, you can try one of the following methods to log in:
 
-#### 🔧 Option 1: Connect a Keyboard for First Login
+#### 🔧 Option 1: PokeMMO/credentials.txt
+
+Edit the file PokeMMO/credentials.txt with your login credentials.
+
+#### 🔧 Option 2: Connect a Keyboard for First Login
 
 Temporarily connect a physical keyboard (USB or Bluetooth), log in as usual, and make sure to check the **"Remember Me"** option.
 
-#### 📝 Option 2: Type Password in Username Field (thanks ddrsoul)
+#### 📝 Option 3: Type Password in Username Field (thanks ddrsoul)
 
 Type your password in the **username** field, then **copy and paste** it into the password field. This allows you to use system copy/paste functions even without a keyboard.
 
@@ -92,6 +96,10 @@ The game will now automatically log in when launched on PortMaster-compatible de
 |start| menu |
 |select| mode text (on) |
 |start| mode text/mouse (off) |
+
+To use the virtual keyboard mode with gptokeyb2, press the Select button once to enter letter mode.
+Press Select again to switch to number mode.
+To finish and exit keyboard mode, press the Start button.
 
 ### Controls gptokeyb
 
@@ -124,6 +132,8 @@ Only the version with `gptokeyb2` supports the virtual keyboard.
 - ddrsoul
 - lil gabo
 - Fran
+- rttn
+- zerchu
 
 ## Refs
 
