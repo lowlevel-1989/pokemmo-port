@@ -135,6 +135,7 @@ Only the version with `gptokeyb2` supports the virtual keyboard.
 - Fran
 - rttn
 - zerchu
+- Ganimoth
 
 ## Refs
 
