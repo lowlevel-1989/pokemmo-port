@@ -103,7 +103,7 @@ if [ "$CFW_NAME" == "muOS" ]; then
   PATCH="hack.jar:PokeMMO.exe"
 else
   COMMAND="CRUSTY_SHOW_CURSOR=1 $weston_dir/westonwrap.sh drm gl kiosk virgl"
-  PATCH="libs/*:hack.jar:PokeMMO.exe"
+  PATCH="hack.jar:libs/*:PokeMMO.exe"
 fi
 
 if [ "$westonpack" -eq 1 ]; then 

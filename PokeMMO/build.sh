@@ -1,3 +1,3 @@
-javac -d out/ src/HO.java
+javac -d out/ src/*.java
 jar cf hack.jar -C out .
 rm -rf out

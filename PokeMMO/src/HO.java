@@ -11,7 +11,7 @@ public class HO {
   public static boolean iQ = false;
 
   static {
-    System.out.println("---- LOAD HACK ----");
+    System.out.println("---- LOAD HACK | HO ----");
 
     String path = System.getenv("GAMEDIR");
 
