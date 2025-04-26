@@ -106,6 +106,16 @@ else
   PATCH="hack.jar:libs/*:PokeMMO.exe"
 fi
 
+if [ "$CFW_NAME" == "knulli" ]; then
+  COMMAND="CRUSTY_SHOW_CURSOR=1 $weston_dir/westonwrap.sh headless noop kiosk crusty_glx_gl4es"
+  PATCH="hack.jar:libs/*:PokeMMO.exe"
+fi
+
+echo "WESTOMPACK  $westonpack"
+echo "ESUDO       $ESUDO"
+echo "COMMAND     $COMMAND"
+echo "PATCH       $PATCH"
+
 if [ "$westonpack" -eq 1 ]; then 
 $ESUDO env $COMMAND \
 PATH="$PATH" JAVA_HOME="$JAVA_HOME" XDG_SESSION_TYPE="x11" GAMEDIR="$GAMEDIR" XDG_DATA_HOME="$GAMEDIR" WAYLAND_DISPLAY= \

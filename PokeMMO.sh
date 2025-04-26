@@ -99,8 +99,18 @@ if [ "$CFW_NAME" == "muOS" ]; then
   PATCH="hack.jar:PokeMMO.exe"
 else
   COMMAND="CRUSTY_SHOW_CURSOR=1 $weston_dir/westonwrap.sh drm gl kiosk virgl"
-  PATCH="libs/*:hack.jar:PokeMMO.exe"
+  PATCH="hack.jar:libs/*:PokeMMO.exe"
 fi
+
+if [ "$CFW_NAME" == "knulli" ]; then
+  COMMAND="CRUSTY_SHOW_CURSOR=1 $weston_dir/westonwrap.sh headless noop kiosk crusty_glx_gl4es"
+  PATCH="hack.jar:libs/*:PokeMMO.exe"
+fi
+
+echo "WESTOMPACK  $westonpack"
+echo "ESUDO       $ESUDO"
+echo "COMMAND     $COMMAND"
+echo "PATCH       $PATCH"
 
 if [ "$westonpack" -eq 1 ]; then 
 $ESUDO env $COMMAND \
@@ -110,7 +120,6 @@ java -Xms128M -Xmx384M -Dorg.lwjgl.util.Debug=true -Dfile.encoding="UTF-8" -cp "
 $ESUDO $weston_dir/westonwrap.sh cleanup
 else
 PATH="$PATH" CRUSTY_SHOW_CURSOR=1 JAVA_HOME="$JAVA_HOME" GAMEDIR="$GAMEDIR" XDG_SESSION_TYPE="x11" java -Xms128M -Xmx384M -Dorg.lwjgl.util.Debug=true -Dfile.encoding="UTF-8" -cp "${PATCH}" com.pokeemu.client.Client
-
 fi
 
 if [[ "$PM_CAN_MOUNT" != "N" ]]; then

@@ -7,11 +7,16 @@ PokeMMO is a fan-made multiplayer online game that brings together multiple gene
 ## 🛠 Installation Instructions
 
 ### CFW Tests:
+
+~~~
 - [] AmberELEC
-- [X] ArkOS
-- [X] Rocknix
-- [~] MuOS
-- [] Knulli
+- [x] ArkOS
+- [~] MuOS ( Work in progress )
+- [x] Rocknix
+    -> [x] Panfrost (It uses less processing power.)
+    -> [x] Libmali
+- [] Knulli ( Work in progress )
+~~~
 
 ### 1. Install the Port
 
