@@ -11,21 +11,10 @@ PokeMMO is a fan-made multiplayer online game that brings together multiple gene
 ~~~
 - [x] ArkOS
 - [x] Rocknix
-    -> [x] Panfrost ( recommended [30/60 fps] )
-    -> [~] Libmali
-- [~] MuOS  ( Work in progress )
-- [] Knulli ( canceled )
-
-
-Rocknix -> Panfrost -> 'headless noop kiosk crusty_glx_gl4es' -> OK
-Rocknix -> libmali  -> 'drm gl kiosk virgl'                   -> OK
-Rocknix -> libmali  -> 'headless noop kiosk crusty_glx_gl4es' -> FAIL, the screen freezes
-ArkOS   ->          -> 'headless noop kiosk crusty_glx_gl4es' -> FAIL, the screen freezes
-ArkOS   ->          -> 'drm gl kiosk virgl'                   -> OK
-MuOS    ->          -> 'drm gl kiosk virgl'                   -> FAIL, does not detect opengl
-MuOS    ->          -> 'headless noop kiosk crusty_glx_gl4es' -> FAIL, the screen freezes
-Knulli  ->          -> 'headless noop kiosk crusty_glx_gl4es' -> FAIL, the screen freezes
-Knulli  ->          -> 'drm gl kiosk virgl'                   -> FAIL, does not detect opengl
+    -> [x] Panfrost
+    -> [x] Libmali
+- [~] MuOS   ( Work in progress )
+- [~] Knulli ( Work in progress )
 ~~~
 
 ### Assigning Panfrost in Rocknix
@@ -113,7 +102,7 @@ The game will now automatically log in when launched on PortMaster-compatible de
 |B| B|
 |X| show trainer card |
 |Y| show bag |
-|R2| show pokedex |
+|R2| enter |
 |L2| mode dpad mouse |
 |R1| mouse left |
 |L1| mouse right |
@@ -133,7 +122,7 @@ To finish and exit keyboard mode, press the Start button.
 |B| B|
 |X| show trainer card |
 |Y| show bag |
-|R2| show friends list |
+|R2| enter |
 |L2| show pokedex |
 |R1| mouse left |
 |L1| mouse right |
@@ -143,6 +132,11 @@ To finish and exit keyboard mode, press the Start button.
 
 Only the version with `gptokeyb2` supports the virtual keyboard.
 
+---
+
+### 🎮 Calibrate cursor
+
+![cursor](docs/3.jpg)
 ---
 
 ## Thanks

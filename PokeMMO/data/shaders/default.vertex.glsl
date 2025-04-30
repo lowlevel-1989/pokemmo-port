@@ -130,9 +130,7 @@ varying float v_alphaTest;
 #ifdef lightingFlag
 varying vec3 v_lightDiffuse;
 
-#ifdef ambientLightFlag
 uniform vec3 u_ambientLight;
-#endif // ambientLightFlag
 
 #ifdef ambientCubemapFlag
 uniform vec3 u_ambientCubemap[6];
@@ -174,9 +172,7 @@ varying vec3 v_shadowMapUv;
 #define separateAmbientFlag
 #endif //shadowMapFlag
 
-#if defined(ambientFlag) && defined(separateAmbientFlag)
 varying vec3 v_ambientLight;
-#endif //separateAmbientFlag
 
 #endif // lightingFlag
 

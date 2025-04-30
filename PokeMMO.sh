@@ -94,19 +94,8 @@ export PATH="$JAVA_HOME/bin:$PATH"
 
 $GPTOKEYB  "java" -c "./controls.gptk" &
 
-COMMAND="CRUSTY_SHOW_CURSOR=0 $weston_dir/westonwrap.sh headless noop kiosk crusty_glx_gl4es"
+COMMAND="CRUSTY_SHOW_CURSOR=1 $weston_dir/westonwrap.sh headless noop kiosk crusty_glx_gl4es"
 PATCH="hack.jar:libs/*:PokeMMO.exe"
-
-if [[ $CFW_NAME == ArkOS* || $CFW_NAME == muOS* ]]; then
-  COMMAND="CRUSTY_SHOW_CURSOR=0 $weston_dir/westonwrap.sh drm gl kiosk virgl"
-fi
-
-if [[ "$CFW_NAME" = "ROCKNIX" ]]; then
-  if ! glxinfo | grep "OpenGL version string"; then
-    # Rocknix Libmali
-    COMMAND="CRUSTY_SHOW_CURSOR=0 $weston_dir/westonwrap.sh drm gl kiosk virgl"
-  fi
-fi
 
 echo "WESTOMPACK  $westonpack"
 echo "ESUDO       $ESUDO"

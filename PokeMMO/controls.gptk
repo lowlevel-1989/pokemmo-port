@@ -8,7 +8,7 @@ y = b
 l1 = mouse_right
 r1 = mouse_left
 
-r2 = v
+r2 = enter
 l2 = n
 
 up = up
