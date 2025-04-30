@@ -136,7 +136,7 @@ Only the version with `gptokeyb2` supports the virtual keyboard.
 
 ### 🎮 Calibrate cursor
 
-![cursor](docs/3.jpg)
+![cursor](docs/3.gif)
 ---
 
 ## Thanks
