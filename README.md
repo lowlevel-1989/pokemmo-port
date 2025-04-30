@@ -1,6 +1,6 @@
 # PokeMMO Port for PortMaster
 
-PokeMMO is a fan-made multiplayer online game that brings together multiple generations of Pokémon in a single MMO experience. This port allows you to run the Windows version of PokeMMO using PortMaster-compatible devices.
+PokeMMO is a fan-made multiplayer online game that brings together multiple generations of Pokémon in a single MMO experience.
 
 ---
 
@@ -11,10 +11,21 @@ PokeMMO is a fan-made multiplayer online game that brings together multiple gene
 ~~~
 - [x] ArkOS
 - [x] Rocknix
-    -> [x] Panfrost ( recommended )
+    -> [x] Panfrost ( recommended [30/60 fps] )
     -> [~] Libmali
 - [~] MuOS  ( Work in progress )
 - [] Knulli ( canceled )
+
+
+Rocknix -> Panfrost ->  'headless noop kiosk crusty_glx_gl4es' -> OK
+Rocknix -> libmali  ->  'drm gl kiosk virgl' -> OK
+Rocknix -> libmali  ->  'headless noop kiosk crusty_glx_gl4es' -> FAIL, the screen freezes
+ArkOS   ->          ->  'headless noop kiosk crusty_glx_gl4es' -> FAIL,  the screen freezes
+ArkOS   ->          ->  'drm gl kiosk virgl'                   -> OK
+MuOS    ->          ->  'drm gl kiosk virgl'                   -> FAIL, does not detect opengl
+MuOS    ->          -> 'headless noop kiosk crusty_glx_gl4es'  -> FAIL,  the screen freezes
+Knulli  ->          -> 'headless noop kiosk crusty_glx_gl4es'  -> FAIL,  the screen freezes
+Knulli  ->          -> 'drm gl kiosk virgl'                    -> FAIL, does not detect opengl
 ~~~
 
 ### 1. Install the Port
