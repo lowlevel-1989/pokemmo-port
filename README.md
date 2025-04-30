@@ -18,7 +18,7 @@ PokeMMO is a fan-made multiplayer online game that brings together multiple gene
 
 
 Rocknix -> Panfrost ->  'headless noop kiosk crusty_glx_gl4es' -> OK
-Rocknix -> libmali  ->  'drm gl kiosk virgl' -> OK
+Rocknix -> libmali  ->  'drm gl kiosk virgl'                   -> OK
 Rocknix -> libmali  ->  'headless noop kiosk crusty_glx_gl4es' -> FAIL, the screen freezes
 ArkOS   ->          ->  'headless noop kiosk crusty_glx_gl4es' -> FAIL,  the screen freezes
 ArkOS   ->          ->  'drm gl kiosk virgl'                   -> OK
