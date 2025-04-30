@@ -28,6 +28,15 @@ Knulli  ->          -> 'headless noop kiosk crusty_glx_gl4es'  -> FAIL,  the scr
 Knulli  ->          -> 'drm gl kiosk virgl'                    -> FAIL, does not detect opengl
 ~~~
 
+### Assigning Panfrost in Rocknix
+
+To configure Rocknix to use the **Panfrost** driver, first ensure your device supports it and that it’s not the only available option. For example, the **Powkiddy RGB30** supports both **libMali (GLES 3.2)** and **Panfrost (GL 3.1/GLES 3.1)**, as shown [here](https://rocknix.org/devices/powkiddy/rgb30/#software).
+
+To switch to the Panfrost driver:
+![step 1](docs/1.jpg)
+![step 2](docs/2.jpg)
+
+
 ### 1. Install the Port
 
 Download pokemmo.zip Place the `.zip` into:  
