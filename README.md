@@ -20,11 +20,11 @@ PokeMMO is a fan-made multiplayer online game that brings together multiple gene
 Rocknix -> Panfrost -> 'headless noop kiosk crusty_glx_gl4es' -> OK
 Rocknix -> libmali  -> 'drm gl kiosk virgl'                   -> OK
 Rocknix -> libmali  -> 'headless noop kiosk crusty_glx_gl4es' -> FAIL, the screen freezes
-ArkOS   ->          -> 'headless noop kiosk crusty_glx_gl4es' -> FAIL,  the screen freezes
+ArkOS   ->          -> 'headless noop kiosk crusty_glx_gl4es' -> FAIL, the screen freezes
 ArkOS   ->          -> 'drm gl kiosk virgl'                   -> OK
 MuOS    ->          -> 'drm gl kiosk virgl'                   -> FAIL, does not detect opengl
-MuOS    ->          -> 'headless noop kiosk crusty_glx_gl4es' -> FAIL,  the screen freezes
-Knulli  ->          -> 'headless noop kiosk crusty_glx_gl4es' -> FAIL,  the screen freezes
+MuOS    ->          -> 'headless noop kiosk crusty_glx_gl4es' -> FAIL, the screen freezes
+Knulli  ->          -> 'headless noop kiosk crusty_glx_gl4es' -> FAIL, the screen freezes
 Knulli  ->          -> 'drm gl kiosk virgl'                   -> FAIL, does not detect opengl
 ~~~
 
