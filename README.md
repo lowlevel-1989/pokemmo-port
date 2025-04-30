@@ -23,9 +23,9 @@ Rocknix -> libmali  -> 'headless noop kiosk crusty_glx_gl4es' -> FAIL, the scree
 ArkOS   ->          -> 'headless noop kiosk crusty_glx_gl4es' -> FAIL,  the screen freezes
 ArkOS   ->          -> 'drm gl kiosk virgl'                   -> OK
 MuOS    ->          -> 'drm gl kiosk virgl'                   -> FAIL, does not detect opengl
-MuOS    ->          -> 'headless noop kiosk crusty_glx_gl4es'  -> FAIL,  the screen freezes
-Knulli  ->          -> 'headless noop kiosk crusty_glx_gl4es'  -> FAIL,  the screen freezes
-Knulli  ->          -> 'drm gl kiosk virgl'                    -> FAIL, does not detect opengl
+MuOS    ->          -> 'headless noop kiosk crusty_glx_gl4es' -> FAIL,  the screen freezes
+Knulli  ->          -> 'headless noop kiosk crusty_glx_gl4es' -> FAIL,  the screen freezes
+Knulli  ->          -> 'drm gl kiosk virgl'                   -> FAIL, does not detect opengl
 ~~~
 
 ### Assigning Panfrost in Rocknix
