@@ -146,9 +146,6 @@ Only the version with `gptokeyb2` supports the virtual keyboard.
 
 ### Known Bug
 
-#### ⚠️ Shader Optimization Notice
-As part of the optimization of the shader that causes the problem, I’ve had to temporarily leave several graphical bugs, but it allows all systems to play all regions.
-
 #### Calibrate cursor
 
 ![cursor](docs/3.gif)
