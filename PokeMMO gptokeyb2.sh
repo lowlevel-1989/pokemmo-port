@@ -30,6 +30,8 @@ GAMEDIR=/$directory/ports/PokeMMO
 
 cd $GAMEDIR
 
+rm pokemmo_crash_*.log
+
 # Check if we need to use westonpack. If we have mainline OpenGL, we don't need to use it.
 if glxinfo | grep -q "OpenGL version string"; then
     westonpack=0
@@ -102,7 +104,12 @@ fi
 
 $GPTOKEYB "java" -c "./controls.ini" &
 
-COMMAND="CRUSTY_SHOW_CURSOR=1 $weston_dir/westonwrap.sh headless noop kiosk crusty_glx_gl4es"
+if [ "$DEVICE_NAME" = "TRIMUI-SMART-PRO" ]; then
+  DISPLAY_WIDTH=1280
+  DISPLAY_HEIGHT=720
+fi
+
+COMMAND="CRUSTY_SHOW_CURSOR=1 WESTON_HEADLESS_WIDTH="$DISPLAY_WIDTH" WESTON_HEADLESS_HEIGHT="$DISPLAY_HEIGHT" $weston_dir/westonwrap.sh headless noop kiosk crusty_glx_gl4es"
 PATCH="hack.jar:libs/*:PokeMMO.exe"
 
 echo "WESTOMPACK  $westonpack"

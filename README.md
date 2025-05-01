@@ -8,6 +8,12 @@ PokeMMO is a fan-made multiplayer online game that brings together multiple gene
 
 ### CFW Tests:
 
+|                        | 480x320 | 640x480 | 720x720 | Higher resolutions |
+|------------------------|---------|---------|---------|--------------------|
+| Playable?              | No      | Yes     | Yes     | Yes                |
+| Create new character?  | No      | No      | Yes     | Yes                |
+| All regions?           | No      | Yes     | Yes     | Yes                |
+
 ~~~
 - [x] ArkOS
 - [x] Rocknix
@@ -26,7 +32,7 @@ To switch to the Panfrost driver:
 ![step 2](docs/2.jpg)
 
 
-### 1. Install the Port
+### 1. Install/Update the Port
 
 Download pokemmo.zip Place the `.zip` into:  
 `/PortMaster/autoinstall`
@@ -46,7 +52,7 @@ Download the **portable version**, extract it, and copy these into:
 - `PokeMMO.exe`  
 - `data/` folder
 
-⚠️  Make sure not to replace the existing shaders folder, as it contains optimized shaders.
+⚠️  Make sure not to replace the existing shaders folder and main.properties, as it contains optimized shaders.
 Replacing them may negatively impact performance on low-end devices.
 
 ---
@@ -100,9 +106,11 @@ The game will now automatically log in when launched on PortMaster-compatible de
 |--|--| 
 |A| A|
 |B| B|
-|X| show trainer card |
-|Y| show bag |
-|R2| enter |
+|Y| Hotkey 1 |
+|X| Hotkey 2  |
+|R2| Hotkey 3 |
+|L3| Hotkey 4 |
+|R3| Hotkey 5 |
 |L2| mode dpad mouse |
 |R1| mouse left |
 |L1| mouse right |
@@ -120,10 +128,12 @@ To finish and exit keyboard mode, press the Start button.
 |--|--| 
 |A| A|
 |B| B|
-|X| show trainer card |
-|Y| show bag |
-|R2| enter |
-|L2| show pokedex |
+|Y| Hotkey 1 |
+|X| Hotkey 2 |
+|R2| Hotkey 3 |
+|L3| Hotkey 4 |
+|R3| Hotkey 5 |
+|L2| Hotkey 6|
 |R1| mouse left |
 |L1| mouse right |
 |start| menu |
@@ -154,6 +164,8 @@ As part of the optimization of the shader that causes the problem, I’ve had to
 - rttn
 - zerchu
 - Ganimoth
+- antiNT
+- cuongnv1312
 
 ## Refs
 
