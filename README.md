@@ -13,8 +13,8 @@ PokeMMO is a fan-made multiplayer online game that brings together multiple gene
 - [x] Rocknix
     -> [x] Panfrost
     -> [x] Libmali
-- [~] MuOS   ( Work in progress )
-- [~] Knulli ( Work in progress )
+- [x] MuOS
+- [x] Knulli
 ~~~
 
 ### Assigning Panfrost in Rocknix
@@ -134,7 +134,12 @@ Only the version with `gptokeyb2` supports the virtual keyboard.
 
 ---
 
-### 🎮 Calibrate cursor
+### Known Bug
+
+#### ⚠️ Shader Optimization Notice
+As part of the optimization of the shader that causes the problem, I’ve had to temporarily leave several graphical bugs, but it allows all systems to play all regions.
+
+#### Calibrate cursor
 
 ![cursor](docs/3.gif)
 ---
