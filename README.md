@@ -160,6 +160,7 @@ The game will now automatically log in when launched on PortMaster-compatible de
 - Ganimoth
 - antiNT
 - cuongnv1312
+- Brobba
 
 ## Refs
 
