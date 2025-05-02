@@ -11,8 +11,10 @@ PokeMMO is a fan-made multiplayer online game that brings together multiple gene
 |                        | 480x320 | 640x480 | 720x720 | Higher resolutions |
 |------------------------|---------|---------|---------|--------------------|
 | Playable?              | No      | Yes     | Yes     | Yes                |
-| Create new character?  | No      | No      | Yes     | Yes                |
+| Create new character?  | No      | Yes (small)      | Yes     | Yes                |
 | All regions?           | No      | Yes     | Yes     | Yes                |
+| Global trade link                     | No      | Yes (small)    | Yes (small)    | Yes                |
+| PC                     | No      | Yes (small)    | Yes (small)    | Yes                |
 
 ~~~
 - [x] ArkOS
