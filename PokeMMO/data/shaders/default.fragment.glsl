@@ -106,8 +106,6 @@ float getShadow()
 }
 #endif //shadowMapFlag
 
-varying vec3 v_ambientLight;
-
 #endif //lightingFlag
 
 #ifdef lightMask

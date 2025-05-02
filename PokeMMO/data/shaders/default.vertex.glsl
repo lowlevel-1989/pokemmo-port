@@ -168,8 +168,6 @@ varying vec3 v_shadowMapUv;
 #define separateAmbientFlag
 #endif //shadowMapFlag
 
-varying vec3 v_ambientLight;
-
 #endif // lightingFlag
 
 #ifdef cameraPositionFlag
@@ -267,17 +265,7 @@ void main() {
 			ambientLight += u_sphericalHarmonics[8] * (normal.x * normal.x - normal.y * normal.y);			
 		#endif // sphericalHarmonicsFlag
 
-		#ifdef ambientFlag
-			#ifdef separateAmbientFlag
-				v_ambientLight = ambientLight;
-				v_lightDiffuse = vec3(0.0);
-			#else
-				v_lightDiffuse = ambientLight;
-			#endif //separateAmbientFlag
-		#else
-	        v_lightDiffuse = vec3(0.0);
-		#endif //ambientFlag
-
+		v_lightDiffuse = vec3(0.0);
 			
 		#ifdef specularFlag
 			v_lightSpecular = vec3(0.0);

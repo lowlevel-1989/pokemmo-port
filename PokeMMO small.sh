@@ -32,7 +32,8 @@ cd $GAMEDIR
 
 rm pokemmo_crash_*.log
 
-sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.5/' config/main.properties
+sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.3/' config/main.properties
+sed -i 's/^client\.gui\.scale\.hidpifont=.*/client.gui.scale.hidpifont=true/' config/main.properties
 
 # Check if we need to use westonpack. If we have mainline OpenGL, we don't need to use it.
 if glxinfo | grep -q "OpenGL version string"; then
