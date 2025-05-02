@@ -100,47 +100,42 @@ The game will now automatically log in when launched on PortMaster-compatible de
 
 ---
 
-### Controls gptokeyb2
+### Controls
 
 | Button | Action |
 |--|--| 
+|start| menu focus |
+|R1| mouse left |
+|L1| mouse right |
 |A| A|
 |B| B|
-|Y| Hotkey 1 |
-|X| Hotkey 2  |
+|X| Bag |
+|Y| Hotkey 1  |
+|L2| Hotkey 2 |
 |R2| Hotkey 3 |
 |L3| Hotkey 4 |
 |R3| Hotkey 5 |
-|L2| mode dpad mouse |
-|R1| mouse left |
-|L1| mouse right |
-|start| menu |
-|select| mode text (on) |
-|start| mode text/mouse (off) |
+|select + B  | Hotkey 6 |
+|select + A  | Hotkey 7 |
+|select + X  | Hotkey 8 |
+|select + R1  | Hotkey 9 |
+|select + R2  | screenshot |
+|select + L2  | mode dpad mouse (on) |
+|select + Y  | mode text (on) |
 
-To use the virtual keyboard mode with gptokeyb2, press the Select button once to enter letter mode.
-Press Select again to switch to number mode.
-To finish and exit keyboard mode, press the Start button.
-
-### Controls gptokeyb
+#### Virtual Keyboard
 
 | Button | Action |
 |--|--| 
-|A| A|
-|B| B|
-|Y| Hotkey 1 |
-|X| Hotkey 2 |
-|R2| Hotkey 3 |
-|L3| Hotkey 4 |
-|R3| Hotkey 5 |
-|L2| Hotkey 6|
-|R1| mouse left |
-|L1| mouse right |
-|start| menu |
+|start| mode text (off) |
+|A| add character |
+|B| backspace |
+|X| space |
+|Y| toggle case  |
+|up | prev character |
+|down | next character |
+|select| toggle number/letter  |
 
-#### Controller Support Status
-
-Only the version with `gptokeyb2` supports the virtual keyboard.
 
 ---
 

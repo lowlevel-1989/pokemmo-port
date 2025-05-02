@@ -23,9 +23,7 @@ source $controlfolder/control.txt
 source $controlfolder/device_info.txt
 source $controlfolder/funcs.txt
 
-[ -f "${controlfolder}/mod_${CFW_NAME}.txt" ] && source "${controlfolder}/mod_${CFW_NAME}.txt"
-
-get_controls
+export LD_LIBRARY_PATH="$controlfolder:$GAMEDIR/libs:$LD_LIBRARY_PATH"
 
 GAMEDIR=/$directory/ports/PokeMMO
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
@@ -94,7 +92,17 @@ fi
 $ESUDO mount -o loop "$controlfolder/libs/${java_runtime}.squashfs" "${JAVA_HOME}"
 export PATH="$JAVA_HOME/bin:$PATH"
 
-$GPTOKEYB  "java" -c "./controls.gptk" &
+if [[ -n "$ESUDO" ]]; then
+    ESUDO="$ESUDO LD_LIBRARY_PATH=$controlfolder"
+fi
+
+GPTOKEYB="$ESUDO $controlfolder/gptokeyb2.$DEVICE_ARCH"
+
+if [ "$DEVICE_ARCH" = "aarch64" ]; then
+  GPTOKEYB="$ESUDO $controlfolder/gptokeyb2"
+fi
+
+$GPTOKEYB "java" -c "./controls.ini" &
 
 if [ "$DEVICE_NAME" = "TRIMUI-SMART-PRO" ]; then
   DISPLAY_WIDTH=1280
@@ -112,12 +120,14 @@ echo "GPTOKEYB    $GPTOKEYB"
 
 if [ "$westonpack" -eq 1 ]; then 
 $ESUDO env $COMMAND \
-PATH="$PATH" JAVA_HOME="$JAVA_HOME" GAMEDIR="$GAMEDIR" XDG_DATA_HOME="$GAMEDIR" WAYLAND_DISPLAY= \
+PATH="$PATH" JAVA_HOME="$JAVA_HOME" XDG_SESSION_TYPE="x11" GAMEDIR="$GAMEDIR" XDG_DATA_HOME="$GAMEDIR" WAYLAND_DISPLAY= \
 java -Xms128M -Xmx384M -Dorg.lwjgl.util.Debug=true -Dfile.encoding="UTF-8" -cp "${PATCH}" com.pokeemu.client.Client
+
 #Clean up after ourselves
 $ESUDO $weston_dir/westonwrap.sh cleanup
 else
 PATH="$PATH" CRUSTY_SHOW_CURSOR=1 JAVA_HOME="$JAVA_HOME" GAMEDIR="$GAMEDIR" XDG_SESSION_TYPE="x11" java -Xms128M -Xmx384M -Dorg.lwjgl.util.Debug=true -Dfile.encoding="UTF-8" -cp "${PATCH}" com.pokeemu.client.Client
+
 fi
 
 if [[ "$PM_CAN_MOUNT" != "N" ]]; then
