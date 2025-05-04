@@ -31,6 +31,7 @@ GAMEDIR=/$directory/ports/PokeMMO
 cd $GAMEDIR
 
 rm pokemmo_crash_*.log
+cat data/mods/console_mod/dync/theme.xml > data/mods/console_mod/console/theme.xml
 
 sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.0/' config/main.properties
 sed -i 's/^client\.gui\.scale\.hidpifont=.*/client.gui.scale.hidpifont=false/' config/main.properties

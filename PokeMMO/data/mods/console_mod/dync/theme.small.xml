@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<themes>
+	<!-- Colors and stuff -->
+	<constantDef name="main-theme-color"><color>#6a889b</color></constantDef>
+	<!-- Overrides Button hover and inputbox select -->
+	<constantDef name="main-color"><color>#5db1ff</color></constantDef>
+	<constantDef name="sub-color"><color>#5db1ff</color></constantDef>
+	<constantDef name="tooltip-tint"><color>#FF565D63</color></constantDef>
+
+	<!-- Include Main Theme -->
+	<include filename="/data/themes/default/fonts.xml"/>
+	<!-- Must be included after all fonts are loaded -->
+	<fontGen/>
+	
+	<include filename="/data/themes/default/cursors.xml"/>
+	<include filename="/data/themes/default/gfx.xml"/>
+	<include filename="/data/themes/default/gfx_ui.xml"/>
+	<include filename="/data/themes/default/init.xml"/>
+	
+	<!-- Including rest of the GUI -->
+	<include filename="/data/themes/default/ui/main.xml"/>
+	<include filename="ui/battle.small.xml"/>
+	<include filename="/data/themes/default/ui/contest.xml"/>
+	<include filename="/data/themes/default/ui/party.xml"/>
+	<include filename="/data/themes/default/ui/inventory.xml"/>
+	<include filename="/data/themes/default/ui/chat.xml"/>
+	<include filename="/data/themes/default/ui/monster-dex.xml"/>
+	<include filename="/data/themes/default/ui/monster-frame.xml"/>
+  <include filename="/data/themes/default/ui/customization.xml"/>
+	<include filename="/data/themes/default/ui/settings.xml"/>
+	<include filename="/data/themes/default/ui/guild.xml"/>
+	<include filename="/data/themes/default/ui/matchmaking.xml"/>
+	<include filename="/data/themes/default/ui/social.xml"/>
+	<include filename="/data/themes/default/ui/instance.xml"/>
+	<include filename="/data/themes/default/ui/trade.xml"/>
+	<include filename="/data/themes/default/ui/shop.xml"/>
+	<include filename="/data/themes/default/ui/link.xml"/>
+	<include filename="/data/themes/default/ui/misc.xml"/>
+	<include filename="/data/themes/default/ui/broker.xml"/>
+	<include filename="/data/themes/default/ui/pc.xml"/>
+	<include filename="/data/themes/default/ui/staff.xml"/>
+	<include filename="/data/themes/default/main-widgets.xml"/>
+</themes>
