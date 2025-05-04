@@ -183,7 +183,7 @@ The game will now automatically log in when launched on PortMaster-compatible de
 |select + L2  | mode dpad mouse (on) |
 |select + Y  | mode text (on) |
 
-Hotkeys are assigned by right-clicking on any item or element in the game and selecting register
+📝 Hotkeys are assigned by right-clicking on any item or element in the game and selecting register
 
 #### Virtual Keyboard
 
