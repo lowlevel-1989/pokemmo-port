@@ -25,6 +25,24 @@ PokeMMO is a fan-made multiplayer online game that brings together multiple gene
 - [x] Knulli
 ~~~
 
+### What is `hack.jar`?
+
+`hack.jar` is a Java package that allows loading optimized shaders into memory for the following custom firmware (CFW).  
+If a `credentials.txt` file exists in the Java virtual machine, it will use the username and password specified there, but only during application startup.
+
+The source code can be found here:  
+👉 [PokeMMO/src](PokeMMO/src)
+
+| Operating System       | Requires `hack.jar`? | Known Issues Without `hack.jar`                                                   |
+|------------------------|----------------------|------------------------------------------------------------------------------------|
+| **ArkOS**              | ✅ Yes               | - Screen freezes when flying<br>- Starter Pokémon selection in NDS<br>- Freeze in Johto |
+| **Rocknix (Panfrost)** | ❌ No                | - Works fine without `hack.jar`                                                   |
+| **Rocknix (Libmali)**  | ✅ Yes               | - Same issues as ArkOS                                                             |
+| **MuOS**               | ✅ Yes               | - Screen freezes when flying<br>- Starter Pokémon selection in NDS<br>- Freeze in Johto |
+| **Knulli**             | ✅ Yes               | - Screen freezes when flying<br>- Starter Pokémon selection in NDS<br>- Freeze in Johto |
+| **spruceOS**           | ✅ Yes               | - Screen freezes when flying<br>- Starter Pokémon selection in NDS<br>- Freeze in Johto |
+
+
 ### Assigning Panfrost in Rocknix
 
 To configure Rocknix to use the **Panfrost** driver, first ensure your device supports it and that it’s not the only available option. For example, the **Powkiddy RGB30** supports both **libMali (GLES 3.2)** and **Panfrost (GL 3.1/GLES 3.1)**, as shown [here](https://rocknix.org/devices/powkiddy/rgb30/#software).
@@ -40,6 +58,20 @@ Download pokemmo.zip Place the `.zip` into:
 `/PortMaster/autoinstall`
 
 Launch **PortMaster**. It will automatically install the port.
+
+#### Here are the locations for the autoinstall folder for the
+
+- AmberELEC, ROCKNIX, uOS, Jelos /roms/ports/PortMaster/autoinstall/
+- muOS /mmc/MUOS/PortMaster/autoinstall/
+- ArkOS /roms/tools/PortMaster/autoinstall/
+- Knulli /userdata/system/.local/share/PortMaster/autoinstall
+
+If that does not work you can also unzip the contents of the port into the ports folders of each cfw, note that this may break the port and ports may no longer start.
+
+- AmberELEC, ROCKNIX, uOS, Jelos /roms/ports/
+- muOS /mmc/ports/ for the folders and /mnt/mmc/ROMS/Ports/ for the .sh files
+- ArkOS /roms/tools/PortMaster/autoinstall/
+- Knulli /userdata/system/.local/share/PortMaster/autoinstall
 
 ---
 
