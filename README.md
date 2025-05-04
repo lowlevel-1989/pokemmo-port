@@ -70,19 +70,31 @@ Download pokemmo.zip Place the `.zip` into:
 
 Launch **PortMaster**. It will automatically install the port.
 
-#### Here are the locations for the autoinstall folder for the
+#### 📂 Autoinstall Folder Locations
 
-- AmberELEC, ROCKNIX, uOS, Jelos /roms/ports/PortMaster/autoinstall/
-- muOS /mmc/MUOS/PortMaster/autoinstall/
-- ArkOS /roms/tools/PortMaster/autoinstall/
-- Knulli /userdata/system/.local/share/PortMaster/autoinstall
+Here are the paths for the `autoinstall` folder for each CFW supported by PortMaster:
 
-If that does not work you can also unzip the contents of the port into the ports folders of each cfw, note that this may break the port and ports may no longer start.
+| System                             | `autoinstall` Path                                                                 |
+|------------------------------------|-------------------------------------------------------------------------------------|
+| **AmberELEC / ROCKNIX / uOS / Jelos** | `/roms/ports/PortMaster/autoinstall/`                                            |
+| **muOS**                           | `/mmc/MUOS/PortMaster/autoinstall/`                                               |
+| **ArkOS**                          | `/roms/tools/PortMaster/autoinstall/`                                             |
+| **Knulli**                         | `/userdata/system/.local/share/PortMaster/autoinstall/`                           |
 
-- AmberELEC, ROCKNIX, uOS, Jelos /roms/ports/
-- muOS /mmc/ports/ for the folders and /mnt/mmc/ROMS/Ports/ for the .sh files
-- ArkOS /roms/tools/PortMaster/autoinstall/
-- Knulli /userdata/system/.local/share/PortMaster/autoinstall
+---
+
+#### 📦 Manual Installation (Alternative)
+
+If the `autoinstall` folder method doesn't work, you can manually unzip the port contents into the appropriate `ports` folders.  
+**Note:** This may break the port and prevent it from launching properly.
+
+| System                             | Ports Folder Location                                                              |
+|------------------------------------|-------------------------------------------------------------------------------------|
+| **AmberELEC / ROCKNIX / uOS / Jelos** | `/roms/ports/`                                                                     |
+| **muOS**                           | Folders: `/mmc/ports/`  
+|                                    | `.sh` files: `/mnt/mmc/ROMS/Ports/`                                                |
+| **ArkOS**                          | `/roms/tools/PortMaster/autoinstall/` (same as autoinstall)                        |
+| **Knulli**                         | `/userdata/system/.local/share/PortMaster/autoinstall/` (same as autoinstall)     |
 
 ---
 
