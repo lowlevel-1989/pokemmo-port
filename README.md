@@ -221,6 +221,7 @@ The game will now automatically log in when launched on PortMaster-compatible de
 - antiNT
 - cuongnv1312
 - Brobba
+- [noe](https://steamcommunity.com/id/itsnoe73)
 
 ## Refs
 
