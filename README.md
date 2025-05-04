@@ -29,7 +29,7 @@ PokeMMO is a fan-made multiplayer online game that brings together multiple gene
 ### What is `hack.jar`?
 
 `hack.jar` is a Java package that allows loading optimized shaders into memory for the following custom firmware (CFW).  
-If a `credentials.txt` file exists in the Java virtual machine, it will use the username and password specified there, but only during application startup.
+If a `credentials.txt` file exists, it will use the username and password specified there, but only during application startup.
 
 The source code can be found here:  
 👉 [PokeMMO/src](PokeMMO/src)
@@ -42,6 +42,16 @@ The source code can be found here:
 | **MuOS**               | ✅ Yes               | - Screen freezes when flying<br>- Starter Pokémon selection in NDS<br>- Freeze in Johto |
 | **Knulli**             | ✅ Yes               | - Screen freezes when flying<br>- Starter Pokémon selection in NDS<br>- Freeze in Johto |
 | **spruceOS**           | ✅ Yes               | - Screen freezes when flying<br>- Starter Pokémon selection in NDS<br>- Freeze in Johto |
+
+### FPS drops?
+
+The configuration that comes with the program is the one recommended and tested on devices with very few resources, but if you have more resources you can change it.
+
+If you changed the fps or the render settings that I left with a low-resource device, it will probably happen to you a lot.
+
+main.properties is optimized for use with very low-resource devices in power saving mode.
+
+It may take a while to load sometimes, depending on how demanding it is, but it shouldn't be a constant.
 
 
 ### Assigning Panfrost in Rocknix
@@ -183,14 +193,14 @@ The game will now automatically log in when launched on PortMaster-compatible de
 
 ## Thanks
 
-- Jeod
-- BinaryCounter
+- [Jeod](https://github.com/JeodC/)
+- [BinaryCounter](https://github.com/binarycounter)
 - ddrsoul
 - lil gabo
 - Fran
-- rttn
+- [rttn](https://github.com/rttncraft)
 - zerchu
-- Ganimoth
+- [Ganimoth](https://github.com/Ganimoth)
 - antiNT
 - cuongnv1312
 - Brobba
