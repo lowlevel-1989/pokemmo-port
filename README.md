@@ -53,7 +53,7 @@ The default configuration included with this port is optimized and tested for **
 
 #### 📝 About `main.properties`:
 - This configuration file is tuned specifically for **very low-resource devices**.
-- Some ports may take a bit longer to load, especially the more demanding ones, but this **should not be constant or severely impact gameplay**.
+- **Some areas may take longer to load**, especially the more demanding ones, but this is expected and **should not be frequent or break gameplay**.
 
 ✅ If performance issues persist even with the default settings, let us know — improvements and tweaks are always ongoing.
 
