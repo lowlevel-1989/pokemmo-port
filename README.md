@@ -23,6 +23,7 @@ PokeMMO is a fan-made multiplayer online game that brings together multiple gene
     -> [x] Libmali
 - [x] MuOS
 - [x] Knulli
+- [x] spruceOS
 ~~~
 
 ### What is `hack.jar`?
