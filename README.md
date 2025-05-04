@@ -43,16 +43,19 @@ The source code can be found here:
 | **Knulli**             | ✅ Yes               | - Screen freezes when flying<br>- Starter Pokémon selection in NDS<br>- Freeze in Johto |
 | **spruceOS**           | ✅ Yes               | - Screen freezes when flying<br>- Starter Pokémon selection in NDS<br>- Freeze in Johto |
 
-### FPS drops?
+### 🎮 Experiencing FPS Drops?
 
-The configuration that comes with the program is the one recommended and tested on devices with very few resources, but if you have more resources you can change it.
+The default configuration included with this port is optimized and tested for **low-end devices**, prioritizing compatibility and performance in **power-saving mode**.
 
-If you changed the fps or the render settings that I left with a low-resource device, it will probably happen to you a lot.
+#### ⚙️ If You're Experiencing Lag:
+- The most common reason for FPS drops is **changing the default FPS or render settings**. These defaults are intentionally conservative to ensure stable performance on less powerful hardware.
+- If you have a more capable device, feel free to adjust these settings — but keep in mind that doing so **may cause instability or performance issues**, especially if you're on low-spec hardware.
 
-main.properties is optimized for use with very low-resource devices in power saving mode.
+#### 📝 About `main.properties`:
+- This configuration file is tuned specifically for **very low-resource devices**.
+- Some ports may take a bit longer to load, especially the more demanding ones, but this **should not be constant or severely impact gameplay**.
 
-It may take a while to load sometimes, depending on how demanding it is, but it shouldn't be a constant.
-
+✅ If performance issues persist even with the default settings, let us know — improvements and tweaks are always ongoing.
 
 ### Assigning Panfrost in Rocknix
 
