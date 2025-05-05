@@ -66,7 +66,7 @@ To switch to the Panfrost driver:
 ![step 2](docs/2.jpg)
 
 
-### 1. Install/Update the Port
+### 1. Install/Update the Port [Video tutorial](https://www.youtube.com/watch?v=WtAtlXwQsZw)
 
 Download pokemmo.zip Place the `.zip` into:  
 `/PortMaster/autoinstall`
@@ -216,12 +216,13 @@ The game will now automatically log in when launched on PortMaster-compatible de
 - lil gabo
 - Fran
 - [rttn](https://github.com/rttncraft)
-- zerchu
+- [zerchu](https://github.com/SergioM0/)
 - [Ganimoth](https://github.com/Ganimoth)
 - antiNT
 - cuongnv1312
 - Brobba
 - [noe](https://steamcommunity.com/id/itsnoe73)
+- [Revela](https://www.youtube.com/watch?v=WtAtlXwQsZw)
 
 ## Refs
 
