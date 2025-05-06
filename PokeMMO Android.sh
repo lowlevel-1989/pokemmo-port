@@ -39,7 +39,7 @@ cat data/mods/console_mod/dync/theme.android.xml > data/mods/console_mod/console
 
 client_ui_theme=$(grep -E '^client.ui.theme=' config/main.properties | cut -d'=' -f2)
 
-echo "PokeMMO        1.3.0"
+echo "PokeMMO        1.3.1"
 echo "controlfolder  $controlfolder"
 echo "mode           Android"
 echo "theme          $client_ui_theme"

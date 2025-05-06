@@ -8,7 +8,7 @@
 	<constantDef name="tooltip-tint"><color>#FF565D63</color></constantDef>
 
 	<!-- Include Main Theme -->
-  <include filename="/data/themes/android/fonts.xml"/>
+  <include filename="fonts.android.xml"/>
 	<!-- Must be included after all fonts are loaded -->
 	<fontGen/>
 
@@ -46,7 +46,7 @@
 	<include filename="/data/themes/default/main-widgets.xml"/>
 
   <include filename="/data/themes/android/android.xml"/>
-  <include filename="/data/themes/android/ui/android-battle.xml"/>
+  <include filename="ui/battle.android.xml"/>
   <include filename="/data/themes/android/ui/android-chat.xml"/>
   <include filename="/data/themes/android/ui/android-party.xml"/>
   <include filename="/data/themes/android/ui/android-inventory.xml"/>
