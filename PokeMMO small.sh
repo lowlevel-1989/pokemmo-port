@@ -30,8 +30,19 @@ GAMEDIR=/$directory/ports/PokeMMO
 
 cd $GAMEDIR
 
+if [ ! -f "credentials.txt" ]; then
+  mv credentials.template.txt credentials.txt
+fi
+
 rm pokemmo_crash_*.log
 cat data/mods/console_mod/dync/theme.small.xml > data/mods/console_mod/console/theme.xml
+
+client_ui_theme=$(grep -E '^client.ui.theme=' config/main.properties | cut -d'=' -f2)
+
+echo "PokeMMO        1.3.0"
+echo "controlfolder  $controlfolder"
+echo "mode           small"
+echo "theme          $client_ui_theme"
 
 sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.4/' config/main.properties
 sed -i 's/^client\.gui\.scale\.hidpifont=.*/client.gui.scale.hidpifont=true/' config/main.properties

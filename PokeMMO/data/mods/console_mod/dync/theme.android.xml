@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<themes>
+	<!-- Colors and stuff -->
+	<constantDef name="main-theme-color"><color>#6a889b</color></constantDef>
+	<!-- Overrides Button hover and inputbox select -->
+	<constantDef name="main-color"><color>#5db1ff</color></constantDef>
+	<constantDef name="sub-color"><color>#5db1ff</color></constantDef>
+	<constantDef name="tooltip-tint"><color>#FF565D63</color></constantDef>
+
+	<!-- Include Main Theme -->
+  <include filename="/data/themes/android/fonts.xml"/>
+	<!-- Must be included after all fonts are loaded -->
+	<fontGen/>
+
+	<include filename="/data/themes/default/cursors.xml"/>
+	<include filename="/data/themes/default/gfx.xml"/>
+	<include filename="/data/themes/default/gfx_ui.xml"/>
+  <include filename="/data/themes/android/gfx.xml"/>
+	<include filename="/data/themes/default/init.xml"/>
+
+	<!-- Including rest of the GUI -->
+	<include filename="/data/themes/default/ui/main.xml"/>
+	<include filename="/data/themes/default/ui/battle.xml"/>
+	<include filename="/data/themes/default/ui/contest.xml"/>
+	<include filename="/data/themes/default/ui/party.xml"/>
+	<include filename="/data/themes/default/ui/inventory.xml"/>
+	<include filename="/data/themes/default/ui/chat.xml"/>
+	<!--
+	<include filename="../default/ui/monster-dex.xml"/>
+	-->
+	<include filename="/data/themes/default/ui/monster-frame.xml"/>
+	<!--
+	<include filename="../default/ui/pc.xml"/>
+	-->
+	<include filename="/data/themes/default/ui/customization.xml"/>
+	<include filename="/data/themes/default/ui/settings.xml"/>
+	<include filename="/data/themes/default/ui/guild.xml"/>
+	<include filename="/data/themes/default/ui/matchmaking.xml"/>
+	<include filename="/data/themes/default/ui/social.xml"/>
+	<include filename="/data/themes/default/ui/trade.xml"/>
+	<include filename="/data/themes/default/ui/shop.xml"/>
+	<include filename="/data/themes/default/ui/link.xml"/>
+	<include filename="/data/themes/default/ui/misc.xml"/>
+	<include filename="/data/themes/default/ui/broker.xml"/>
+	<include filename="/data/themes/default/ui/staff.xml"/>
+	<include filename="/data/themes/default/main-widgets.xml"/>
+
+  <include filename="/data/themes/android/android.xml"/>
+  <include filename="/data/themes/android/ui/android-battle.xml"/>
+  <include filename="/data/themes/android/ui/android-chat.xml"/>
+  <include filename="/data/themes/android/ui/android-party.xml"/>
+  <include filename="/data/themes/android/ui/android-inventory.xml"/>
+  <include filename="/data/themes/android/ui/android-customization.xml"/>
+  <include filename="/data/themes/android/ui/android-event.xml"/>
+  <include filename="/data/themes/android/ui/android-monster-dex.xml"/>
+  <include filename="/data/themes/android/ui/android-monster-frame.xml"/>
+  <include filename="/data/themes/android/ui/android-settings.xml"/>
+  <include filename="/data/themes/android/ui/android-guild.xml"/>
+  <include filename="/data/themes/android/ui/android-matchmaking.xml"/>
+  <include filename="/data/themes/android/ui/android-social.xml"/>
+  <include filename="/data/themes/android/ui/android-shop.xml"/>
+  <include filename="/data/themes/android/ui/android-misc.xml"/>
+  <include filename="/data/themes/android/ui/android-staff.xml"/>
+  <include filename="/data/themes/android/ui/android-pc.xml"/>
+  <include filename="/data/themes/android/ui/android-trade.xml"/>
+  <include filename="/data/themes/android/ui/android-link.xml"/>
+  <include filename="/data/themes/android/ui/android-instance.xml"/>
+</themes>
