@@ -39,7 +39,7 @@ cat data/mods/console_mod/dync/theme.small.xml > data/mods/console_mod/console/t
 
 client_ui_theme=$(grep -E '^client.ui.theme=' config/main.properties | cut -d'=' -f2)
 
-echo "PokeMMO        1.3.1"
+echo "PokeMMO        $(cat RELEASE)"
 echo "controlfolder  $controlfolder"
 echo "mode           small"
 echo "theme          $client_ui_theme"

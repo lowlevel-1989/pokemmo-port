@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <themes>
 	<!-- Include the base font -->
-	<include filename="/data/themes/default/fonts.xml" />
+	<include filename="fonts.xml" />
 
 	<fontDef name="battle" filename="/data/themes/default/res/fonts/battle.ttf" color="#FFFFFF" shadow_offset_x="1" shadow_offset_y="1" shadow_color="#CC000000" size="72" hinting="Full"/>
 	<fontDef name="braille" ref="battle" color="#000000"/>
@@ -35,6 +35,10 @@
 
   <fontDef name="med-shadow-16-white" filename="/data/themes/default/res/fonts/NotoSansCJK-Bold.ttc" faces="sc,tc,jp" font_color="#FFFFFF" shadow_color="#A0000000" shadow_offset_x="2" shadow_offset_y="2" size="24"/>
   <fontDef name="med-shadow-18-white" filename="/data/themes/default/res/fonts/NotoSansCJK-Bold.ttc" faces="sc,tc,jp" font_color="#FFFFFF" shadow_color="#A0000000" shadow_offset_x="2" shadow_offset_y="2" size="24" default="true"/>
+
+
+  <fontDef name="med-shadow-20-white" filename="/data/themes/default/res/fonts/NotoSansCJK-Bold.ttc" faces="sc,tc,jp" font_color="#FFFFFF" shadow_color="#A0000000" shadow_offset_x="2" shadow_offset_y="2" size="20"/>
+
   <fontDef name="med-shadow-22-white" filename="/data/themes/default/res/fonts/NotoSansCJK-Bold.ttc" faces="sc,tc,jp" font_color="#FFFFFF" shadow_color="#A0000000" shadow_offset_x="2" shadow_offset_y="2" size="26"/>
 
   <fontDef name="med-noshadow-16-blue" ref="med-noshadow-16-white" color="#3498DB"/>
