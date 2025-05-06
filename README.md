@@ -11,19 +11,21 @@ PokeMMO is a fan-made multiplayer online game that brings together multiple gene
 |                        | 480x320 | 640x480 | 720x720 | Higher resolutions |
 |------------------------|---------|---------|---------|--------------------|
 | Playable?              | No      | Yes     | Yes     | Yes                |
-| Create new character?  | No      | Yes (small)      | Yes     | Yes                |
+| Create new character?  | No      | Yes (small, android)      | Yes     | Yes                |
 | All regions?           | No      | Yes     | Yes     | Yes                |
-| Global trade link                     | No      | Yes (small)    | Yes (small)    | Yes                |
-| PC                     | No      | Yes (small)    | Yes (small)    | Yes                |
+| Global trade link                     | No      | Yes (small, android)    | Yes (small, android)    | Yes                |
+| PC                     | No      | Yes (small, android)    | Yes (small, android)    | Yes                |
 
 ~~~
+- [x] AmberELEC
 - [x] ArkOS
 - [x] Rocknix
     -> [x] Panfrost
     -> [x] Libmali
 - [x] MuOS
 - [x] Knulli
-- [x] spruceOS
+- [x] spruceOS (advanced user, tutorial coming soon)
+    -> You only need to manually install PortMaster via ssh
 ~~~
 
 ### What is `hack.jar`?
