@@ -1,10 +1,5 @@
 #!/bin/bash
 # PORTMASTER: pokemmo.zip, PokeMMO.sh
-# PORTMASTER: PokeMMO
-
-java_runtime="zulu17.54.21-ca-jre17.0.13-linux"
-weston_runtime="weston_pkg_0.2"
-mesa_runtime="mesa_pkg_0.1"
 
 # PortMaster preamble
 XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
@@ -18,12 +13,22 @@ else
   controlfolder="/roms/ports/PortMaster"
 fi
 
-# Define $directory
 source $controlfolder/control.txt
-source $controlfolder/device_info.txt
-source $controlfolder/funcs.txt
 
-export LD_LIBRARY_PATH="$controlfolder:$GAMEDIR/libs:$LD_LIBRARY_PATH"
+# We source custom mod files from the portmaster folder example mod_jelos.txt which containts pipewire fixes
+[ -f "${controlfolder}/mod_${CFW_NAME}.txt" ] && source "${controlfolder}/mod_${CFW_NAME}.txt"
+
+get_controls
+
+java_runtime="zulu17.54.21-ca-jre17.0.13-linux"
+weston_runtime="weston_pkg_0.2"
+mesa_runtime="mesa_pkg_0.1"
+
+if [[ -z "$GPTOKEYB2" ]]; then
+  pm_message "This port requires the latest PortMaster to run, please go to https://portmaster.games/ for more info."
+  sleep 5
+  exit 1
+fi
 
 GAMEDIR=/$directory/ports/PokeMMO
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
@@ -112,13 +117,7 @@ if [[ -n "$ESUDO" ]]; then
     ESUDO="$ESUDO LD_LIBRARY_PATH=$controlfolder"
 fi
 
-GPTOKEYB="$ESUDO $controlfolder/gptokeyb2.$DEVICE_ARCH"
-
-if [ "$DEVICE_ARCH" = "aarch64" ]; then
-  GPTOKEYB="$ESUDO $controlfolder/gptokeyb2"
-fi
-
-$GPTOKEYB "java" -c "./controls.ini" &
+$GPTOKEYB2 "java" -c "./controls.ini" &
 
 if [ "$DEVICE_NAME" = "TRIMUI-SMART-PRO" ]; then
   DISPLAY_WIDTH=1280
@@ -132,7 +131,7 @@ echo "WESTOMPACK  $westonpack"
 echo "ESUDO       $ESUDO"
 echo "COMMAND     $COMMAND"
 echo "PATCH       $PATCH"
-echo "GPTOKEYB    $GPTOKEYB"
+echo "GPTOKEYB    $GPTOKEYB2"
 
 if [ "$westonpack" -eq 1 ]; then 
 $ESUDO env $COMMAND \

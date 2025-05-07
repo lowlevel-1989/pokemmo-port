@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<themes>
+	<theme name="battlegui" ref="-defaults">
+		<param name="defaultGap"><dimension>2,2</dimension></param>
+		<theme name="battle-text" ref="label" allowWildcard="true">
+			<param name="background"><image>label1.background</image></param>   
+			<param name="font"><font>battle</font></param>
+			<param name="border"><border>17,17,7,7</border></param>
+			<param name="textAlignment"><enum type="alignment">TOPLEFT</enum></param>
+		</theme>
+		<theme name="label" ref="-defaults" allowWildcard="true">
+			<param name="font"><font>mechabold-large</font></param>
+			<param name="border"><border>0,0,7,0</border></param>
+		</theme>
+		<param name="border"><border>65,64,64,65</border></param>
+		<theme name="ball-count" ref="-defaults">
+			<param name="border"><border>0</border></param>
+			<param name="defaultGap"><dimension>2,2</dimension></param>
+			<param name="smallGap"><dimension>2,2</dimension></param>
+			<param name="mediumGap"><dimension>2,2</dimension></param>
+			<param name="largeGap"><dimension>2,2</dimension></param>
+			<param name="namedGaps"><map/></param>
+		</theme>
+	</theme>
+
+        <theme name="battle-ability" ref="-defaults">
+                <param name="background"><image>battle-ability</image></param>
+                <param name="minWidth"><int>272</int></param>
+                <param name="maxWidth"><int>272</int></param>
+                <param name="minHeight"><int>18</int></param>
+                <param name="maxHeight"><int>18</int></param>
+                <theme name="label" ref="-defaults" allowWildcard="true">
+                        <param name="font"><font>mechabold-large</font></param>
+                </theme>
+        </theme>
+
+        <theme name="battle-ability-enemy" ref="-defaults">
+                <param name="background"><image>battle-ability-flip</image></param>
+                <param name="minWidth"><int>272</int></param>
+                <param name="maxWidth"><int>272</int></param>
+                <param name="minHeight"><int>18</int></param>
+                <param name="maxHeight"><int>18</int></param>
+                <theme name="label" ref="-defaults" allowWildcard="true">
+                        <param name="font"><font>mechabold-large</font></param>
+                </theme>
+        </theme>
+
+        <!-- Monster Name @ Health Bars -->
+        <theme name="redlabel" ref="-defaults" allowWildcard="true">
+                <param name="font"><font>mechabold-large</font></param>
+                <param name="border"><border>0,0,7,0</border></param>
+        </theme>
+
+        <theme name="redlabel-large" ref="redlabel" allowWildcard="true">
+          <param name="font"><font>mechabold-xl</font></param>
+        </theme>
+
+    <theme name="time-progressbar" ref="-defaults" allowWildcard="true">
+                <param name=""><image>time-progressbar.*</image></param>
+                <param name="border"><border>background.border</border></param>
+		<param name="font"><font>med-noshadow-18-white</font></param>
+                <param name="minWidth"><int>100</int></param>
+                <param name="textAlignment"><enum type="alignment">CENTER</enum></param>
+        </theme>
+
+	<theme name="battle-button-return" ref="-defaults" allowWildcard="true">
+		<param name="font"><font>med-noshadow-16-lightgray</font></param>
+		<param name="border"><border>44,0,0,0</border></param>
+		<param name="background"><image>mobile.battle.back.background</image></param>
+		<param name="textAlignment"><enum type="alignment">CENTER</enum></param>
+		<param name="minHeight"><int>116</int></param>
+		<param name="maxHeight"><int>116</int></param>
+		<param name="minWidth"><int>116</int></param>
+		<param name="maxWidth"><int>116</int></param>
+	</theme>
+
+    <theme name="battle-button-ui" ref="-defaults" allowWildcard="true">
+      <param name=""><image>mobile.battle.switch.button.*</image></param>
+      <param name="font"><font>med-noshadow-18-white</font></param>
+      <param name="font2"><font>med-noshadow-18-white</font></param>
+      <param name="border"><border>7,0</border></param>
+      <theme name="label" ref="label" allowWildcard="true">
+        <param name="border"><border>3,4</border></param>
+        <param name="font"><font>mechabold-large</font></param>
+      </theme>
+      <param name="textAlignment"><enum type="alignment">TOP</enum></param>
+      <param name="textAlignment2"><enum type="alignment">BOTTOM</enum></param>
+    </theme>
+
+	<theme name="battle-button" ref="-defaults" allowWildcard="true">
+		<param name=""><image>mobile.battle.switch.button.*</image></param>
+		<param name="font"><font>med-noshadow-18-white</font></param>
+		<param name="font2"><font>med-noshadow-18-white</font></param>
+		<param name="border"><border>7,0</border></param>
+		<theme name="label" ref="label" allowWildcard="true">
+			<param name="border"><border>3,4</border></param>
+			<param name="font"><font>med-noshadow-18-white</font></param>
+		</theme>
+		<param name="textAlignment"><enum type="alignment">TOP</enum></param>
+		<param name="textAlignment2"><enum type="alignment">BOTTOM</enum></param>
+	</theme>
+
+	<theme name="battle-button-enemy" ref="battle-button" allowWildcard="true">
+		<param name=""><image>mobile.battle.switch-enemy.button.*</image></param>
+	</theme>
+
+	<theme name="battle-panel" ref="-defaults" allowWildcard="true">
+		<param name="background"><image>none</image></param>   
+		<param name="border"><border>5</border></param>
+		<param name="defaultGap"><dimension>5,5</dimension></param>
+		<param name="smallGap"><dimension>8,8</dimension></param>
+		<param name="mediumGap"><dimension>10,10</dimension></param>
+		<param name="largeGap"><dimension>15,15</dimension></param>
+		<param name="namedGaps"><map/></param>
+		<theme name="dialoglayout" ref="-defaults">
+			<param name="minHeight"><int>400</int></param>
+			<param name="maxHeight"><int>400</int></param>
+			<param name="minWidth"><int>500</int></param>
+			<param name="maxWidth"><int>500</int></param>
+			<param name="border"><border>0</border></param>
+			<param name="defaultGap"><dimension>5,5</dimension></param>
+			<param name="smallGap"><dimension>8,8</dimension></param>
+			<param name="mediumGap"><dimension>10,10</dimension></param>
+			<param name="largeGap"><dimension>15,15</dimension></param>
+			<param name="namedGaps"><map/></param>
+      <theme name="scrollpane" ref="scrollpane" allowWildcard="true">
+        <theme name="label-black" ref="-defaults" allowWildcard="true">
+          <param name="font">
+            <font>med-shadow-22-white</font>
+          </param>
+          <param name="border">
+            <border>0,0,25,0</border>
+          </param>
+        </theme>
+      </theme>
+      <theme name="button" ref="-defaults" allowWildcard="true">
+				<param name="font"><font>med-noshadow-22-white</font></param>
+				<param name="border"><border>10</border></param>
+				<param name="minWidth"><int>50</int></param>
+				<param name="background"><image>mobile.rbox.light1</image></param>
+				<param name="textAlignment"><enum type="alignment">CENTER</enum></param>
+			</theme>
+		</theme>
+		<theme name="scrollpane" ref="scrollpane" allowWildcard="true">
+			<param name="minHeight"><int>350</int></param>
+			<param name="maxHeight"><int>350</int></param>
+			<theme name="dialoglayout" ref="-dialog">
+				<param name="defaultGap"><dimension>5,5</dimension></param>
+				<theme name="button" ref="battle-button" overwrite="true">
+					<param name="font"><font>med-shadow-22-white</font></param>
+					<param name="border"><border>10</border></param>
+					<param name="minHeight"><int>60</int></param>
+					<param name="minWidth"><int>300</int></param>
+					<param name="textAlignment"><enum type="alignment">RIGHT</enum></param>
+				</theme>
+			</theme>
+		</theme>
+		<theme name="label-black" ref="-defaults" allowWildcard="true">
+			<param name="minWidth"><int>230</int></param>
+			<param name="font"><font>med-shadow-22-white</font></param>
+			<param name="textAlignment"><enum type="alignment">CENTER</enum></param>
+		</theme>
+		<theme name="label" ref="-defaults" allowWildcard="true">
+			<param name="font"><font>med-shadow-22-white</font></param>
+			<param name="textAlignment"><enum type="alignment">CENTER</enum></param>
+		</theme>
+		<theme name="button" ref="battle-button" overwrite="true">
+			<param name="border"><border>10</border></param>
+			<param name="minWidth"><int>200</int></param>
+			<param name="minHeight"><int>80</int></param>
+			<param name="textAlignment"><enum type="alignment">CENTER</enum></param>
+		</theme>
+	</theme>
+
+	<theme name="battle-panel-dark" ref="battle-panel" allowWildcard="true">
+		<param name="defaultGap"><dimension>1,1</dimension></param>
+		<param name="minWidth"><int>620</int></param>
+		<param name="minHeight"><int>330</int></param>
+		<param name="background"><image>none</image></param>
+		<theme name="dialoglayout" ref="-defaults">
+			<theme name="label" ref="-defaults" allowWildcard="true">
+                		<param name="font"><font>mechabold-large</font></param>
+			</theme>
+		</theme>
+		<theme name="label" ref="-defaults" allowWildcard="true">
+			<param name="font"><font>med-shadow-22-white</font></param>
+		</theme>
+	</theme>
+
+	<theme name="battle-move-button" ref="-defaults" allowWildcard="true">
+		<param name="font"><font>med-shadow-22-white-transparent</font></param>
+		<param name="font2"><font>med-shadow-18-white-transparent</font></param>
+		<param name="border"><border>20,5,0,60</border></param>
+		<param name="background"><image>mobile.battle.buttonl</image></param>
+		<param name="textAlignment"><enum type="alignment">TOPRIGHT</enum></param>
+		<param name="textAlignment2"><enum type="alignment">TOPLEFT</enum></param>
+		<param name="minWidth"><int>420</int></param>
+		<param name="minHeight"><int>80</int></param>
+		<theme name="eff-nve" ref="label">
+			<param name=""><image>eff.nve.*</image></param>
+			<param name="border"><border>0</border></param>
+		</theme>
+		<theme name="eff-se" ref="label">
+			<param name=""><image>eff.se.*</image></param>
+			<param name="border"><border>0</border></param>
+		</theme>
+		<theme name="eff-i" ref="label">
+			<param name=""><image>eff.immune.*</image></param>
+			<param name="border"><border>0</border></param>
+		</theme>
+		<theme name="eff-e" ref="label">
+			<param name=""><image>eff.e.*</image></param>
+			<param name="border"><border>0</border></param>
+		</theme>
+		<theme name="eff-status" ref="label">
+			<param name=""><image>eff.status.*</image></param>
+			<param name="border"><border>0</border></param>
+		</theme>
+	</theme>
+
+	<theme name="battle-move-button-right" ref="battle-move-button" allowWildcard="true">
+		<param name="textAlignment"><enum type="alignment">TOPLEFT</enum></param>
+		<param name="textAlignment2"><enum type="alignment">TOPRIGHT</enum></param>
+		<param name="border"><border>20,60,0,5</border></param>
+	</theme>
+
+	<theme name="battle-move-button-left" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.label.value</image></param>
+		<param name="font"><font>22pt-gray</font></param>
+		<param name="font2"><font>16pt-gray</font></param>
+		<param name="minWidth"><int>160</int></param>
+		<param name="minHeight"><int>40</int></param>
+		<param name="border"><border>20,0,10,0</border></param>
+		<param name="textAlignment"><enum type="alignment">CENTER</enum></param>
+		<param name="textAlignment2"><enum type="alignment">BOTTOM</enum></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type0" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type0.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type1" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type1.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type2" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type2.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type3" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type3.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type4" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type4.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type5" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type5.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type6" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type6.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type7" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type7.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type8" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type8.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type10" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type10.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type11" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type11.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type12" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type12.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type13" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type13.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type14" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type14.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type15" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type15.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type16" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type16.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type17" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type17.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type18" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type0.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-right-type9" ref="battle-move-button-right" allowWildcard="true">
+		<param name="background"><image>mobile.rmove.type0.background</image></param>
+	</theme>
+
+	<!-- left -->
+	<theme name="battle-move-button-left-type0" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type0.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-left-type1" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type1.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-left-type2" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type2.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-left-type3" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type3.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-left-type4" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type4.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-left-type5" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type5.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-left-type6" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type6.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-left-type7" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type7.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-left-type8" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type8.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-left-type10" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type10.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-left-type11" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type11.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-left-type12" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type12.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-left-type13" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type13.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-left-type14" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type14.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-left-type15" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type15.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-left-type16" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type16.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-left-type17" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type17.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-left-type18" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type0.background</image></param>
+	</theme>
+
+	<theme name="battle-move-button-left-type9" ref="battle-move-button" allowWildcard="true">
+		<param name="background"><image>mobile.lmove.type0.background</image></param>
+	</theme>
+
+	<theme name="mobile-battle" ref="-defaults" allowWildcard="true">
+		<param name="font"><font>med-noshadow-16-lightgray</font></param>
+		<param name="font2"><font>med-noshadow-16-lightgray</font></param>
+		<param name="border"><border>40,0,0,0</border></param>
+		<param name="textAlignment"><enum type="alignment">CENTER</enum></param>
+		<param name="textAlignment2"><enum type="alignment">BOTTOM</enum></param>
+		<param name=""><image>button.*</image></param>
+	</theme>
+
+	<theme name="battle-run" ref="mobile-battle" allowWildcard="true">
+		<param name=""><image>mobile.battle.run.*</image></param>
+		<param name="border"><border>40,0,0,0</border></param>
+		<param name="font"><font>med-noshadow-16-lightgray</font></param>
+	</theme>
+
+	<theme name="battle-switch" ref="mobile-battle" allowWildcard="true">
+		<param name=""><image>mobile.battle.switch.*</image></param>
+		<param name="border"><border>40,0,0,0</border></param>
+		<param name="font"><font>med-noshadow-16-lightgray</font></param>
+	</theme>
+
+	<theme name="battle-shift" ref="mobile-battle" allowWildcard="true">
+		<param name=""><image>mobile.battle.shift.*</image></param>
+		<param name="border"><border>40,0,0,0</border></param>
+		<param name="font"><font>med-noshadow-16-lightgray</font></param>
+	</theme>
+
+    <theme name="battle-rotate" ref="mobile-battle" allowWildcard="true">
+        <param name=""><image>mobile.battle.rotate.*</image></param>
+        <param name="border"><border>40,0,0,0</border></param>
+    </theme>
+
+    <theme name="battle-win" ref="mobile-battle" allowWildcard="true">
+		<param name=""><image>mobile.battle.win.*</image></param>
+		<param name="border"><border>40,0,0,0</border></param>
+		<param name="font"><font>med-noshadow-16-lightgray</font></param>
+	</theme>
+
+	<theme name="battle-fight" ref="mobile-battle" allowWildcard="true">
+		<param name=""><image>mobile.battle.attack.*</image></param>
+		<param name="border"><border>40,0,0,0</border></param>
+		<param name="font"><font>med-noshadow-16-lightgray</font></param>
+	</theme>
+
+	<theme name="battle-bag" ref="mobile-battle" allowWildcard="true">
+		<param name=""><image>mobile.battle.bag.*</image></param>
+		<param name="border"><border>40,0,0,0</border></param>
+		<param name="font"><font>med-noshadow-16-lightgray</font></param>
+	</theme>
+
+	<theme name="battle-bait" ref="mobile-battle" allowWildcard="true">
+		<param name=""><image>mobile.battle.bait.*</image></param>
+		<param name="border"><border>40,0,0,0</border></param>
+		<param name="font"><font>med-noshadow-16-lightgray</font></param>
+	</theme>
+
+	<theme name="battle-rock" ref="mobile-battle" allowWildcard="true">
+		<param name=""><image>mobile.battle.rock.*</image></param>
+		<param name="border"><border>40,0,0,0</border></param>
+		<param name="font"><font>med-noshadow-16-lightgray</font></param>
+	</theme>
+
+	<theme name="battle-ball" ref="mobile-battle" allowWildcard="true">
+		<param name=""><image>mobile.battle.ball.*</image></param>
+		<param name="border"><border>40,0,0,0</border></param>
+		<param name="font"><font>med-noshadow-16-lightgray</font></param>
+	</theme>
+
+	<theme name="monster-preview-panel" ref="-defaults">
+		<param name="background"><image>none</image></param>
+		<param name="border"><border>0</border></param>
+	</theme>
+
+	<theme name="monster-preview-panel-label" ref="label">
+		<param name="border"><border>0</border></param>
+		<param name="font"><font>med-noshadow-16-white</font></param>
+    <param name="border">
+      <border>0,5,0,0</border>
+    </param>
+  </theme>
+
+  <theme name="monster-preview-panel-label-red" ref="monster-preview-panel-label">
+    <param name="font">
+      <font>med-noshadow-16-red</font>
+    </param>
+  </theme>
+
+  <theme name="monster-preview-panel-label-yellow" ref="monster-preview-panel-label">
+    <param name="font">
+      <font>med-noshadow-16-yellow</font>
+    </param>
+  </theme>
+
+  <theme name="monster-preview-panel-label-padded" ref="monster-preview-panel-label">
+		<param name="border"><border>55,0</border></param>
+		<param name="font"><font>med-noshadow-16-white</font></param>
+	</theme>
+
+  <theme name="coop-indicator-table" ref="coop-indicator-table" allowWildcard="true">
+    <theme name="label" ref="-defaults">
+      <param name="font"><font>med-noshadow-16-gray</font></param>
+      <param name="border"><border>7,11</border></param>
+    </theme>
+  </theme>
+</themes>

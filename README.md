@@ -34,7 +34,7 @@ PokeMMO is a fan-made multiplayer online game that brings together multiple gene
 If a `credentials.txt` file exists, it will use the username and password specified there, but only during application startup.
 
 The source code can be found here:  
-👉 [PokeMMO/src](PokeMMO/src)
+👉 [pokemmo/src](pokemmo/src)
 
 | Operating System       | Requires `hack.jar`? | Known Issues Without `hack.jar`                                                   |
 |------------------------|----------------------|------------------------------------------------------------------------------------|
@@ -109,7 +109,7 @@ Go to the official PokeMMO website:
 [https://pokemmo.com/en/downloads/portable](https://pokemmo.com/en/downloads/portable)
 
 Download the **portable version**, extract it, and copy these into:  
-`/roms/ports/PokeMMO/`
+`/roms/ports/pokemmo/`
 
 - `PokeMMO.exe`  
 - `data/` folder
@@ -121,7 +121,7 @@ Replacing them may negatively impact performance on low-end devices.
 
 ### 3. Add Required and Optional ROMs
 
-To add the ROMs, place them inside the PokeMMO/roms folder and set the following values in `main.properties`:
+To add the ROMs, place them inside the pokemmo/roms folder and set the following values in `main.properties`:
 ~~~
 client.roms.nds=roms/pokemon_black.nds  
 client.roms.em=roms/pokemon_emerald.gba  
@@ -146,9 +146,9 @@ client.roms.nds3=roms/pokemon_heartgold.nds
 
 If your device does not have a keyboard, you can try one of the following methods to log in:
 
-#### 🔧 Option 1: PokeMMO/credentials.txt
+#### 🔧 Option 1: pokemmo/credentials.txt
 
-Edit the file PokeMMO/credentials.txt with your login credentials.
+Edit the file pokemmo/credentials.txt with your login credentials.
 
 #### 🔧 Option 2: Connect a Keyboard for First Login
 
