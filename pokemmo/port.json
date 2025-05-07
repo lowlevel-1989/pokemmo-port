@@ -5,7 +5,7 @@
     "PokeMMO.sh",
     "PokeMMO small.sh",
     "PokeMMO Android.sh",
-    "PokeMMO"
+    "pokemmo"
   ],
   "items_opt": [],
   "attr": {
@@ -15,8 +15,8 @@
     ],
     "desc": "Unofficial port of PokeMMO for PortMaster-compatible devices. PokeMMO is a fan-made multiplayer online game that brings together various Pokémon generations in a single MMO experience.",
     "desc_md": null,
-    "inst": "Download the portable version of the PokeMMO client from https://pokemmo.com/en/downloads/portable. Extract the ZIP and copy both the PokeMMO.exe file and the data folder into /roms/ports/PokeMMO. Then, launch the game and use the in-game menu to add the necessary ROMs. The required ROM is Pokémon Black or White (Version 1). Optional content can be unlocked with ROMs for Fire Red, Emerald, Platinum, and HeartGold or SoulSilver.",
-    "inst_md": "### 1. Add Official PokeMMO Client Files\n\n- Download the portable version from the official site:  \n  https://pokemmo.com/en/downloads/portable\n\n- Extract the downloaded ZIP and copy the following into:  \n  `/roms/ports/PokeMMO/`\n\n  - `PokeMMO.exe`  \n  - `data/` folder\n\n---\n\n### 2. Add Game ROMs (in-game menu)\n\n- Open the PokeMMO client and locate the ROMs using the in-game prompt.\n\n#### Required ROM:\n- Pokémon Black or White (Version 1)\n\n#### Optional Content ROMs:\n- Fire Red  \n- Emerald  \n- Platinum  \n- HeartGold or SoulSilver",
+    "inst": "Download the portable version of the PokeMMO client from https://pokemmo.com/en/downloads/portable. Extract the ZIP and copy both the PokeMMO.exe file and the data folder into /roms/ports/pokemmo.",
+    "inst_md": null,
     "genres": [
       "adventure",
       "rpg"
@@ -31,7 +31,9 @@
     ],
     "store": [],
     "availability": "free",
-    "reqs": [],
+    "reqs": [
+      "!lowres"
+    ],
     "arch": [],
     "min_glibc": ""
   }
