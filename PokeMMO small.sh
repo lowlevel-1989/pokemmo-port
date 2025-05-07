@@ -30,7 +30,7 @@ if [[ -z "$GPTOKEYB2" ]]; then
   exit 1
 fi
 
-GAMEDIR=/$directory/ports/PokeMMO
+GAMEDIR=/$directory/ports/pokemmo
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
 cd $GAMEDIR
