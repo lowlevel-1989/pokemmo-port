@@ -24,8 +24,7 @@ PokeMMO is a fan-made multiplayer online game that brings together multiple gene
     -> [x] Libmali
 - [x] MuOS
 - [x] Knulli
-- [x] spruceOS (advanced user, tutorial coming soon)
-    -> You only need to manually install PortMaster via ssh
+- [x] spruceOS 4.0 or higher works automatically — below 4.0, manual SSH install needed.
 ~~~
 
 ### What is `hack.jar`?
