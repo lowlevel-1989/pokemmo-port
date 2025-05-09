@@ -1,8 +1,7 @@
 #!/bin/bash
-# PORTMASTER: pokemmo.zip, PokeMMO.sh
 
-# PortMaster preamble
 XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
+
 if [ -d "/opt/system/Tools/PortMaster/" ]; then
   controlfolder="/opt/system/Tools/PortMaster"
 elif [ -d "/opt/tools/PortMaster/" ]; then
@@ -34,6 +33,11 @@ GAMEDIR=/$directory/ports/pokemmo
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
 cd $GAMEDIR
+
+if [ -f "patch.zip" ]; then
+  unzip -o patch.zip
+  mv patch.zip patch_applied.zip
+fi
 
 if [ ! -f "credentials.txt" ]; then
   mv credentials.template.txt credentials.txt

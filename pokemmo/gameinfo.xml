@@ -5,20 +5,20 @@
     <name>PokeMMO</name>
     <desc>PokeMMO optimized version</desc>
     <genre>RPG</genre>
-    <image>./pokemmo/cover.jpg</image>
+    <image>./pokemmo/cover.png</image>
   </game>
   <game>
     <path>./PokeMMO small.sh</path>
     <name>PokeMMO small</name>
     <desc>PokeMMO small optimized version</desc>
     <genre>RPG</genre>
-    <image>./pokemmo/cover.jpg</image>
+    <image>./pokemmo/cover.png</image>
   </game>
   <game>
     <path>./PokeMMO Android.sh</path>
     <name>PokeMMO Android</name>
     <desc>this version delivers the best visual results compared to others. It has a higher processing consumption.</desc>
     <genre>RPG</genre>
-    <image>./pokemmo/cover.jpg</image>
+    <image>./pokemmo/cover.png</image>
   </game>
 </gameList>
