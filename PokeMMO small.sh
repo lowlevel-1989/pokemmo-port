@@ -14,6 +14,9 @@ fi
 
 source $controlfolder/control.txt
 
+# If /etc/machine-id doesn't exist and /tmp/dbus/machine-id exists, copy it over
+[ ! -f /etc/machine-id ] && [ -f /tmp/dbus/machine-id ] && cp /tmp/dbus/machine-id /etc/machine-id
+
 # We source custom mod files from the portmaster folder example mod_jelos.txt which containts pipewire fixes
 [ -f "${controlfolder}/mod_${CFW_NAME}.txt" ] && source "${controlfolder}/mod_${CFW_NAME}.txt"
 
