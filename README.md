@@ -31,7 +31,7 @@ PokeMMO is a fan-made multiplayer online game that brings together multiple gene
 
 - Press: Select + Y to enable virtual keyboard.
 - Press: Select to toggle number/text
-- Dpad Up/Down to select value,  B to add, A to remove.
+- Dpad Up/Down to select value,  A to add, B to remove.
 - Start to disable virtual keyboard.
 
 ### What is `hack.jar`?
