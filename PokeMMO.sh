@@ -52,7 +52,7 @@ fi
 
 # Fixed: Home screen freezing
 rm pokemmo_crash_*.log
-rm m hs_err_pid*
+rm hs_err_pid*
 
 cat data/mods/console_mod/dync/theme.xml > data/mods/console_mod/console/theme.xml
 
