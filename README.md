@@ -20,6 +20,15 @@ If you'd like to see updates and active support for this port continue as quickl
 | Global trade link                     | No      | Yes (small, android)    | Yes (small, android)    | Yes                |
 | PC                     | No      | Yes (small, android)    | Yes (small, android)    | Yes                |
 
+### ⚠️ Android Theme Mode Warning
+
+> The **Android UI theme mode** is **highly resource-intensive** and is **not recommended for clone handhelds using the same chipset as the K36S**, especially when running **ArkOS**.  
+>  
+> These devices often **lack the necessary resources** to handle the Android-style UI, which can lead to **black screens, crashes, or unresponsive behavior**.  
+>  
+> 🔧 If you experience issues, use the **"PokeMMO Restore"** option available from the **PokeMMO Port Launcher** to reset the theme and restore default settings.  
+> This will switch back to the classic theme optimized for low-spec devices.
+
 ~~~
 - [x] AmberELEC
 - [x] ArkOS

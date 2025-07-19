@@ -59,10 +59,6 @@ cat $GAMEDIR/RELEASE
 
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 
-if [ -n "$ESUDO" ]; then
-  ESUDO="${ESUDO},SDL_GAMECONTROLLERCONFIG"
-fi
-
 $ESUDO chmod +x $GAMEDIR/controller_info.$DEVICE_ARCH
 $ESUDO chmod +x $GAMEDIR/menu/launch_menu.$DEVICE_ARCH
 
@@ -118,6 +114,17 @@ case $selection in
         sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' config/main.properties
         ;;
     3)
+        echo "[MENU] PokeMMO for clone handhelds"
+        cat data/mods/console_mod/dync/theme.xml > data/mods/console_mod/console/theme.xml
+
+        client_ui_theme=$(grep -E '^client.ui.theme=' config/main.properties | cut -d'=' -f2)
+
+        sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.0/' config/main.properties
+        sed -i 's/^client\.gui\.scale\.hidpifont=.*/client.gui.scale.hidpifont=false/' config/main.properties
+        sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' config/main.properties
+        sed -i 's/^client\.graphics\.max_fpx=.*/client.graphics.max_fpx=20/' config/main.properties
+        ;;
+    4)
         echo "[MENU] PokeMMO Android"
         cat data/mods/console_mod/dync/theme.android.xml > data/mods/console_mod/console/theme.xml
 
@@ -127,7 +134,7 @@ case $selection in
         sed -i 's/^client\.gui\.scale\.hidpifont=.*/client.gui.scale.hidpifont=true/' config/main.properties
         sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=true/' config/main.properties
         ;;
-    4)
+    5)
         echo "[MENU] PokeMMO Small"
         cat data/mods/console_mod/dync/theme.small.xml > data/mods/console_mod/console/theme.xml
 
@@ -137,7 +144,7 @@ case $selection in
         sed -i 's/^client\.gui\.scale\.hidpifont=.*/client.gui.scale.hidpifont=true/' config/main.properties
         sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' config/main.properties
         ;;
-    5)
+    6)
         echo "[MENU] PokeMMO Update"
         $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --show "Downloading... Be patient."
         curl -L https://pokemmo.com/download_file/1/ -o _pokemmo.zip
@@ -149,7 +156,7 @@ case $selection in
         rm _pokemmo.zip
         rm PokeMMO.sh
         ;;
-    6)
+    7)
         echo "[MENU] PokeMMO Restore"
         cp patch_applied.zip patch.zip
         unzip -o patch.zip
@@ -157,7 +164,7 @@ case $selection in
         pm_finish
         exit 0
         ;;
-    7)
+    8)
         echo "[MENU] Remove  Hack.jar"
         rm hack.jar
         pm_message "hack.jar Removed"
@@ -245,7 +252,11 @@ fi
 $ESUDO mount -o loop "$controlfolder/libs/${java_runtime}.squashfs" "${JAVA_HOME}"
 export PATH="$JAVA_HOME/bin:$PATH"
 
-
+# FIX GPTOKEYB2, --preserve-env=SDL_GAMECONTROLLERCONFIG
+if [ -n "$ESUDO" ]; then
+  ESUDO="${ESUDO},SDL_GAMECONTROLLERCONFIG"
+fi
+GPTOKEYB2=$(echo "$GPTOKEYB2" | sed 's/--preserve-env=SDL_GAMECONTROLLERCONFIG_FILE,/&SDL_GAMECONTROLLERCONFIG,/')
 
 COMMAND="CRUSTY_SHOW_CURSOR=1 WESTON_HEADLESS_WIDTH="$DISPLAY_WIDTH" WESTON_HEADLESS_HEIGHT="$DISPLAY_HEIGHT" $weston_dir/westonwrap.sh headless noop kiosk crusty_glx_gl4es"
 PATCH="loader.jar:hack.jar:libs/*:PokeMMO.exe"
