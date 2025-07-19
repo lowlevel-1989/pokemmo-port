@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resource name="PokeMMO Theme Console" version="0.1.0" description="" author="lowlevel.1989" weblink="https://github.com/lowlevel-1989/pokemmo-port/">
   <themes>
-    <theme path="console" name="console" revision="3" is_mobile="false"/>
+    <theme path="console" name="console" revision="4" is_mobile="false"/>
   </themes>
 </resource>

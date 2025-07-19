@@ -2,6 +2,10 @@
 
 PokeMMO is a fan-made multiplayer online game that brings together multiple generations of Pokémon in a single MMO experience.
 
+[!["Buy Me A Coffee"](docs/coffee.png)](https://ko-fi.com/lowlevel1989)
+
+If you'd like to see updates and active support for this port continue as quickly as possible, consider supporting the project — you can buy me a coffee ☕ to help keep things running!
+
 ---
 
 ## 🛠 Installation Instructions
@@ -44,12 +48,12 @@ The source code can be found here:
 
 | Operating System       | Requires `hack.jar`? | Known Issues Without `hack.jar`                                                   |
 |------------------------|----------------------|------------------------------------------------------------------------------------|
-| **ArkOS**              | ✅ Yes               | - Screen freezes when flying<br>- Starter Pokémon selection in NDS<br>- Freeze in Johto |
-| **Rocknix (Panfrost)** | ❌ No                | - Works fine without `hack.jar`                                                   |
-| **Rocknix (Libmali)**  | ✅ Yes               | - Same issues as ArkOS                                                             |
-| **MuOS**               | ✅ Yes               | - Screen freezes when flying<br>- Starter Pokémon selection in NDS<br>- Freeze in Johto |
-| **Knulli**             | ✅ Yes               | - Screen freezes when flying<br>- Starter Pokémon selection in NDS<br>- Freeze in Johto |
-| **spruceOS**           | ✅ Yes               | - Screen freezes when flying<br>- Starter Pokémon selection in NDS<br>- Freeze in Johto |
+| **ArkOS**              | NO                   | - Works fine without `hack.jar`                                                    |
+| **Rocknix (Panfrost)** | NO                   | - Works fine without `hack.jar`                                                    |
+| **Rocknix (Libmali)**  | NO                   | - Works fine without `hack.jar`                                                     |
+| **MuOS**               | NO                   | - Works fine without `hack.jar`                                                      |
+| **Knulli**             | NO                   | - Works fine without `hack.jar`                                                      |
+| **spruceOS**           | NO                   | - Works fine without `hack.jar`                                                      |
 
 ### 🎮 Experiencing FPS Drops?
 
@@ -155,6 +159,11 @@ If your device does not have a keyboard, you can try one of the following method
 #### 🔧 Option 1: pokemmo/credentials.txt
 
 Edit the file pokemmo/credentials.txt with your login credentials.
+
+This feature is tightly linked to the official PokeMMO client version.
+If the official game receives an update, Option 1 may stop working temporarily.
+
+If you notice that Option 1 stops working after a client update, please report it so that the port can be patched and restored as soon as possible.
 
 #### 🔧 Option 2: Connect a Keyboard for First Login
 

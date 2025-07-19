@@ -41,6 +41,7 @@
 
   <fontDef name="med-shadow-22-white" filename="/data/themes/default/res/fonts/NotoSansCJK-Bold.ttc" faces="sc,tc,jp" font_color="#FFFFFF" shadow_color="#A0000000" shadow_offset_x="2" shadow_offset_y="2" size="26"/>
 
+  <fontDef name="med-noshadow-16-dark-green" ref="med-noshadow-18-white" color="#56d245"/>
   <fontDef name="med-noshadow-16-blue" ref="med-noshadow-16-white" color="#3498DB"/>
   <fontDef name="med-noshadow-18-blue" ref="med-noshadow-18-white" color="#3498DB"/>
   <fontDef name="med-noshadow-18-green" ref="med-noshadow-18-white" color="#00bf00"/>
