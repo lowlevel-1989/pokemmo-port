@@ -4,11 +4,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class dG1 {
+public class TG1 {
 
-  public static String  aP = "";    // username
-  public static String  bC0 = "";   // password
-  public static boolean Lr = false; // auto
+  public static String  fD1 = "";    // username
+  public static String  rw  = "";   // password
+  public static boolean rH  = false; // auto
 
   static {
     System.out.println("---- LOAD HACK | HO ----");
@@ -16,8 +16,8 @@ public class dG1 {
     String path = System.getenv("GAMEDIR");
 
     try (BufferedReader reader = new BufferedReader(new FileReader(path + "/credentials.txt"))) {
-      aP  = reader.readLine(); // username
-      bC0 = reader.readLine(); // password
+      fD1  = reader.readLine(); // username
+      rw   = reader.readLine(); // password
     } catch (IOException e) {
       e.printStackTrace();
     }
