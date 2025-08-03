@@ -151,11 +151,29 @@ env_vars=""
 case $selection in
     0)
         pm_finish
+
+        if [[ "$PM_CAN_MOUNT" != "N" ]]; then
+          if [ "$westonpack" -eq 1 ]; then
+            $ESUDO umount "${weston_dir}"
+            $ESUDO umount "${mesa_dir}"
+          fi
+          $ESUDO umount "${JAVA_HOME}"
+        fi
+
         exit 2
         ;;
     1)
         echo "[MENU] ERROR"
         pm_finish
+
+        if [[ "$PM_CAN_MOUNT" != "N" ]]; then
+          if [ "$westonpack" -eq 1 ]; then
+            $ESUDO umount "${weston_dir}"
+            $ESUDO umount "${mesa_dir}"
+          fi
+          $ESUDO umount "${JAVA_HOME}"
+        fi
+
         exit 1
         ;;
     2)
@@ -215,6 +233,15 @@ case $selection in
         cp patch_applied.zip patch.zip
         $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --show "PokeMMO Restored"
         pm_finish
+
+        if [[ "$PM_CAN_MOUNT" != "N" ]]; then
+          if [ "$westonpack" -eq 1 ]; then
+            $ESUDO umount "${weston_dir}"
+            $ESUDO umount "${mesa_dir}"
+          fi
+          $ESUDO umount "${JAVA_HOME}"
+        fi
+
         exit 0
         ;;
     *)
@@ -241,17 +268,18 @@ echo env_vars=$env_vars
 
 if [ -f "patch.zip" ]; then
   rm -rf /tmp/launch_menu.trace
-  rm -rf src f com f.jar loader.jar
+  rm -rf src f com /tmp/pokemmo f.jar loader.jar
   cp config/main.properties main.properties
   $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --trace &
   unzip -o patch.zip > /tmp/launch_menu.trace
-  unzip -o PokeMMO.exe "f/*" "com/badlogic/gdx/controllers/desktop/*" >> /tmp/launch_menu.trace
+  unzip -o PokeMMO.exe "f/*" "com/badlogic/gdx/controllers/desktop/*" -d /tmp/pokemmo >> /tmp/launch_menu.trace
   mv patch.zip patch_applied.zip
-  for file in f/*.class; do
+  for file in /tmp/pokemmo/f/*.class; do
     echo "[CHECKING] $file" >> /tmp/launch_menu.trace
     if grep -q --binary-files=text "client.ui.login.username" "$file"; then
       echo "[MATCH] $file" >> /tmp/launch_menu.trace
       class_name="${file%.class}"
+      class_name="${class_name#/tmp/pokemmo/}"
       class_name="${class_name//\//.}"
       break
     fi
@@ -259,10 +287,10 @@ if [ -f "patch.zip" ]; then
   echo "Generating f.jar" >> /tmp/launch_menu.trace
   rm -rf credentials.javap.txt jamepad.javap.txt
   echo "class_name $class_name" >> /tmp/launch_menu.trace
-  javap -v "$class_name" > credentials.javap.txt
-  javap -v com.badlogic.gdx.controllers.desktop.JamepadControllerManager > jamepad.javap.txt
-  echo jar cf f.jar -C $GAMEDIR f >> /tmp/launch_menu.trace
-  jar cf f.jar -C $GAMEDIR f
+  javap -v -classpath /tmp/pokemmo "$class_name" > credentials.javap.txt
+  javap -v -classpath /tmp/pokemmo com.badlogic.gdx.controllers.desktop.JamepadControllerManager > jamepad.javap.txt
+  echo jar cf f.jar -C /tmp/pokemmo f >> /tmp/launch_menu.trace
+  jar cf f.jar -C /tmp/pokemmo f
   echo "Generating loader.jar" >> /tmp/launch_menu.trace
   python parse_javap.py >> /tmp/launch_menu.trace
   echo javac -d out/ -cp "f.jar:libs/*" src/*.java src/auto/*.java >> /tmp/launch_menu.trace
@@ -272,6 +300,22 @@ if [ -f "patch.zip" ]; then
   rm -rf out
   sleep 1
   echo __END__ >> /tmp/launch_menu.trace
+fi
+
+if [ ! -f "loader.jar" ]; then
+  $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --show "ERROR: loader.jar"
+  sleep 10
+  pm_finish
+
+  if [[ "$PM_CAN_MOUNT" != "N" ]]; then
+    if [ "$westonpack" -eq 1 ]; then
+      $ESUDO umount "${weston_dir}"
+      $ESUDO umount "${mesa_dir}"
+    fi
+    $ESUDO umount "${JAVA_HOME}"
+  fi
+
+  exit 1
 fi
 
 if [ "$DEVICE_NAME" = "TRIMUI-SMART-PRO" ]; then
