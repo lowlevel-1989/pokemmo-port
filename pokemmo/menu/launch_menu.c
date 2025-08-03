@@ -28,6 +28,9 @@
 #include <unistd.h>
 #include <sys/ioctl.h>
 
+#define TRACE_FILE "/tmp/launch_menu.trace"
+#define MAX_TRACE_LINES  21
+#define MAX_LINE_LENGTH 100
 #define MAX_KEY 2048
 #define MAX_ABS 2048
 #define MAX_EVENT_DEVICES 32
@@ -93,6 +96,11 @@ const char *mapping_show_names[] = {
 
 const SDL_Color WHITE  = {255, 255, 255, 255};
 const SDL_Color YELLOW = {255, 255,   0, 255};
+
+bool trace_mode = false;
+char *trace_lines[MAX_TRACE_LINES];
+int trace_line_count = 0;
+int trace_line_index = 0;
 
 char *menu_options[MAX_OPTIONS];
 int option_count = 0;
@@ -641,6 +649,65 @@ void joystick_mapper_SDL(SDL_Renderer *renderer, TTF_Font *font) {
   SDL_JoystickClose(joystick);
 }
 
+void update_trace_display(SDL_Renderer *renderer, TTF_Font *font) {
+  FILE *file = fopen(TRACE_FILE, "r");
+  if (!file) {
+    return;
+  }
+
+  char buffer[256];
+  long last_pos = ftell(file);
+
+  while (trace_mode) {
+    fseek(file, 0, SEEK_END);
+    long current_pos = ftell(file);
+
+    if (current_pos > last_pos) {
+      fseek(file, last_pos, SEEK_SET);
+
+      while (fgets(buffer, sizeof(buffer), file)) {
+        buffer[strcspn(buffer, "\n")] = 0;
+        printf("%s\n", buffer);
+
+        if (strcmp(buffer, "__END__") == 0) {
+          trace_mode = false;
+          break;
+        }
+
+        if (trace_line_count < MAX_TRACE_LINES) {
+          trace_lines[trace_line_count++] = strdup(buffer);
+        } else {
+          free(trace_lines[trace_line_index]);
+          trace_lines[trace_line_index] = strdup(buffer);
+          trace_line_index = (trace_line_index + 1) % MAX_TRACE_LINES;
+        }
+      }
+
+      last_pos = ftell(file); // Actualizar el cursor
+    }
+
+    // Renderizar todo
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);
+
+    int y = 0;
+    for (int i = 0; i < trace_line_count; i++) {
+      int idx = (trace_line_index + i) % MAX_TRACE_LINES;
+      if (trace_lines[idx]) {
+        render_text(renderer, font, trace_lines[idx], 0, y, WHITE);
+        y += 22;
+      }
+    }
+
+    SDL_RenderPresent(renderer);
+
+    SDL_PumpEvents(); // Para mantener la ventana activa
+    usleep(100000); // Esperar 100ms
+  }
+
+  fclose(file);
+}
+
 int main(int argc, char *argv[]) {
 
   // Forzar vaciamiento inmediato del buffer de salida
@@ -656,6 +723,8 @@ int main(int argc, char *argv[]) {
 
     if (strcmp(argv[i], "--godot") == 0) {
       godot_flag = true;
+    } else if (strcmp(argv[i], "--trace") == 0) {
+      trace_mode = true;
     } else if (strcmp(argv[i], "--show") == 0) {
       if (i + 1 < argc) {
         show_message = argv[++i];  // Avanza al siguiente argumento y lo guarda
@@ -702,6 +771,16 @@ int main(int argc, char *argv[]) {
     SDL_Delay(3000);
     return 0;
   }
+
+  if (trace_mode) {
+    update_trace_display(renderer, font);
+
+    for (int i = 0; i < MAX_TRACE_LINES; i++) {
+      if (trace_lines[i]) free(trace_lines[i]);
+    }
+    return 0;
+  }
+
 
   int selected = 0;
   int exitcode = 0;

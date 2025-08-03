@@ -47,23 +47,6 @@ If you'd like to see updates and active support for this port continue as quickl
 - Dpad Up/Down to select value,  A to add, B to remove.
 - Start to disable virtual keyboard.
 
-### What is `hack.jar`?
-
-`hack.jar` is a Java package that allows loading optimized shaders into memory for the following custom firmware (CFW).  
-If a `credentials.txt` file exists, it will use the username and password specified there, but only during application startup.
-
-The source code can be found here:  
-👉 [pokemmo/src](pokemmo/src)
-
-| Operating System       | Requires `hack.jar`? | Known Issues Without `hack.jar`                                                   |
-|------------------------|----------------------|------------------------------------------------------------------------------------|
-| **ArkOS**              | NO                   | - Works fine without `hack.jar`                                                    |
-| **Rocknix (Panfrost)** | NO                   | - Works fine without `hack.jar`                                                    |
-| **Rocknix (Libmali)**  | NO                   | - Works fine without `hack.jar`                                                     |
-| **MuOS**               | NO                   | - Works fine without `hack.jar`                                                      |
-| **Knulli**             | NO                   | - Works fine without `hack.jar`                                                      |
-| **spruceOS**           | NO                   | - Works fine without `hack.jar`                                                      |
-
 ### 🎮 Experiencing FPS Drops?
 
 The default configuration included with this port is optimized and tested for **low-end devices**, prioritizing compatibility and performance in **power-saving mode**.

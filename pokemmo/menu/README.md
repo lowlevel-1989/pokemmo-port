@@ -1,4 +1,4 @@
-# Menu Launcher for Portmaster v0.3.0
+# Menu Launcher for Portmaster v0.4.0
 
 This is a menu launcher for Portmaster that allows selecting configurable options through a `menu.items` file.
 

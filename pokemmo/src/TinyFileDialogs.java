@@ -3,10 +3,6 @@ package org.lwjgl.util.tinyfd;
 
 public class TinyFileDialogs {
 
-    static {
-      System.out.println("---- LOAD HACK | TinyFileDialogs ----");
-    }
-
     /** Contains tinyfd current version number. */
     public static final String tinyfd_version = "tinyfd_version";
 

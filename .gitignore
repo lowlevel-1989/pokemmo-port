@@ -1,2 +1,9 @@
 out
 build
+PokeMMO.exe
+PokeMMO.jar
+pokemmo/f
+pokemmo/com
+pokemmo/libs.jar
+pokemmo/src/auto/*.java
+*.javap.txt

@@ -19,7 +19,7 @@ source $controlfolder/control.txt
 
 get_controls
 
-java_runtime="zulu17.54.21-ca-jre17.0.13-linux"
+java_runtime="zulu17.48.15-ca-jdk17.0.10-linux.aarch64"
 weston_runtime="weston_pkg_0.2"
 mesa_runtime="mesa_pkg_0.1"
 
@@ -41,10 +41,72 @@ GAMEDIR=/$directory/ports/pokemmo
 
 cd $GAMEDIR
 
-if [ -f "patch.zip" ]; then
-  unzip -o patch.zip
-  mv patch.zip patch_applied.zip
+# Check if we need to use westonpack. If we have mainline OpenGL, we don't need to use it.
+if glxinfo | grep -q "OpenGL version string"; then
+    westonpack=0
+else
+    westonpack=1
 fi
+
+if [ "$westonpack" -eq 1 ]; then
+
+# Mount Weston runtime
+weston_dir=/tmp/weston
+$ESUDO mkdir -p "${weston_dir}"
+if [ ! -f "$controlfolder/libs/${weston_runtime}.squashfs" ]; then
+  if [ ! -f "$controlfolder/harbourmaster" ]; then
+    pm_message "This port requires the latest PortMaster to run, please go to https://portmaster.games/ for more info."
+    sleep 5
+    exit 1
+  fi
+  $ESUDO $controlfolder/harbourmaster --quiet --no-check runtime_check "${weston_runtime}.squashfs"
+fi
+if [[ "$PM_CAN_MOUNT" != "N" ]]; then
+    $ESUDO umount "${weston_dir}"
+fi
+$ESUDO mount -o loop "$controlfolder/libs/${weston_runtime}.squashfs" "${weston_dir}"
+echo ls -l ${weston_dir}
+ls -l ${weston_dir}
+
+# Mount Mesa runtime
+mesa_dir=/tmp/mesa
+$ESUDO mkdir -p "${mesa_dir}"
+if [ ! -f "$controlfolder/libs/${mesa_runtime}.squashfs" ]; then
+  if [ ! -f "$controlfolder/harbourmaster" ]; then
+    pm_message "This port requires the latest PortMaster to run, please go to https://portmaster.games/ for more info."
+    sleep 5
+    exit 1
+  fi
+  $ESUDO $controlfolder/harbourmaster --quiet --no-check runtime_check "${mesa_runtime}.squashfs"
+fi
+if [[ "$PM_CAN_MOUNT" != "N" ]]; then
+    $ESUDO umount "${mesa_dir}"
+fi
+$ESUDO mount -o loop "$controlfolder/libs/${mesa_runtime}.squashfs" "${mesa_dir}"
+echo ls -l ${mesa_dir}
+ls -l ${mesa_dir}
+
+fi
+
+# Mount Java runtime
+export JAVA_HOME="/tmp/javaruntime/"
+$ESUDO mkdir -p "${JAVA_HOME}"
+if [ ! -f "$controlfolder/libs/${java_runtime}.squashfs" ]; then
+  if [ ! -f "$controlfolder/harbourmaster" ]; then
+    pm_message "This port requires the latest PortMaster to run, please go to https://portmaster.games/ for more info."
+    sleep 5
+    exit 1
+  fi
+  $ESUDO $controlfolder/harbourmaster --quiet --no-check runtime_check "${java_runtime}.squashfs"
+fi
+if [[ "$PM_CAN_MOUNT" != "N" ]]; then
+    $ESUDO umount "${JAVA_HOME}"
+fi
+$ESUDO mount -o loop "$controlfolder/libs/${java_runtime}.squashfs" "${JAVA_HOME}"
+export PATH="$JAVA_HOME/bin:$PATH"
+
+echo ls -l ${JAVA_HOME}
+ls -l ${JAVA_HOME}
 
 if [ ! -f "credentials.txt" ]; then
   mv credentials.template.txt credentials.txt
@@ -65,13 +127,6 @@ $ESUDO chmod +x $GAMEDIR/menu/launch_menu.$DEVICE_ARCH
 echo INFO CONTROLLER
 $GAMEDIR/controller_info.$DEVICE_ARCH
 echo $SDL_GAMECONTROLLERCONFIG
-
-# Check if we need to use westonpack. If we have mainline OpenGL, we don't need to use it.
-if glxinfo | grep -q "OpenGL version string"; then
-    westonpack=0
-else
-    westonpack=1
-fi
 
 if [[ -n "$ESUDO" ]]; then
     ESUDO="$ESUDO LD_LIBRARY_PATH=$controlfolder"
@@ -110,7 +165,6 @@ case $selection in
         client_ui_theme=$(grep -E '^client.ui.theme=' config/main.properties | cut -d'=' -f2)
 
         sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.0/' config/main.properties
-        sed -i 's/^client\.gui\.scale\.hidpifont=.*/client.gui.scale.hidpifont=true/' config/main.properties
         sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' config/main.properties
         ;;
     3)
@@ -141,34 +195,25 @@ case $selection in
         client_ui_theme=$(grep -E '^client.ui.theme=' config/main.properties | cut -d'=' -f2)
 
         sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.4/' config/main.properties
-        sed -i 's/^client\.gui\.scale\.hidpifont=.*/client.gui.scale.hidpifont=true/' config/main.properties
         sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' config/main.properties
         ;;
     6)
         echo "[MENU] PokeMMO Update"
-        $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --show "Downloading... Be patient."
-        curl -L https://pokemmo.com/download_file/1/ -o _pokemmo.zip
+        rm -rf /tmp/launch_menu.trace
+        $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --trace &
+        curl -L https://pokemmo.com/download_file/1/ -o _pokemmo.zip 2> /tmp/launch_menu.trace
         cp patch_applied.zip patch.zip
-        cp config/main.properties main.properties
-        unzip -o _pokemmo.zip
-        unzip -o patch.zip
-        mv main.properties config/main.properties
+        unzip -o _pokemmo.zip >> /tmp/launch_menu.trace
         rm _pokemmo.zip
         rm PokeMMO.sh
+        echo "Generating PATCHES" >> /tmp/launch_menu.trace
+        sleep 1
+        echo __END__ >> /tmp/launch_menu.trace
         ;;
     7)
         echo "[MENU] PokeMMO Restore"
         cp patch_applied.zip patch.zip
-        unzip -o patch.zip
         $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --show "PokeMMO Restored"
-        pm_finish
-        exit 0
-        ;;
-    8)
-        echo "[MENU] Remove  Hack.jar"
-        rm hack.jar
-        pm_message "hack.jar Removed"
-        $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --show "hack.jar Removed"
         pm_finish
         exit 0
         ;;
@@ -194,63 +239,45 @@ fi
 echo ESUDO=$ESUDO
 echo env_vars=$env_vars
 
+if [ -f "patch.zip" ]; then
+  rm -rf /tmp/launch_menu.trace
+  rm -rf src f com f.jar loader.jar
+  cp config/main.properties main.properties
+  $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --trace &
+  unzip -o patch.zip > /tmp/launch_menu.trace
+  unzip -o PokeMMO.exe "f/*" "com/badlogic/gdx/controllers/desktop/*" >> /tmp/launch_menu.trace
+  mv patch.zip patch_applied.zip
+  for file in f/*.class; do
+    echo "[CHECKING] $file" >> /tmp/launch_menu.trace
+    if grep -q --binary-files=text "client.ui.login.username" "$file"; then
+      echo "[MATCH] $file" >> /tmp/launch_menu.trace
+      class_name="${file%.class}"
+      class_name="${class_name//\//.}"
+      break
+    fi
+  done
+  echo "Generating f.jar" >> /tmp/launch_menu.trace
+  rm -rf credentials.javap.txt jamepad.javap.txt
+  echo "class_name $class_name" >> /tmp/launch_menu.trace
+  javap -v "$class_name" > credentials.javap.txt
+  javap -v com.badlogic.gdx.controllers.desktop.JamepadControllerManager > jamepad.javap.txt
+  echo jar cf f.jar -C $GAMEDIR f >> /tmp/launch_menu.trace
+  jar cf f.jar -C $GAMEDIR f
+  echo "Generating loader.jar" >> /tmp/launch_menu.trace
+  python parse_javap.py >> /tmp/launch_menu.trace
+  echo javac -d out/ -cp "f.jar:libs/*" src/*.java src/auto/*.java >> /tmp/launch_menu.trace
+  javac -d out/ -cp "f.jar:libs/*" src/*.java src/auto/*.java
+  echo jar cf loader.jar -C $GAMEDIR/out org -C $GAMEDIR/out com -C $GAMEDIR/out f >> /tmp/launch_menu.trace
+  jar cf loader.jar -C $GAMEDIR/out org -C $GAMEDIR/out com -C $GAMEDIR/out f
+  rm -rf out
+  sleep 1
+  echo __END__ >> /tmp/launch_menu.trace
+fi
+
 if [ "$DEVICE_NAME" = "TRIMUI-SMART-PRO" ]; then
   DISPLAY_WIDTH=1280
   DISPLAY_HEIGHT=720
 fi
-
-if [ "$westonpack" -eq 1 ]; then
-
-# Mount Weston runtime
-weston_dir=/tmp/weston
-$ESUDO mkdir -p "${weston_dir}"
-if [ ! -f "$controlfolder/libs/${weston_runtime}.squashfs" ]; then
-  if [ ! -f "$controlfolder/harbourmaster" ]; then
-    pm_message "This port requires the latest PortMaster to run, please go to https://portmaster.games/ for more info."
-    sleep 5
-    exit 1
-  fi
-  $ESUDO $controlfolder/harbourmaster --quiet --no-check runtime_check "${weston_runtime}.squashfs"
-fi
-if [[ "$PM_CAN_MOUNT" != "N" ]]; then
-    $ESUDO umount "${weston_dir}"
-fi
-$ESUDO mount -o loop "$controlfolder/libs/${weston_runtime}.squashfs" "${weston_dir}"
-
-# Mount Mesa runtime
-mesa_dir=/tmp/mesa
-$ESUDO mkdir -p "${mesa_dir}"
-if [ ! -f "$controlfolder/libs/${mesa_runtime}.squashfs" ]; then
-  if [ ! -f "$controlfolder/harbourmaster" ]; then
-    pm_message "This port requires the latest PortMaster to run, please go to https://portmaster.games/ for more info."
-    sleep 5
-    exit 1
-  fi
-  $ESUDO $controlfolder/harbourmaster --quiet --no-check runtime_check "${mesa_runtime}.squashfs"
-fi
-if [[ "$PM_CAN_MOUNT" != "N" ]]; then
-    $ESUDO umount "${mesa_dir}"
-fi
-$ESUDO mount -o loop "$controlfolder/libs/${mesa_runtime}.squashfs" "${mesa_dir}"
-
-fi
-
-# Mount Java runtime
-export JAVA_HOME="/tmp/javaruntime/"
-$ESUDO mkdir -p "${JAVA_HOME}"
-if [ ! -f "$controlfolder/libs/${java_runtime}.squashfs" ]; then
-  if [ ! -f "$controlfolder/harbourmaster" ]; then
-    pm_message "This port requires the latest PortMaster to run, please go to https://portmaster.games/ for more info."
-    sleep 5
-    exit 1
-  fi
-  $ESUDO $controlfolder/harbourmaster --quiet --no-check runtime_check "${java_runtime}.squashfs"
-fi
-if [[ "$PM_CAN_MOUNT" != "N" ]]; then
-    $ESUDO umount "${JAVA_HOME}"
-fi
-$ESUDO mount -o loop "$controlfolder/libs/${java_runtime}.squashfs" "${JAVA_HOME}"
-export PATH="$JAVA_HOME/bin:$PATH"
 
 # FIX GPTOKEYB2, --preserve-env=SDL_GAMECONTROLLERCONFIG
 if [ -n "$ESUDO" ]; then
@@ -259,7 +286,7 @@ fi
 GPTOKEYB2=$(echo "$GPTOKEYB2" | sed 's/--preserve-env=SDL_GAMECONTROLLERCONFIG_FILE,/&SDL_GAMECONTROLLERCONFIG,/')
 
 COMMAND="CRUSTY_SHOW_CURSOR=1 WESTON_HEADLESS_WIDTH="$DISPLAY_WIDTH" WESTON_HEADLESS_HEIGHT="$DISPLAY_HEIGHT" $weston_dir/westonwrap.sh headless noop kiosk crusty_glx_gl4es"
-PATCH="loader.jar:hack.jar:libs/*:PokeMMO.exe"
+PATCH="loader.jar:libs/*:PokeMMO.exe"
 
 JAVA_OPTS="-Xms128M -Xmx384M -Dorg.lwjgl.util.Debug=true -Dfile.encoding=UTF-8"
 ENV_VARS="PATH="$PATH" JAVA_HOME="$JAVA_HOME" XDG_SESSION_TYPE=x11 GAMEDIR="$GAMEDIR""
