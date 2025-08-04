@@ -249,6 +249,9 @@ case $selection in
         echo "[MENU] PokeMMO Update"
         rm -rf /tmp/launch_menu.trace
         $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --trace &
+        if [ ! -f "main.properties" ]; then
+          cp config/main.properties main.properties
+        fi
         curl -L https://pokemmo.com/download_file/1/ -o _pokemmo.zip 2> /tmp/launch_menu.trace
         if [ ! -f "patch.zip" ]; then
           cp patch_applied.zip patch.zip
@@ -302,11 +305,18 @@ echo env_vars=$env_vars
 if [ -f "patch.zip" ]; then
   rm -rf /tmp/launch_menu.trace
   rm -rf src f com /tmp/pokemmo f.jar loader.jar
-  cp config/main.properties main.properties
+  if [ ! -f "main.properties" ]; then
+    cp config/main.properties main.properties
+  fi
+  if [ ! -f "theme.xml" ]; then
+    cp data/mods/console_mod/console/theme.xml theme.xml
+  fi
   $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --trace &
   unzip -o patch.zip > /tmp/launch_menu.trace
   unzip -o PokeMMO.exe "f/*" "com/badlogic/gdx/controllers/desktop/*" -d /tmp/pokemmo >> /tmp/launch_menu.trace
   mv patch.zip patch_applied.zip
+  mv main.properties config/main.properties
+  mv theme.xml data/mods/console_mod/console/theme.xml
   for file in /tmp/pokemmo/f/*.class; do
     echo "[CHECKING] $file" >> /tmp/launch_menu.trace
     if grep -q --binary-files=text "client.ui.login.username" "$file"; then
