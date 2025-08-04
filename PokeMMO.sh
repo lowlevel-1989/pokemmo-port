@@ -22,6 +22,7 @@ get_controls
 java_runtime="zulu17.48.15-ca-jdk17.0.10-linux.aarch64"
 weston_runtime="weston_pkg_0.2"
 mesa_runtime="mesa_pkg_0.1"
+python_runtime="python_3.11"
 
 # If /etc/machine-id doesn't exist and /tmp/dbus/machine-id exists, copy it over
 if [ ! -f /etc/machine-id ]; then
@@ -40,6 +41,9 @@ GAMEDIR=/$directory/ports/pokemmo
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
 cd $GAMEDIR
+
+echo ls -l ${GAMEDIR}
+ls -l ${GAMEDIR}
 
 # Check if we need to use westonpack. If we have mainline OpenGL, we don't need to use it.
 if glxinfo | grep -q "OpenGL version string"; then
@@ -108,6 +112,27 @@ export PATH="$JAVA_HOME/bin:$PATH"
 echo ls -l ${JAVA_HOME}
 ls -l ${JAVA_HOME}
 
+
+# Mount Python runtime
+export PYTHONHOME="/tmp/python"
+$ESUDO mkdir -p "${PYTHONHOME}"
+if [ ! -f "$controlfolder/libs/${python_runtime}.squashfs" ]; then
+  if [ ! -f "$controlfolder/harbourmaster" ]; then
+    pm_message "This port requires the latest PortMaster to run, please go to https://portmaster.games/ for more info."
+    sleep 5
+    exit 1
+  fi
+  $ESUDO $controlfolder/harbourmaster --quiet --no-check runtime_check "${python_runtime}.squashfs"
+fi
+if [[ "$PM_CAN_MOUNT" != "N" ]]; then
+    $ESUDO umount "${PYTHONHOME}"
+fi
+$ESUDO mount -o loop "$controlfolder/libs/${python_runtime}.squashfs" "${PYTHONHOME}"
+export PATH="${PYTHONHOME}/bin:$PATH"
+
+echo ls -l ${PYTHONHOME}
+ls -l ${PYTHONHOME}
+
 if [ ! -f "credentials.txt" ]; then
   mv credentials.template.txt credentials.txt
 fi
@@ -158,6 +183,7 @@ case $selection in
             $ESUDO umount "${mesa_dir}"
           fi
           $ESUDO umount "${JAVA_HOME}"
+          $ESUDO umount "${PYTHONHOME}"
         fi
 
         exit 2
@@ -172,6 +198,7 @@ case $selection in
             $ESUDO umount "${mesa_dir}"
           fi
           $ESUDO umount "${JAVA_HOME}"
+          $ESUDO umount "${PYTHONHOME}"
         fi
 
         exit 1
@@ -220,7 +247,9 @@ case $selection in
         rm -rf /tmp/launch_menu.trace
         $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --trace &
         curl -L https://pokemmo.com/download_file/1/ -o _pokemmo.zip 2> /tmp/launch_menu.trace
-        cp patch_applied.zip patch.zip
+        if [ ! -f "patch.zip" ]; then
+          cp patch_applied.zip patch.zip
+        fi
         unzip -o _pokemmo.zip >> /tmp/launch_menu.trace
         rm _pokemmo.zip
         rm PokeMMO.sh
@@ -240,6 +269,7 @@ case $selection in
             $ESUDO umount "${mesa_dir}"
           fi
           $ESUDO umount "${JAVA_HOME}"
+          $ESUDO umount "${PYTHONHOME}"
         fi
 
         exit 0
@@ -313,6 +343,7 @@ if [ ! -f "loader.jar" ]; then
       $ESUDO umount "${mesa_dir}"
     fi
     $ESUDO umount "${JAVA_HOME}"
+    $ESUDO umount "${PYTHONHOME}"
   fi
 
   exit 1
@@ -372,6 +403,7 @@ if [[ "$PM_CAN_MOUNT" != "N" ]]; then
     $ESUDO umount "${mesa_dir}"
   fi
   $ESUDO umount "${JAVA_HOME}"
+  $ESUDO umount "${PYTHONHOME}"
 fi
 
 # Cleanup any running gptokeyb instances, and any platform specific stuff.

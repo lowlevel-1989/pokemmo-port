@@ -15,6 +15,13 @@ uniform sampler2D u_diffuseTexture;
 uniform vec4 u_diffuseColor;
 #endif
 
+#ifdef blendedFlag
+varying float v_opacity;
+#ifdef alphaTestFlag
+varying float v_alphaTest;
+#endif //alphaTestFlag
+#endif //blendedFlag
+
 void main() {
     vec4 diffuse = vec4(1.0);
 
@@ -35,4 +42,15 @@ void main() {
     #endif
 
     gl_FragColor = diffuse;
+
+	#ifdef blendedFlag
+		gl_FragColor.a = diffuse.a * v_opacity;
+		#ifdef alphaTestFlag
+			if (gl_FragColor.a <= v_alphaTest)
+				discard;
+		#endif
+	#else
+		gl_FragColor.a = 1.0;
+	#endif
+
 }
