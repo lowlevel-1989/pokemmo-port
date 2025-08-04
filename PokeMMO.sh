@@ -113,25 +113,28 @@ echo ls -l ${JAVA_HOME}
 ls -l ${JAVA_HOME}
 
 
-# Mount Python runtime
-export PYTHONHOME="/tmp/python"
-$ESUDO mkdir -p "${PYTHONHOME}"
-if [ ! -f "$controlfolder/libs/${python_runtime}.squashfs" ]; then
-  if [ ! -f "$controlfolder/harbourmaster" ]; then
-    pm_message "This port requires the latest PortMaster to run, please go to https://portmaster.games/ for more info."
-    sleep 5
-    exit 1
+if ! command -v python >/dev/null 2>&1; then
+  echo MOUNT PYTHON
+  # Mount Python runtime
+  export PYTHONHOME="/tmp/python"
+  $ESUDO mkdir -p "${PYTHONHOME}"
+  if [ ! -f "$controlfolder/libs/${python_runtime}.squashfs" ]; then
+    if [ ! -f "$controlfolder/harbourmaster" ]; then
+      pm_message "This port requires the latest PortMaster to run, please go to https://portmaster.games/ for more info."
+      sleep 5
+      exit 1
+    fi
+    $ESUDO $controlfolder/harbourmaster --quiet --no-check runtime_check "${python_runtime}.squashfs"
   fi
-  $ESUDO $controlfolder/harbourmaster --quiet --no-check runtime_check "${python_runtime}.squashfs"
-fi
-if [[ "$PM_CAN_MOUNT" != "N" ]]; then
-    $ESUDO umount "${PYTHONHOME}"
-fi
-$ESUDO mount -o loop "$controlfolder/libs/${python_runtime}.squashfs" "${PYTHONHOME}"
-export PATH="${PYTHONHOME}/bin:$PATH"
+  if [[ "$PM_CAN_MOUNT" != "N" ]]; then
+      $ESUDO umount "${PYTHONHOME}"
+  fi
+  $ESUDO mount -o loop "$controlfolder/libs/${python_runtime}.squashfs" "${PYTHONHOME}"
+  export PATH="${PYTHONHOME}/bin:$PATH"
 
-echo ls -l ${PYTHONHOME}
-ls -l ${PYTHONHOME}
+  echo ls -l ${PYTHONHOME}
+  ls -l ${PYTHONHOME}
+fi
 
 if [ ! -f "credentials.txt" ]; then
   mv credentials.template.txt credentials.txt
