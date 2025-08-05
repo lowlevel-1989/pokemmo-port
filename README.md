@@ -85,7 +85,7 @@ To switch to the Panfrost driver:
 Download pokemmo.zip Place the `.zip` into:  
 `/PortMaster/autoinstall`
 
-Launch **PortMaster**. It will automatically install the port.
+Launch **PortMaster**. It will automatically install/update the port.
 
 #### 📂 Autoinstall Folder Locations
 
