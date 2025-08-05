@@ -214,6 +214,7 @@ case $selection in
 
         sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.0/' config/main.properties
         sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' config/main.properties
+        sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=false/' config/main.properties
         ;;
     3)
         echo "[MENU] PokeMMO for clone handhelds"
@@ -225,6 +226,7 @@ case $selection in
         sed -i 's/^client\.gui\.scale\.hidpifont=.*/client.gui.scale.hidpifont=false/' config/main.properties
         sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' config/main.properties
         sed -i 's/^client\.graphics\.max_fpx=.*/client.graphics.max_fpx=20/' config/main.properties
+        sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=false/' config/main.properties
         ;;
     4)
         echo "[MENU] PokeMMO Android"
@@ -244,6 +246,7 @@ case $selection in
 
         sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.4/' config/main.properties
         sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' config/main.properties
+        sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=false/' config/main.properties
         ;;
     6)
         echo "[MENU] PokeMMO Update"
@@ -266,6 +269,7 @@ case $selection in
     7)
         echo "[MENU] PokeMMO Restore"
         cp patch_applied.zip patch.zip
+        rm -rf config/main.properties main.properties
         $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --show "PokeMMO Restored"
         pm_finish
 
@@ -289,6 +293,7 @@ case $selection in
         sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.0/' config/main.properties
         sed -i 's/^client\.gui\.scale\.hidpifont=.*/client.gui.scale.hidpifont=true/' config/main.properties
         sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' config/main.properties
+        sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=false/' config/main.properties
         ;;
 esac
 
