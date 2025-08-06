@@ -20,6 +20,12 @@ If you'd like to see updates and active support for this port continue as quickl
 | Global trade link                     | No      | Yes (small, android)    | Yes (small, android)    | Yes                |
 | PC                     | No      | Yes (small, android)    | Yes (small, android)    | Yes                |
 
+### ⚠️ Unsupported Devices
+
+Certain devices, such as the **R36S** and other handheld consoles based on the **RK3326** chipset, are not compatible with the latest version of the **PokeMMO Port**. These devices lack the necessary processing power to deliver a smooth gameplay experience, especially in areas with high player density, where performance issues become critical.
+
+🔒 **These devices are not officially supported.**
+
 ### ⚠️ Android Theme Mode Warning
 
 > The **Android UI theme mode** is **highly resource-intensive** and is **not recommended for clone handhelds using the same chipset as the K36S**, especially when running **ArkOS**.  
@@ -57,19 +63,19 @@ If you'd like to see updates and active support for this port continue as quickl
 - Dpad Up/Down to select value,  A to add, B to remove.
 - Start to disable virtual keyboard.
 
-### 🎮 Experiencing FPS Drops?
+### Experiencing FPS Drops?
 
 The default configuration included with this port is optimized and tested for **low-end devices**, prioritizing compatibility and performance in **power-saving mode**.
 
-#### ⚙️ If You're Experiencing Lag:
+#### If You're Experiencing Lag:
 - The most common reason for FPS drops is **changing the default FPS or render settings**. These defaults are intentionally conservative to ensure stable performance on less powerful hardware.
 - If you have a more capable device, feel free to adjust these settings — but keep in mind that doing so **may cause instability or performance issues**, especially if you're on low-spec hardware.
 
-#### 📝 About `main.properties`:
+#### About `main.properties`:
 - This configuration file is tuned specifically for **very low-resource devices**.
 - **Some areas may take longer to load**, especially the more demanding ones, but this is expected and **should not be frequent or break gameplay**.
 
-✅ If performance issues persist even with the default settings, let us know — improvements and tweaks are always ongoing.
+If performance issues persist even with the default settings, let us know — improvements and tweaks are always ongoing.
 
 ### Assigning Panfrost in Rocknix
 
@@ -87,7 +93,7 @@ Download pokemmo.zip Place the `.zip` into:
 
 Launch **PortMaster**. It will automatically install/update the port.
 
-#### 📂 Autoinstall Folder Locations
+#### Autoinstall Folder Locations
 
 Here are the paths for the `autoinstall` folder for each CFW supported by PortMaster:
 
@@ -100,7 +106,7 @@ Here are the paths for the `autoinstall` folder for each CFW supported by PortMa
 
 ---
 
-#### 📦 Manual Installation (Alternative)
+#### Manual Installation (Alternative)
 
 If the `autoinstall` folder method doesn't work, you can manually unzip the port contents into the appropriate `ports` folders.  
 **Note:** This may break the port and prevent it from launching properly.
@@ -153,12 +159,11 @@ client.roms.nds3=roms/pokemon_heartgold.nds
 
 ---
 
-
-### 🎮 Login Without Keyboard Input
+### Login Without Keyboard Input
 
 If your device does not have a keyboard, you can try one of the following methods to log in:
 
-#### 🔧 Option 1: pokemmo/credentials.txt
+#### Option 1: pokemmo/credentials.txt
 
 Edit the file pokemmo/credentials.txt with your login credentials.
 
@@ -167,11 +172,11 @@ If the official game receives an update, Option 1 may stop working temporarily.
 
 If you notice that Option 1 stops working after a client update, please report it so that the port can be patched and restored as soon as possible.
 
-#### 🔧 Option 2: Connect a Keyboard for First Login
+#### Option 2: Connect a Keyboard for First Login
 
 Temporarily connect a physical keyboard (USB or Bluetooth), log in as usual, and make sure to check the **"Remember Me"** option.
 
-#### 📝 Option 3: Type Password in Username Field (thanks ddrsoul)
+#### Option 3: Type Password in Username Field (thanks ddrsoul)
 
 Type your password in the **username** field, then **copy and paste** it into the password field. This allows you to use system copy/paste functions even without a keyboard.
 
@@ -217,6 +222,15 @@ The game will now automatically log in when launched on PortMaster-compatible de
 |down | next character |
 |select| toggle number/letter  |
 
+---
+
+### Third-Party Themes
+
+The following community-created themes are compatible with the **PokeMMO Port**. These themes are developed and maintained by third parties and are not officially supported.
+
+- [**Animated Theme by CodesNL**](https://github.com/CodesNL/pokemmo-port-themes) – A custom theme featuring animated UI elements.
+
+> ⚠️ Use third-party themes at your own risk. Compatibility and performance may vary depending on the device and game version.
 
 ---
 

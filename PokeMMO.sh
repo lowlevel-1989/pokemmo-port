@@ -217,18 +217,6 @@ case $selection in
         sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=false/' config/main.properties
         ;;
     3)
-        echo "[MENU] PokeMMO for clone handhelds"
-        cat data/mods/console_mod/dync/theme.xml > data/mods/console_mod/console/theme.xml
-
-        client_ui_theme=$(grep -E '^client.ui.theme=' config/main.properties | cut -d'=' -f2)
-
-        sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.0/' config/main.properties
-        sed -i 's/^client\.gui\.scale\.hidpifont=.*/client.gui.scale.hidpifont=false/' config/main.properties
-        sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' config/main.properties
-        sed -i 's/^client\.graphics\.max_fpx=.*/client.graphics.max_fpx=20/' config/main.properties
-        sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=false/' config/main.properties
-        ;;
-    4)
         echo "[MENU] PokeMMO Android"
         cat data/mods/console_mod/dync/theme.android.xml > data/mods/console_mod/console/theme.xml
 
@@ -238,7 +226,7 @@ case $selection in
         sed -i 's/^client\.gui\.scale\.hidpifont=.*/client.gui.scale.hidpifont=true/' config/main.properties
         sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=true/' config/main.properties
         ;;
-    5)
+    4)
         echo "[MENU] PokeMMO Small"
         cat data/mods/console_mod/dync/theme.small.xml > data/mods/console_mod/console/theme.xml
 
@@ -248,7 +236,7 @@ case $selection in
         sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' config/main.properties
         sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=false/' config/main.properties
         ;;
-    6)
+    5)
         echo "[MENU] PokeMMO Update"
         rm -rf /tmp/launch_menu.trace
         $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --trace &
@@ -266,11 +254,29 @@ case $selection in
         sleep 1
         echo __END__ >> /tmp/launch_menu.trace
         ;;
-    7)
+    6)
         echo "[MENU] PokeMMO Restore"
         cp patch_applied.zip patch.zip
         rm -rf config/main.properties main.properties
         $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --show "PokeMMO Restored"
+        pm_finish
+
+        if [[ "$PM_CAN_MOUNT" != "N" ]]; then
+          if [ "$westonpack" -eq 1 ]; then
+            $ESUDO umount "${weston_dir}"
+            $ESUDO umount "${mesa_dir}"
+          fi
+          $ESUDO umount "${JAVA_HOME}"
+          $ESUDO umount "${PYTHONHOME}"
+        fi
+
+        exit 0
+        ;;
+    7)
+        echo "[MENU] PokeMMO Restore Mods"
+        rm -rf data/mods/
+        cp patch_applied.zip patch.zip
+        $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --show "Restored Mods"
         pm_finish
 
         if [[ "$PM_CAN_MOUNT" != "N" ]]; then
@@ -309,19 +315,22 @@ echo env_vars=$env_vars
 
 if [ -f "patch.zip" ]; then
   rm -rf /tmp/launch_menu.trace
-  rm -rf src f com /tmp/pokemmo f.jar loader.jar
+  rm -rf src f com /tmp/pokemmo _mods f.jar loader.jar
   if [ ! -f "main.properties" ]; then
     cp config/main.properties main.properties
   fi
   if [ ! -f "theme.xml" ]; then
     cp data/mods/console_mod/console/theme.xml theme.xml
   fi
+  cp -rf data/mods _mods
   $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --trace &
   unzip -o patch.zip > /tmp/launch_menu.trace
   unzip -o PokeMMO.exe "f/*" "com/badlogic/gdx/controllers/desktop/*" -d /tmp/pokemmo >> /tmp/launch_menu.trace
   mv patch.zip patch_applied.zip
   mv main.properties config/main.properties
   mv theme.xml data/mods/console_mod/console/theme.xml
+  cp -rf _mods/* data/mods
+  rm -rf _mods
   for file in /tmp/pokemmo/f/*.class; do
     echo "[CHECKING] $file" >> /tmp/launch_menu.trace
     if grep -q --binary-files=text "client.ui.login.username" "$file"; then
