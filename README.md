@@ -256,7 +256,8 @@ The following community-created themes are compatible with the **PokeMMO Port**.
 - Brobba
 - [noe](https://steamcommunity.com/id/itsnoe73)
 - [Revela](https://www.youtube.com/watch?v=WtAtlXwQsZw)
-- Den
+- [Den](https://github.com/CodesNL)
+- [Manlibear](https://github.com/Manlibear)
 
 ## Refs
 
