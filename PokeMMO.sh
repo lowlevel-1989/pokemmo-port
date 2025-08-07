@@ -355,6 +355,8 @@ if [ -f "patch.zip" ]; then
   python parse_javap.py >> /tmp/launch_menu.trace
   echo javac -d out/ -cp "f.jar:libs/*" src/*.java src/auto/*.java >> /tmp/launch_menu.trace
   javac -d out/ -cp "f.jar:libs/*" src/*.java src/auto/*.java
+  cp -rf src/com/* out/com
+  ls -R src
   echo jar cf loader.jar -C $GAMEDIR/out org -C $GAMEDIR/out com -C $GAMEDIR/out f >> /tmp/launch_menu.trace
   jar cf loader.jar -C $GAMEDIR/out org -C $GAMEDIR/out com -C $GAMEDIR/out f
   rm -rf out
@@ -378,6 +380,10 @@ if [ ! -f "loader.jar" ]; then
 
   exit 1
 fi
+
+# DEBUG INFO
+echo look loader
+unzip -l loader.jar
 
 if [ "$DEVICE_NAME" = "TRIMUI-SMART-PRO" ]; then
   DISPLAY_WIDTH=1280
