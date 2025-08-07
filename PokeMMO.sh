@@ -304,8 +304,9 @@ case $selection in
 esac
 
 echo KILL launch_menu
-echo $(ps -eo user,pid,cmd | grep '[g]ptokeyb2' | grep 'launch_menu')
-__pids=$(ps -eo user,pid,cmd | grep '[g]ptokeyb2' | grep 'launch_menu' | awk '{print $2}')
+echo "ps -eo user,pid,args | grep '[g]ptokeyb2' | grep 'launch_menu'"
+echo $(ps -eo user,pid,args | grep '[g]ptokeyb2' | grep 'launch_menu')
+__pids=$(ps -eo user,pid,args | grep '[g]ptokeyb2' | grep 'launch_menu' | awk '{print $2}')
 echo [$__pids]
 
 if [ -n "$__pids" ]; then
