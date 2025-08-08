@@ -3,11 +3,11 @@
   <fontDef name="battle" filename="/data/themes/default/res/fonts/battle.ttf" color="#FFFFFF" shadow_offset_x="1" shadow_offset_y="1" shadow_color="#CC000000" size="48" hinting="Full"/>
   <fontDef name="braille" ref="battle" color="#000000"/>
 
-  <fontDef name="alphabeta" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" faces="sc,tc,jp" color="#FFFFFF" size="20" size_cjk="14" hinting="Full" hinting_cjk="Slight" default="true" unique_atlas="true"><!-- Chat font gets its own atlas -->
+  <fontDef name="alphabeta" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" faces="sc,tc,jp" color="#FFFFFF" size="25" size_cjk="14" hinting="Full" hinting_cjk="Slight" default="true" unique_atlas="true"><!-- Chat font gets its own atlas -->
     <fontParam if="disabled" color="#A9A9A9"/>
     <fontParam if="pressed" offsetX="1" offsetY="1"/>
   </fontDef>
-  <fontDef name="alphabeta-markup" markup="true" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" faces="sc,tc,jp" color="#FFFFFF" size="20" size_cjk="14" hinting="Full" hinting_cjk="Slight" unique_atlas="true"><!-- Chat font gets its own atlas -->
+  <fontDef name="alphabeta-markup" markup="true" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" faces="sc,tc,jp" color="#FFFFFF" size="25" size_cjk="14" hinting="Full" hinting_cjk="Slight" unique_atlas="true"><!-- Chat font gets its own atlas -->
     <fontParam if="disabled" color="#A9A9A9"/>
     <fontParam if="pressed" offsetX="1" offsetY="1"/>
   </fontDef>
@@ -33,7 +33,7 @@
 	<fontDef name="alphabeta-team" ref="alphabeta" color="#00ffff"/>
 	<fontDef name="alphabeta-link" ref="alphabeta" color="#00e6b8"/>
 
-	<fontDef name="alphabeta-border" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" faces="sc,tc,jp" kerning="true" color="white" size="20" size_cjk="14" hinting="AutoSlight" hinting_cjk="Full" border_width="1" border_color="#434343">
+	<fontDef name="alphabeta-border" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" faces="sc,tc,jp" kerning="true" color="white" size="25" size_cjk="14" hinting="AutoSlight" hinting_cjk="Full" border_width="1" border_color="#434343">
 		<fontParam if="pressed" offsetX="1" offsetY="1"/>
 	</fontDef>
 	<fontDef name="alphabeta-border-red" ref="alphabeta-border" color="#f09999"/>
@@ -41,16 +41,16 @@
 	<fontDef name="alphabeta-border-team" ref="alphabeta-border" color="#00ffff"/>
 	<fontDef name="alphabeta-border-yellow" ref="alphabeta-border" color="#e2c57e"/>
 
-  <fontDef name="alphabeta-small" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" faces="sc,tc,jp" color="#FFFFFF" size="20" size_cjk="13" hinting="Full" hinting_cjk="Slight"/>
+  <fontDef name="alphabeta-small" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" faces="sc,tc,jp" color="#FFFFFF" size="25" size_cjk="13" hinting="Full" hinting_cjk="Slight"/>
 
   <fontDef name="pb-dark" ref="alphabeta" color="#FFFFFF">
     <fontParam if="disabled" color="#A9A9A9"/>
     <fontParam if="pressed" offsetX="1" offsetY="1"/>
   </fontDef>
-  <fontDef name="tooltip-font" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" faces="sc,tc,jp" color="#535353" size="20" size_cjk="14" hinting="Full" hinting_cjk="Full" shadow_color="#20FFFFFF" shadow_offset_x="1" shadow_offset_y="1">
+  <fontDef name="tooltip-font" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" faces="sc,tc,jp" color="#535353" size="25" size_cjk="14" hinting="Full" hinting_cjk="Full" shadow_color="#20FFFFFF" shadow_offset_x="1" shadow_offset_y="1">
     <fontParam if="disabled" color="#CCC"/>
   </fontDef>
-  <fontDef name="tooltip-font-markup" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" markup="true" faces="sc,tc,jp" color="#535353" size="20" size_cjk="14" hinting="Full" hinting_cjk="Full" shadow_color="#20FFFFFF" shadow_offset_x="1" shadow_offset_y="1">
+  <fontDef name="tooltip-font-markup" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" markup="true" faces="sc,tc,jp" color="#535353" size="25" size_cjk="14" hinting="Full" hinting_cjk="Full" shadow_color="#20FFFFFF" shadow_offset_x="1" shadow_offset_y="1">
     <fontParam if="disabled" color="#CCC"/>
   </fontDef>
   <fontDef name="pb-dark-link" ref="pb-dark" color="#434343">
@@ -89,8 +89,8 @@
 
   <fontDef name="mechabold-large" filename="/data/themes/default/res/fonts/NotoSansCJK-Bold.ttc" faces="sc,tc,jp" color="#FFFFFF" hinting="Medium" kerning="false" size="18" border_width="1" border_color="#484848"/>
 
-  <fontDef name="title-font" filename="/data/themes/default/res/fonts/NotoSansCJK-Bold.ttc" faces="sc,tc,jp" color="#FFFFFF" size="20" size_cjk="15" hinting="AutoMedium" hinting_cjk="Slight" shadow_color="#55000000" shadow_offset_x="1" shadow_offset_y="1"/>
-  <fontDef name="title-font-black" filename="/data/themes/default/res/fonts/NotoSansCJK-Bold.ttc" faces="sc,tc,jp" color="#252525" size="20" size_cjk="15" hinting="AutoMedium" hinting_cjk="Slight"/>
+  <fontDef name="title-font" filename="/data/themes/default/res/fonts/NotoSansCJK-Bold.ttc" faces="sc,tc,jp" color="#FFFFFF" size="25" size_cjk="15" hinting="AutoMedium" hinting_cjk="Slight" shadow_color="#55000000" shadow_offset_x="1" shadow_offset_y="1"/>
+  <fontDef name="title-font-black" filename="/data/themes/default/res/fonts/NotoSansCJK-Bold.ttc" faces="sc,tc,jp" color="#252525" size="25" size_cjk="15" hinting="AutoMedium" hinting_cjk="Slight"/>
 
   <fontDef name="trainer-name" filename="/data/themes/default/res/fonts/NotoSans-SemiCondensedBlack.ttf" color="#434343" size="18" incremental="false" characters="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"/>
 
