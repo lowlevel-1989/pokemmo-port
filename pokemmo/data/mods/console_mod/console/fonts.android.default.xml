@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<themes>
+  <fontDef name="battle" filename="/data/themes/default/res/fonts/battle.ttf" color="#FFFFFF" shadow_offset_x="1" shadow_offset_y="1" shadow_color="#CC000000" size="48" hinting="Full"/>
+  <fontDef name="braille" ref="battle" color="#000000"/>
+
+  <fontDef name="alphabeta" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" faces="sc,tc,jp" color="#FFFFFF" size="20" size_cjk="14" hinting="Full" hinting_cjk="Slight" default="true" unique_atlas="true"><!-- Chat font gets its own atlas -->
+    <fontParam if="disabled" color="#A9A9A9"/>
+    <fontParam if="pressed" offsetX="1" offsetY="1"/>
+  </fontDef>
+  <fontDef name="alphabeta-markup" markup="true" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" faces="sc,tc,jp" color="#FFFFFF" size="20" size_cjk="14" hinting="Full" hinting_cjk="Slight" unique_atlas="true"><!-- Chat font gets its own atlas -->
+    <fontParam if="disabled" color="#A9A9A9"/>
+    <fontParam if="pressed" offsetX="1" offsetY="1"/>
+  </fontDef>
+  <fontDef name="alphabeta-gray" ref="alphabeta" color="#484848"/>
+  <fontDef name="alphabeta-black" ref="alphabeta" color="black"/>
+  <fontDef name="alphabeta-green" ref="alphabeta" color="#7CB147"/>
+  <fontDef name="alphabeta-blue" ref="alphabeta" color="#AACFFF"/>
+  <fontDef name="alphabeta-orange-shadow" ref="alphabeta" color="#FF9900"/>
+  <fontDef name="alphabeta-battle" ref="alphabeta" color="#FFFF00"/>
+  <fontDef name="alphabeta-orange" ref="alphabeta" color="#FF9900"/>
+	<fontDef name="alphabeta-lightgreen" ref="alphabeta" color="#66FF66"/>
+	<fontDef name="alphabeta-purple" ref="alphabeta" color="#FF99FF"/>
+	<fontDef name="alphabeta-teal" ref="alphabeta" color="#81ddf1"/>
+	<fontDef name="alphabeta-red" ref="alphabeta" color="#f09999"/>
+	<fontDef name="alphabeta-yellow" ref="alphabeta" color="#e2c57e"/>
+	<fontDef name="alphabeta-brown" ref="alphabeta" color="#ff8484"/>
+	<fontDef name="alphabeta-gm" ref="alphabeta" color="#5e98ff"/>
+	<fontDef name="alphabeta-cm" ref="alphabeta" color="#58ff64"/>
+	<fontDef name="alphabeta-hgm" ref="alphabeta" color="#ff5858"/>
+	<fontDef name="alphabeta-dev" ref="alphabeta" color="#d575ff"/>
+	<fontDef name="alphabeta-admin" ref="alphabeta" color="#ff63cb"/>
+	<fontDef name="alphabeta-friend" ref="alphabeta" color="#58ff64"/>
+	<fontDef name="alphabeta-team" ref="alphabeta" color="#00ffff"/>
+	<fontDef name="alphabeta-link" ref="alphabeta" color="#00e6b8"/>
+
+	<fontDef name="alphabeta-border" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" faces="sc,tc,jp" kerning="true" color="white" size="20" size_cjk="14" hinting="AutoSlight" hinting_cjk="Full" border_width="1" border_color="#434343">
+		<fontParam if="pressed" offsetX="1" offsetY="1"/>
+	</fontDef>
+	<fontDef name="alphabeta-border-red" ref="alphabeta-border" color="#f09999"/>
+	<fontDef name="alphabeta-border-friend" ref="alphabeta-border" color="#58ff64"/>
+	<fontDef name="alphabeta-border-team" ref="alphabeta-border" color="#00ffff"/>
+	<fontDef name="alphabeta-border-yellow" ref="alphabeta-border" color="#e2c57e"/>
+
+  <fontDef name="alphabeta-small" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" faces="sc,tc,jp" color="#FFFFFF" size="20" size_cjk="13" hinting="Full" hinting_cjk="Slight"/>
+
+  <fontDef name="pb-dark" ref="alphabeta" color="#FFFFFF">
+    <fontParam if="disabled" color="#A9A9A9"/>
+    <fontParam if="pressed" offsetX="1" offsetY="1"/>
+  </fontDef>
+  <fontDef name="tooltip-font" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" faces="sc,tc,jp" color="#535353" size="20" size_cjk="14" hinting="Full" hinting_cjk="Full" shadow_color="#20FFFFFF" shadow_offset_x="1" shadow_offset_y="1">
+    <fontParam if="disabled" color="#CCC"/>
+  </fontDef>
+  <fontDef name="tooltip-font-markup" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" markup="true" faces="sc,tc,jp" color="#535353" size="20" size_cjk="14" hinting="Full" hinting_cjk="Full" shadow_color="#20FFFFFF" shadow_offset_x="1" shadow_offset_y="1">
+    <fontParam if="disabled" color="#CCC"/>
+  </fontDef>
+  <fontDef name="pb-dark-link" ref="pb-dark" color="#434343">
+    <fontParam if="disabled" color="#000"/>
+  </fontDef>
+  <fontDef name="pb-tab" ref="pb-dark" color="#999">
+    <fontParam if="selected" color="#FFFFFF"/>
+  </fontDef>
+  <fontDef name="pb-dark-green" ref="pb-dark" color="#56d245">
+    <fontParam if="selected" color="white"/>
+  </fontDef>
+  <fontDef name="pb-dark-yellow" ref="pb-dark" color="#FFD800"/>
+  <fontDef name="pb-dark-red" ref="pb-dark" color="#fc6a78"/>
+  <fontDef name="listbox-display" ref="pb-dark" color="#FFFFFF">
+    <fontParam if="disabled" color="#888888"/>
+    <fontParam if="hover | keyboardFocus | selected" color="#FFFFFF"/>
+  </fontDef>
+  <fontDef name="pb-dark-orange" ref="pb-dark" color="#BBBBBB"/>
+
+  <fontDef name="noto-8pt" filename="/data/themes/default/res/fonts/NotoSansCJK-Medium.ttc" faces="sc,tc,jp" color="#FFFFFF" border_width="1" border_color="#434343" size="8" incremental="false" characters="0123456789ABCDEF"/>
+
+  <fontDef name="noto-bold-large-white" filename="/data/themes/default/res/fonts/NotoSansCJK-Bold.ttc" faces="sc,tc,jp" color="#FFFFFF" hinting="Medium" kerning="false" size="16" shadow_color="#40000000" shadow_offset_x="1" shadow_offset_y="1" border_width="1" border_color="#282828"/>
+
+
+  <fontDef name="messagebox" filename="/data/themes/default/res/fonts/NotoSansCJK-Bold.ttc" faces="sc,tc,jp" color="#222222" hinting="Medium" kerning="false" size="24" shadow_color="#40000000" shadow_offset_x="1" shadow_offset_y="1" border_width="0" border_color="#484848"/>
+  
+  <fontDef name="mechabold" filename="/data/themes/default/res/fonts/NotoSansCJK-Bold.ttc" faces="sc,tc,jp" color="#FFFFFF" hinting="Medium" kerning="false" size="14" border_width="1" border_color="#484848"/>
+  <fontDef name="mechabold-red" ref="mechabold" color="#F09999" />
+  <fontDef name="mechabold-orange" ref="mechabold" color="#FF9900" />
+  <fontDef name="mechabold-green" ref="mechabold" color="#9BFF9B" />
+  <fontDef name="mechabold-blue" ref="mechabold" color="#87ceeb" />
+  <fontDef name="mechabold-yellow" ref="mechabold" color="#e2c57e"/>
+  <fontDef name="mechabold-tm" ref="mechabold" color="#ffffff">
+      <fontParam if="disabled" color="#CCC"/>
+  </fontDef>
+
+  <fontDef name="mechabold-large" filename="/data/themes/default/res/fonts/NotoSansCJK-Bold.ttc" faces="sc,tc,jp" color="#FFFFFF" hinting="Medium" kerning="false" size="18" border_width="1" border_color="#484848"/>
+
+  <fontDef name="title-font" filename="/data/themes/default/res/fonts/NotoSansCJK-Bold.ttc" faces="sc,tc,jp" color="#FFFFFF" size="20" size_cjk="15" hinting="AutoMedium" hinting_cjk="Slight" shadow_color="#55000000" shadow_offset_x="1" shadow_offset_y="1"/>
+  <fontDef name="title-font-black" filename="/data/themes/default/res/fonts/NotoSansCJK-Bold.ttc" faces="sc,tc,jp" color="#252525" size="20" size_cjk="15" hinting="AutoMedium" hinting_cjk="Slight"/>
+
+  <fontDef name="trainer-name" filename="/data/themes/default/res/fonts/NotoSans-SemiCondensedBlack.ttf" color="#434343" size="18" incremental="false" characters="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"/>
+
+  <fontDef name="console-green" ref="alphabeta" color="#7CB147"/>
+  <fontDef name="console-red" ref="alphabeta" color="#FF0000"/>
+  <fontDef name="console-blue" ref="alphabeta" color="#AACFFF"/>
+  <fontDef name="console-purple" ref="alphabeta" color="#FF99FF"/>
+  <fontDef name="console-orange" ref="alphabeta" color="#FF9900"/>
+  <fontDef name="console" ref="alphabeta" color="#FFFFFF"/>
+
+  <fontDef name="symbols-white" filename="/data/themes/default/res/fonts/DejaVuLGCSans.ttf" color="#FFFFFF" size="14" hinting="AutoFull" incremental="false" characters="┌├└─←→↑↓▸◂↖↗↙↘☒➤↻☒⇲"/>
+  <fontDef name="symbols-black" ref="symbols-white" color="#000000"/>
+</themes>
