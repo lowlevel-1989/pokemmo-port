@@ -8,14 +8,14 @@
 	<constantDef name="tooltip-tint"><color>#FF565D63</color></constantDef>
 
 	<!-- Include Main Theme -->
-  <include filename="fonts.android.xml"/>
+	<include filename="fonts.android.xml"/>
 	<!-- Must be included after all fonts are loaded -->
 	<fontGen/>
 
 	<include filename="/data/themes/default/cursors.xml"/>
 	<include filename="/data/themes/default/gfx.xml"/>
 	<include filename="/data/themes/default/gfx_ui.xml"/>
-  <include filename="/data/themes/android/gfx.xml"/>
+	<include filename="/data/themes/android/gfx.xml"/>
 	<include filename="/data/themes/default/init.xml"/>
 
 	<!-- Including rest of the GUI -->
@@ -26,11 +26,11 @@
 	<include filename="/data/themes/default/ui/inventory.xml"/>
 	<include filename="/data/themes/default/ui/chat.xml"/>
 	<!--
-	<include filename="../default/ui/monster-dex.xml"/>
+	<include filename="/data/themes/default/ui/monster-dex.xml"/>
 	-->
 	<include filename="/data/themes/default/ui/monster-frame.xml"/>
 	<!--
-	<include filename="../default/ui/pc.xml"/>
+	<include filename="/data/themes/default/ui/pc.xml"/>
 	-->
 	<include filename="/data/themes/default/ui/customization.xml"/>
 	<include filename="/data/themes/default/ui/settings.xml"/>
@@ -45,24 +45,26 @@
 	<include filename="/data/themes/default/ui/staff.xml"/>
 	<include filename="/data/themes/default/main-widgets.xml"/>
 
-  <include filename="/data/themes/android/android.xml"/>
-  <include filename="ui/battle.android.xml"/>
+	<include filename="/data/themes/android/android.xml"/>
+	<include filename="/data/themes/android/ui/android-battle.xml"/>
   <include filename="/data/themes/android/ui/android-chat.xml"/>
-  <include filename="/data/themes/android/ui/android-party.xml"/>
-  <include filename="/data/themes/android/ui/android-inventory.xml"/>
+	<include filename="/data/themes/android/ui/android-party.xml"/>
+	<include filename="/data/themes/android/ui/android-inventory.xml"/>
   <include filename="/data/themes/android/ui/android-customization.xml"/>
   <include filename="/data/themes/android/ui/android-event.xml"/>
-  <include filename="/data/themes/android/ui/android-monster-dex.xml"/>
-  <include filename="/data/themes/android/ui/android-monster-frame.xml"/>
-  <include filename="/data/themes/android/ui/android-settings.xml"/>
-  <include filename="/data/themes/android/ui/android-guild.xml"/>
-  <include filename="/data/themes/android/ui/android-matchmaking.xml"/>
-  <include filename="/data/themes/android/ui/android-social.xml"/>
-  <include filename="/data/themes/android/ui/android-shop.xml"/>
-  <include filename="/data/themes/android/ui/android-misc.xml"/>
-  <include filename="/data/themes/android/ui/android-staff.xml"/>
-  <include filename="/data/themes/android/ui/android-pc.xml"/>
-  <include filename="/data/themes/android/ui/android-trade.xml"/>
-  <include filename="/data/themes/android/ui/android-link.xml"/>
+	<include filename="/data/themes/android/ui/android-monster-dex.xml"/>
+	<include filename="/data/themes/android/ui/android-monster-frame.xml"/>
+	<include filename="/data/themes/android/ui/android-settings.xml"/>
+	<include filename="/data/themes/android/ui/android-guild.xml"/>
+	<include filename="/data/themes/android/ui/android-matchmaking.xml"/>
+	<include filename="/data/themes/android/ui/android-social.xml"/>
+	<include filename="/data/themes/android/ui/android-shop.xml"/>
+	<include filename="/data/themes/android/ui/android-misc.xml"/>
+	<include filename="/data/themes/android/ui/android-staff.xml"/>
+	<include filename="/data/themes/android/ui/android-pc.xml"/>
+	<include filename="/data/themes/android/ui/android-trade.xml"/>
+	<include filename="/data/themes/android/ui/android-link.xml"/>
   <include filename="/data/themes/android/ui/android-instance.xml"/>
+  <include filename="/data/themes/android/ui/android-encounter.xml"/>
+  <include filename="/data/themes/android/ui/android-incubator.xml"/>
 </themes>

@@ -215,6 +215,8 @@ case $selection in
         sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.0/' config/main.properties
         sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' config/main.properties
         sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=false/' config/main.properties
+
+        sed -i 's/is_mobile="true"/is_mobile="false"/' data/mods/console_mod/info.xml
         ;;
     3)
         echo "[MENU] PokeMMO Android"
@@ -225,6 +227,8 @@ case $selection in
         sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.8/' config/main.properties
         sed -i 's/^client\.gui\.scale\.hidpifont=.*/client.gui.scale.hidpifont=true/' config/main.properties
         sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=true/' config/main.properties
+
+        sed -i 's/is_mobile="false"/is_mobile="true"/' data/mods/console_mod/info.xml
         ;;
     4)
         echo "[MENU] PokeMMO Small"
@@ -235,6 +239,8 @@ case $selection in
         sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.4/' config/main.properties
         sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' config/main.properties
         sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=false/' config/main.properties
+
+        sed -i 's/is_mobile="true"/is_mobile="false"/' data/mods/console_mod/info.xml
         ;;
     5)
         echo "[MENU] PokeMMO Update"
@@ -300,6 +306,8 @@ case $selection in
         sed -i 's/^client\.gui\.scale\.hidpifont=.*/client.gui.scale.hidpifont=true/' config/main.properties
         sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' config/main.properties
         sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=false/' config/main.properties
+
+        sed -i 's/is_mobile="true"/is_mobile="false"/' data/mods/console_mod/info.xml
         ;;
 esac
 
