@@ -236,7 +236,7 @@ The following community-created themes are compatible with the **PokeMMO Port**.
 
 The following mods have been personally tested and validated for compatibility with PokeMMO Port. These mods meet my quality and stability standards.
 
-- [**Mystery Dungeon Follower Sprites**](https://forums.pokemmo.com/index.php?/topic/177129-mystery-dungeon-follower-sprites-sparkling-shiny-option-updated-15022025/) – This mod redesigns follower Pokémon to be in line with the Gen II sprites.
+- [**Mystery Dungeon Follower Sprites**](https://forums.pokemmo.com/index.php?/topic/177129-mystery-dungeon-follower-sprites-sparkling-shiny-option-updated-15022025/) – This mod aims to change the ingame follower sprites with the sprites of Mystery Dungeon.
 - [**Generation II Follower Sprites**](https://forums.pokemmo.com/index.php?/topic/183138-generation-ii-follower-sprites/) – This mod redesigns follower Pokémon to be in line with the Gen II sprites.
 - [**PokeMoeGirls Animated**](https://forums.pokemmo.com/index.php?/topic/184263-pokemoegirls-animated-v111-added-version-with-all-changed/) – Changes all female pokemon in the game to their waifu version.
 - [**Cute Chibi Sprites Mod**](https://forums.pokemmo.com/index.php?/topic/189710-%CB%9A%CA%9A%E2%99%A1%C9%9E%CB%9A-cute-chibi-sprites-mod-%CB%9A%CA%9A%E2%99%A1%C9%9E%CB%9A/)
