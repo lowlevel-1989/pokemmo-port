@@ -119,7 +119,7 @@ echo ls -l ${JAVA_HOME}
 ls -l ${JAVA_HOME}
 
 
-if ! command -v python >/dev/null 2>&1; then
+if ! command -v python >/dev/null 2>&1 || (( $(python -c 'import sys; print(sys.version_info[0])') <= 2 )); then
   echo MOUNT PYTHON
   # Mount Python runtime
   export PYTHONHOME="/tmp/python"
@@ -138,6 +138,7 @@ if ! command -v python >/dev/null 2>&1; then
   $ESUDO mount -o loop "$controlfolder/libs/${python_runtime}.squashfs" "${PYTHONHOME}"
   export PATH="${PYTHONHOME}/bin:$PATH"
 
+  which python
   echo ls -l ${PYTHONHOME}
   ls -l ${PYTHONHOME}
 fi
