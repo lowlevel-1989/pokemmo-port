@@ -267,6 +267,7 @@ The following mods have been personally tested and validated for compatibility w
 - [Revela](https://www.youtube.com/watch?v=WtAtlXwQsZw)
 - [Den](https://github.com/CodesNL)
 - [Manlibear](https://github.com/Manlibear)
+- giatsirobis
 
 ## Refs
 
