@@ -4,7 +4,7 @@
 import re
 
 
-def extract_jamepad_fields(javap_output: str):
+def extract_jamepad_fields(javap_output):
     results = {}
 
     # Extraer clase completa
@@ -35,7 +35,7 @@ def extract_jamepad_fields(javap_output: str):
 
     return results
 
-def credentials_extract_fields(javap_output: str):
+def credentials_extract_fields(javap_output):
     results = {}
 
     # Extract the class name (last part after /)

@@ -42,6 +42,12 @@ GAMEDIR=/$directory/ports/pokemmo
 
 cd $GAMEDIR
 
+echo RELEASE
+cat $GAMEDIR/RELEASE
+
+echo Dump CFW info
+$controlfolder/device_info.txt 2> /dev/null
+
 echo ls -l ${GAMEDIR}
 ls -l ${GAMEDIR}
 
@@ -143,9 +149,6 @@ fi
 # Fixed: Home screen freezing
 rm pokemmo_crash_*.log
 rm hs_err_pid*
-
-echo RELEASE
-cat $GAMEDIR/RELEASE
 
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 
@@ -336,6 +339,7 @@ if [ -f "patch.zip" ]; then
   fi
   cp -rf data/mods _mods
   $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --trace &
+  echo "unzip -o patch.zip"
   unzip -o patch.zip > /tmp/launch_menu.trace
   unzip -o PokeMMO.exe "f/*" "com/badlogic/gdx/controllers/desktop/*" -d /tmp/pokemmo >> /tmp/launch_menu.trace
   mv patch.zip patch_applied.zip
@@ -361,6 +365,7 @@ if [ -f "patch.zip" ]; then
   echo jar cf f.jar -C /tmp/pokemmo f >> /tmp/launch_menu.trace
   jar cf f.jar -C /tmp/pokemmo f
   echo "Generating loader.jar" >> /tmp/launch_menu.trace
+  python --version >> /tmp/launch_menu.trace
   python parse_javap.py >> /tmp/launch_menu.trace
   echo javac -d out/ -cp "f.jar:libs/*" src/*.java src/auto/*.java >> /tmp/launch_menu.trace
   javac -d out/ -cp "f.jar:libs/*" src/*.java src/auto/*.java
@@ -374,6 +379,7 @@ if [ -f "patch.zip" ]; then
 fi
 
 if [ ! -f "loader.jar" ]; then
+  cp patch_applied.zip patch.zip
   $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --show "ERROR: loader.jar"
   sleep 10
   pm_finish
