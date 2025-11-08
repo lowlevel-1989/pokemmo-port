@@ -350,7 +350,7 @@ if [ -f "patch.zip" ]; then
   rm -rf _mods
   for file in /tmp/pokemmo/f/*.class; do
     echo "[CHECKING] $file" >> /tmp/launch_menu.trace
-    if grep -q --binary-files=text "client.ui.login.username" "$file"; then
+    if grep -q -a "client.ui.login.username" "$file"; then
       echo "[MATCH] $file" >> /tmp/launch_menu.trace
       class_name="${file%.class}"
       class_name="${class_name#/tmp/pokemmo/}"
@@ -366,8 +366,18 @@ if [ -f "patch.zip" ]; then
   echo jar cf f.jar -C /tmp/pokemmo f >> /tmp/launch_menu.trace
   jar cf f.jar -C /tmp/pokemmo f
   echo "Generating loader.jar" >> /tmp/launch_menu.trace
-  python --version >> /tmp/launch_menu.trace
-  python parse_javap.py >> /tmp/launch_menu.trace
+  if command -v python &>/dev/null; then
+    PYTHON_CMD=python
+  elif command -v python3 &>/dev/null; then
+    PYTHON_CMD=python3
+  else
+    echo "Error: Neither 'python' nor 'python3' command found." >&2
+    exit 1
+  fi
+  echo "Found Python interpreter: $PYTHON_CMD"
+  echo "Using interpreter: $PYTHON_CMD" >> /tmp/launch_menu.trace
+  $PYTHON_CMD --version >> /tmp/launch_menu.trace
+  $PYTHON_CMD parse_javap.py >> /tmp/launch_menu.trace
   echo javac -d out/ -cp "f.jar:libs/*" src/*.java src/auto/*.java >> /tmp/launch_menu.trace
   javac -d out/ -cp "f.jar:libs/*" src/*.java src/auto/*.java
   cp -rf src/com/* out/com
