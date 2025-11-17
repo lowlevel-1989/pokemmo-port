@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<themes>
+  <theme name="logingui" ref="logingui">
+    <param name="background"><image>main-theme-color-image</image></param>
+  </theme>
+</themes>

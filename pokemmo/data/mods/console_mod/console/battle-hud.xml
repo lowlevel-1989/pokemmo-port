@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<themes>
+  <!-- nombre del pokemon tanto del enemigo como del jugador -->
+	<theme name="redlabel" ref="-defaults" allowWildcard="true">
+		<param name="font"><font>mechabold</font></param>
+		<param name="textAlignment"><enum type="alignment">LEFT</enum></param>
+    <!-- up, left, down, right -->
+		<param name="border"><border>20,45,0,0</border></param>
+	</theme>
+</themes>

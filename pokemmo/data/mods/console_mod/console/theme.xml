@@ -19,14 +19,14 @@
 	
 	<!-- Including rest of the GUI -->
 	<include filename="/data/themes/default/ui/main.xml"/>
-	<include filename="ui/battle.xml"/>
+	<include filename="/data/themes/default/ui/battle.xml"/>
 	<include filename="/data/themes/default/ui/contest.xml"/>
 	<include filename="/data/themes/default/ui/party.xml"/>
 	<include filename="/data/themes/default/ui/inventory.xml"/>
 	<include filename="/data/themes/default/ui/chat.xml"/>
 	<include filename="/data/themes/default/ui/monster-dex.xml"/>
 	<include filename="/data/themes/default/ui/monster-frame.xml"/>
-	<include filename="ui/customization.xml"/>
+	<include filename="/data/themes/default/ui/customization.xml"/>
 	<include filename="/data/themes/default/ui/settings.xml"/>
 	<include filename="/data/themes/default/ui/guild.xml"/>
 	<include filename="/data/themes/default/ui/matchmaking.xml"/>
@@ -37,7 +37,15 @@
 	<include filename="/data/themes/default/ui/link.xml"/>
 	<include filename="/data/themes/default/ui/misc.xml"/>
 	<include filename="/data/themes/default/ui/broker.xml"/>
-	<include filename="/data/themes/default/ui/pc.xml"/>
+  <include filename="/data/themes/default/ui/pc.xml"/>
+  <include filename="/data/themes/default/ui/incubator.xml"/>
 	<include filename="/data/themes/default/ui/staff.xml"/>
 	<include filename="/data/themes/default/main-widgets.xml"/>
+
+  <!-- Console Mod Theme -->
+	<include filename="gfx.xml"/>
+	<include filename="logingui-widget.xml"/>
+	<include filename="battle-hud.xml"/>
+	<include filename="battle-panel-hud-640w.xml"/>
+	<include filename="pc-panel-640w.xml"/>
 </themes>

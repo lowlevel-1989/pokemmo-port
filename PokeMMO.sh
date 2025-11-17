@@ -19,7 +19,7 @@ source $controlfolder/control.txt
 
 get_controls
 
-java_runtime="zulu17.48.15-ca-jdk17.0.10-linux.aarch64"
+java_runtime="zulu17.48.15-ca-jdk17.0.10-linux"
 weston_runtime="weston_pkg_0.2"
 mesa_runtime="mesa_pkg_0.1"
 python_runtime="python_3.11"

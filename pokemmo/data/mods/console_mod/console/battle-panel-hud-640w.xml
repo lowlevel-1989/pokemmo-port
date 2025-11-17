@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<themes>
+  <!-- Es el panel donde se seleccionan las habilidades y tambien se muestran los textos -->
+  <theme name="battle-panel" ref="-defaults" allowWildcard="true">
+    <param name="minHeight"><int>500</int></param>
+    <param name="background"><image>label1.background</image></param>
+    <!-- up, left, down, right -->
+    <!-- posiciona los botones-->
+    <param name="border"><border>7, 60, 7, 60</border></param>
+    <param name="defaultGap"><dimension>2,2</dimension></param>
+    <param name="smallGap"><dimension>8,8</dimension></param>
+    <param name="mediumGap"><dimension>10,10</dimension></param>
+    <param name="largeGap"><dimension>15,15</dimension></param>
+    <param name="namedGaps"><map/></param>
+    <theme name="dialoglayout" ref="-defaults">
+      <param name="border"><border>0</border></param>
+      <param name="defaultGap"><dimension>5,5</dimension></param>
+      <param name="smallGap"><dimension>8,8</dimension></param>
+      <param name="mediumGap"><dimension>10,10</dimension></param>
+      <param name="largeGap"><dimension>15,15</dimension></param>
+      <param name="namedGaps"><map/></param>
+      <theme name="label-black" ref="-defaults" allowWildcard="true">
+        <param name="font"><font>alphabeta-border</font></param>
+        <param name="border"><border>0,0,25,0</border></param>
+      </theme>
+    </theme>
+    <theme name="scrollpane" ref="scrollpane" allowWildcard="true">
+      <param name="minWidth"><int>300</int></param>
+      <param name="maxWidth"><int>300</int></param>
+      <param name="maxHeight"><int>70</int></param>
+      <param name="minHeight"><int>70</int></param>
+      <theme name="dialoglayout" ref="-dialog">
+        <param name="defaultGap"><dimension>0,0</dimension></param>
+        <theme name="button" ref="-defaults" allowWildcard="true">
+          <param name="font"><font>alphabeta-border</font></param>
+          <param name="border"><border>2,0,4,10</border></param>
+          <param name=""><image>button-small.*</image></param>
+          <param name="textAlignment"><enum type="alignment">RIGHT</enum></param>
+        </theme>
+      </theme>
+    </theme>
+    <theme name="label-black" ref="-defaults" allowWildcard="true">
+      <param name="font"><font>mechabold</font></param>
+      <param name="minWidth"><int>155</int></param>
+      <param name="textAlignment"><enum type="alignment">CENTER</enum></param>
+    </theme>
+    <theme name="label" ref="-defaults" allowWildcard="true">
+      <param name="font"><font>alphabeta-border</font></param>
+    </theme>
+    <theme name="button" ref="-defaults" allowWildcard="true">
+      <param name="font"><font>alphabeta-border</font></param>
+      <param name="border">
+        <border>2,0,4,10</border>
+      </param>
+      <param name="">
+        <image>button-small.*</image>
+      </param>
+      <param name="textAlignment">
+        <enum type="alignment">RIGHT</enum>
+      </param>
+    </theme>
+  </theme>
+
+  <theme name="battlegui" ref="-defaults">
+		<param name="defaultGap"><dimension>2,2</dimension></param>
+		<theme name="battle-text" ref="label" allowWildcard="true">
+			<param name="font"><font>battle</font></param>
+      <!-- up, left, down, right -->
+      <!-- border del texto en batalla -->
+			<param name="border"><border>17,70,7,70</border></param>
+		</theme>
+		<theme name="label" ref="-defaults" allowWildcard="true">
+			<param name="font"><font>mechabold</font></param>
+			<param name="border"><border>0,0,7,0</border></param>
+		</theme>
+    <!-- up, left, down, right -->
+		<param name="border"><border>65,64,64,65</border></param>
+		<theme name="ball-count" ref="-defaults">
+			<param name="border"><border>0</border></param>
+			<param name="defaultGap"><dimension>2,2</dimension></param>
+			<param name="smallGap"><dimension>2,2</dimension></param>
+			<param name="mediumGap"><dimension>2,2</dimension></param>
+			<param name="largeGap"><dimension>2,2</dimension></param>
+			<param name="namedGaps"><map/></param>
+		</theme>
+	</theme>
+
+	<theme name="battle-button-return" ref="-defaults" allowWildcard="true">
+		<param name="font"><font>alphabeta-border</font></param>
+    <!-- up, left, down, right -->
+    <!-- sacamos al boton back fuera de pantalla -->
+		<param name="border"><border>500</border></param>
+		<param name=""><image>battle-button-return.*</image></param>
+		<param name="textAlignment"><enum type="alignment">RIGHT</enum></param>
+		<theme name="label" ref="label" allowWildcard="true">
+		  <param name="border"><border>0</border></param>
+			<param name="font"><font>alphabeta</font></param>
+		</theme>
+		<theme name="label-button" ref="label" allowWildcard="true">
+		  <param name="border"><border>0</border></param>
+			<param name="font"><font>alphabeta</font></param>
+		</theme>
+	</theme>
+
+  <!-- este es el panel de la bolsa -->
+  <theme name="battle-item-usage-panel" ref="battle-panel" allowWildcard="true">
+    <param name="maxHeight">
+      <int>250</int>
+    </param>
+    <param name="minHeight">
+      <int>250</int>
+    </param>
+    <!-- up, left, down, right -->
+    <!-- Posicionamos los items de la bolsa -->
+    <param name="border">
+        <border>0, 60, 0, 0</border>
+    </param>
+    <theme name="dialoglayout" ref="-defaults">
+      <param name="border">
+        <border>0</border>
+      </param>
+      <param name="defaultGap">
+        <dimension>5,5</dimension>
+      </param>
+      <param name="smallGap">
+        <dimension>8,8</dimension>
+      </param>
+      <param name="mediumGap">
+        <dimension>10,10</dimension>
+      </param>
+      <param name="largeGap">
+        <dimension>15,15</dimension>
+      </param>
+      <param name="maxHeight">
+        <int>250</int>
+      </param>
+      <param name="minHeight">
+        <int>250</int>
+      </param>
+      <param name="namedGaps">
+        <map/>
+      </param>
+      <theme name="scrollpane" ref="scrollpane" allowWildcard="true">
+        <theme name="label-black" ref="-defaults" allowWildcard="true">
+          <param name="font">
+            <font>alphabeta-border</font>
+          </param>
+          <param name="border">
+            <border>0,0,25,0</border>
+          </param>
+        </theme>
+      </theme>
+    </theme>
+    <theme name="scrollpane" ref="scrollpane" allowWildcard="true">
+      <param name="minWidth">
+        <int>300</int>
+      </param>
+      <param name="maxWidth">
+        <int>300</int>
+      </param>
+      <param name="maxHeight">
+        <int>208</int>
+      </param>
+      <param name="minHeight">
+        <int>208</int>
+      </param>
+      <theme name="dialoglayout" ref="-dialog">
+        <param name="defaultGap">
+          <dimension>0,0</dimension>
+        </param>
+        <theme name="button" ref="-defaults" allowWildcard="true">
+          <param name="font">
+            <font>alphabeta-border</font>
+          </param>
+          <param name="border">
+            <border>2,0,4,10</border>
+          </param>
+          <param name="">
+            <image>button-small.*</image>
+          </param>
+          <param name="textAlignment">
+            <enum type="alignment">RIGHT</enum>
+          </param>
+        </theme>
+      </theme>
+    </theme>
+  </theme>
+
+</themes>

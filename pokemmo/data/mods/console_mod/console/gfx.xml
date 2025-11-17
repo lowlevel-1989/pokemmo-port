@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<themes>
+  <images file="res/white.png" filter="nearest">
+    <area name="main-theme-color-image" xywh="*" tint="main-theme-color"/>
+  </images>
+</themes>

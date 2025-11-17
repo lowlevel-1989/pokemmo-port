@@ -9,7 +9,11 @@ varying LOWP vec4 v_color;
 varying vec2 v_texCoords;
 uniform sampler2D u_texture;
 
-const float glowPass = 1.0;
+#ifdef glowHQ
+const float glowPass = 9.0;
+#else
+const float glowPass = 3.0;
+#endif
 
 uniform float glowIntensity;
 uniform float glowThreshold;
@@ -37,7 +41,10 @@ void main()
             float uv_y = v_texCoords.y * size.y;
 
             float sum = 0.0;
-                uv_y = (v_texCoords.y * size.y) + (glowSize * float(float(1) - (glowPass * 0.5)));
+            int num_pass = int(glowPass);
+            for (int n = 0; n < num_pass; ++n)
+            {
+                uv_y = (v_texCoords.y * size.y) + (glowSize * float(float(n) - (glowPass * 0.5)));
                 float h_sum = 0.0;
                 h_sum += fTexelFetch(u_texture, ivec2(uv_x - (4.0 * glowSize), uv_y));
                 h_sum += fTexelFetch(u_texture, ivec2(uv_x - (3.0 * glowSize), uv_y));
@@ -49,6 +56,7 @@ void main()
                 h_sum += fTexelFetch(u_texture, ivec2(uv_x + (3.0 * glowSize), uv_y));
                 h_sum += fTexelFetch(u_texture, ivec2(uv_x + (4.0 * glowSize), uv_y));
                 sum += h_sum / glowPass;
+            }
 
             float v = (sum / 9.0) * glowIntensity;
             pixel = vec4(glowColor, v);

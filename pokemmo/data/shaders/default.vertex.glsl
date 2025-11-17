@@ -48,62 +48,15 @@ varying vec2 v_specularUV;
 attribute vec2 a_boneWeight0;
 #endif //boneWeight0Flag
 
-#ifdef boneWeight1Flag
-#ifndef boneWeightsFlag
-#define boneWeightsFlag
+#if defined(numBones) && defined(boneWeightsFlag)
+#if (numBones > 0) 
+#define skinningFlag
 #endif
-attribute vec2 a_boneWeight1;
-#endif //boneWeight1Flag
-
-#ifdef boneWeight2Flag
-#ifndef boneWeightsFlag
-#define boneWeightsFlag
 #endif
-attribute vec2 a_boneWeight2;
-#endif //boneWeight2Flag
-
-#ifdef boneWeight3Flag
-#ifndef boneWeightsFlag
-#define boneWeightsFlag
-#endif
-attribute vec2 a_boneWeight3;
-#endif //boneWeight3Flag
-
-#ifdef boneWeight4Flag
-#ifndef boneWeightsFlag
-#define boneWeightsFlag
-#endif
-attribute vec2 a_boneWeight4;
-#endif //boneWeight4Flag
-
-#ifdef boneWeight5Flag
-#ifndef boneWeightsFlag
-#define boneWeightsFlag
-#endif
-attribute vec2 a_boneWeight5;
-#endif //boneWeight5Flag
-
-#ifdef boneWeight6Flag
-#ifndef boneWeightsFlag
-#define boneWeightsFlag
-#endif
-attribute vec2 a_boneWeight6;
-#endif //boneWeight6Flag
-
-#ifdef boneWeight7Flag
-#ifndef boneWeightsFlag
-#define boneWeightsFlag
-#endif
-attribute vec2 a_boneWeight7;
-#endif //boneWeight7Flag
 
 uniform mat4 u_worldTrans;
 
-#if defined(numBones)
-#if numBones > 0
-uniform mat4 u_bones[numBones];
-#endif //numBones
-#endif
+uniform mat4 u_bones[1];
 
 #ifdef shininessFlag
 uniform float u_shininess;
@@ -169,6 +122,7 @@ varying vec3 v_shadowMapUv;
 #endif //shadowMapFlag
 
 #endif // lightingFlag
+varying vec3 v_ambientLight;
 
 #ifdef cameraPositionFlag
 uniform vec4 u_cameraPosition;
@@ -202,6 +156,7 @@ void main() {
 		v_color = a_color;
 	#endif // colorFlag
 
+		
 	#ifdef blendedFlag
 		v_opacity = u_opacity;
 		#ifdef alphaTestFlag
@@ -210,10 +165,18 @@ void main() {
 	#endif // blendedFlag
 	
 	#ifdef skinningFlag
+		mat4 skinning = mat4(0.0);
+		#ifdef boneWeight0Flag
+			skinning += (a_boneWeight0.y) * u_bones[0];
+		#endif //boneWeight0Flag
+	#endif //skinningFlag
+
+	#ifdef skinningFlag
 		vec4 pos = u_worldTrans * skinning * vec4(a_position, 1.0);
 	#else
 		vec4 pos = u_worldTrans * vec4(a_position, 1.0);
 	#endif
+	pos = u_worldTrans * vec4(a_position, 1.0);
 		
 	gl_Position = u_projViewTrans * pos;
 		
@@ -265,7 +228,9 @@ void main() {
 			ambientLight += u_sphericalHarmonics[8] * (normal.x * normal.x - normal.y * normal.y);			
 		#endif // sphericalHarmonicsFlag
 
-		v_lightDiffuse = vec3(0.0);
+		v_ambientLight = vec3(1.0);
+	  v_lightDiffuse = vec3(0.0);
+
 			
 		#ifdef specularFlag
 			v_lightSpecular = vec3(0.0);
@@ -300,12 +265,4 @@ void main() {
 			}
 		#endif // numPointLights
 	#endif // lightingFlag
-
-
-	#ifdef lightMask
-	if (u_useLightTexture)
-	{
-		v_lightMaskUV = (gl_Position.xy * u_lightTextureScale) + u_lightTexturePos;
-	}
-	#endif
 }
