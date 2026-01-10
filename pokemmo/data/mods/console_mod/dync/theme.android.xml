@@ -46,6 +46,7 @@
 	<include filename="/data/themes/default/main-widgets.xml"/>
 
 	<include filename="/data/themes/android/android.xml"/>
+  <include filename="/data/themes/android/ui/android-advanced-search.xml"/>
 	<include filename="/data/themes/android/ui/android-battle.xml"/>
   <include filename="/data/themes/android/ui/android-chat.xml"/>
 	<include filename="/data/themes/android/ui/android-party.xml"/>

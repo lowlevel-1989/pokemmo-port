@@ -97,12 +97,6 @@ attribute vec2 a_boneWeight6;
 attribute vec2 a_boneWeight7;
 #endif //boneWeight7Flag
 
-#if defined(numBones) && defined(boneWeightsFlag)
-#if (numBones > 0) 
-#define skinningFlag
-#endif
-#endif
-
 uniform mat4 u_worldTrans;
 
 #if defined(numBones)
@@ -174,10 +168,6 @@ varying vec3 v_shadowMapUv;
 #define separateAmbientFlag
 #endif //shadowMapFlag
 
-#if defined(ambientFlag) && defined(separateAmbientFlag)
-varying vec3 v_ambientLight;
-#endif //separateAmbientFlag
-
 #endif // lightingFlag
 
 #ifdef cameraPositionFlag
@@ -212,7 +202,6 @@ void main() {
 		v_color = a_color;
 	#endif // colorFlag
 
-		
 	#ifdef blendedFlag
 		v_opacity = u_opacity;
 		#ifdef alphaTestFlag
@@ -220,34 +209,6 @@ void main() {
 		#endif //alphaTestFlag
 	#endif // blendedFlag
 	
-	#ifdef skinningFlag
-		mat4 skinning = mat4(0.0);
-		#ifdef boneWeight0Flag
-			skinning += (a_boneWeight0.y) * u_bones[int(a_boneWeight0.x)];
-		#endif //boneWeight0Flag
-		#ifdef boneWeight1Flag				
-			skinning += (a_boneWeight1.y) * u_bones[int(a_boneWeight1.x)];
-		#endif //boneWeight1Flag
-		#ifdef boneWeight2Flag		
-			skinning += (a_boneWeight2.y) * u_bones[int(a_boneWeight2.x)];
-		#endif //boneWeight2Flag
-		#ifdef boneWeight3Flag
-			skinning += (a_boneWeight3.y) * u_bones[int(a_boneWeight3.x)];
-		#endif //boneWeight3Flag
-		#ifdef boneWeight4Flag
-			skinning += (a_boneWeight4.y) * u_bones[int(a_boneWeight4.x)];
-		#endif //boneWeight4Flag
-		#ifdef boneWeight5Flag
-			skinning += (a_boneWeight5.y) * u_bones[int(a_boneWeight5.x)];
-		#endif //boneWeight5Flag
-		#ifdef boneWeight6Flag
-			skinning += (a_boneWeight6.y) * u_bones[int(a_boneWeight6.x)];
-		#endif //boneWeight6Flag
-		#ifdef boneWeight7Flag
-			skinning += (a_boneWeight7.y) * u_bones[int(a_boneWeight7.x)];
-		#endif //boneWeight7Flag
-	#endif //skinningFlag
-
 	#ifdef skinningFlag
 		vec4 pos = u_worldTrans * skinning * vec4(a_position, 1.0);
 	#else
@@ -304,17 +265,7 @@ void main() {
 			ambientLight += u_sphericalHarmonics[8] * (normal.x * normal.x - normal.y * normal.y);			
 		#endif // sphericalHarmonicsFlag
 
-		#ifdef ambientFlag
-			#ifdef separateAmbientFlag
-				v_ambientLight = ambientLight;
-				v_lightDiffuse = vec3(0.0);
-			#else
-				v_lightDiffuse = ambientLight;
-			#endif //separateAmbientFlag
-		#else
-	        v_lightDiffuse = vec3(0.0);
-		#endif //ambientFlag
-
+		v_lightDiffuse = vec3(0.0);
 			
 		#ifdef specularFlag
 			v_lightSpecular = vec3(0.0);

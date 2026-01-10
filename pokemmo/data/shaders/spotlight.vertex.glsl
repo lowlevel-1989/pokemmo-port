@@ -189,10 +189,6 @@ varying vec3 v_shadowMapUv;
 #define separateAmbientFlag
 #endif //shadowMapFlag
 
-#if defined(ambientFlag) && defined(separateAmbientFlag)
-varying vec3 v_ambientLight;
-#endif //separateAmbientFlag
-
 #endif // lightingFlag
 
 void main() {
@@ -301,7 +297,6 @@ void main() {
 
 		#ifdef ambientFlag
 			#ifdef separateAmbientFlag
-				v_ambientLight = ambientLight;
 				v_lightDiffuse = vec3(0.0);
 			#else
 				v_lightDiffuse = ambientLight;

@@ -12,6 +12,7 @@
     <fontParam if="pressed" offsetX="1" offsetY="1"/>
   </fontDef>
   <fontDef name="alphabeta-gray" ref="alphabeta" color="#484848"/>
+  <fontDef name="alphabeta-lightgray" ref="alphabeta" color="#CECECE"/>
   <fontDef name="alphabeta-black" ref="alphabeta" color="black"/>
   <fontDef name="alphabeta-green" ref="alphabeta" color="#7CB147"/>
   <fontDef name="alphabeta-blue" ref="alphabeta" color="#AACFFF"/>
