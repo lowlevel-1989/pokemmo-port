@@ -143,6 +143,25 @@ if ! command -v python >/dev/null 2>&1 || (( $(python -c 'import sys; print(sys.
   ls -l ${PYTHONHOME}
 fi
 
+# Resolve the Python interpreter once, up front.
+if command -v python &>/dev/null; then
+  PYTHON_CMD=python
+elif command -v python3 &>/dev/null; then
+  PYTHON_CMD=python3
+else
+  echo "Error: Neither 'python' nor 'python3' command found." >&2
+  exit 1
+fi
+
+# BusyBox's `unzip` (ROCKNIX and some other CFWs) fails with
+# "unzip: short read" on entries inside patch.zip / PokeMMO.exe, which
+# silently truncates extraction and breaks everything downstream.
+# Use Python's zipfile module instead, which isn't affected by that
+# BusyBox limitation.
+pm_unzip() {
+  "$PYTHON_CMD" "$GAMEDIR/pmzipextract.py" "$@"
+}
+
 if [ ! -f "credentials.txt" ]; then
   mv credentials.template.txt credentials.txt
 fi
@@ -257,7 +276,7 @@ case $selection in
         if [ ! -f "patch.zip" ]; then
           cp patch_applied.zip patch.zip
         fi
-        unzip -o _pokemmo.zip >> /tmp/launch_menu.trace
+        pm_unzip _pokemmo.zip . >> /tmp/launch_menu.trace
         rm _pokemmo.zip
         rm PokeMMO.sh
         echo "Generating PATCHES" >> /tmp/launch_menu.trace
@@ -340,9 +359,9 @@ if [ -f "patch.zip" ]; then
   fi
   cp -rf data/mods _mods
   $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --trace &
-  echo "unzip -o patch.zip"
-  unzip -o patch.zip > /tmp/launch_menu.trace
-  unzip -o PokeMMO.exe "f/*" "com/badlogic/gdx/controllers/desktop/*" -d /tmp/pokemmo >> /tmp/launch_menu.trace
+  echo "pm_unzip patch.zip"
+  pm_unzip patch.zip . > /tmp/launch_menu.trace
+  pm_unzip PokeMMO.exe /tmp/pokemmo "f/" "com/badlogic/gdx/controllers/desktop/" >> /tmp/launch_menu.trace
   mv patch.zip patch_applied.zip
   mv main.properties config/main.properties
   mv theme.xml data/mods/console_mod/console/theme.xml
@@ -366,14 +385,6 @@ if [ -f "patch.zip" ]; then
   echo jar cf f.jar -C /tmp/pokemmo f >> /tmp/launch_menu.trace
   jar cf f.jar -C /tmp/pokemmo f
   echo "Generating loader.jar" >> /tmp/launch_menu.trace
-  if command -v python &>/dev/null; then
-    PYTHON_CMD=python
-  elif command -v python3 &>/dev/null; then
-    PYTHON_CMD=python3
-  else
-    echo "Error: Neither 'python' nor 'python3' command found." >&2
-    exit 1
-  fi
   echo "Found Python interpreter: $PYTHON_CMD"
   echo "Using interpreter: $PYTHON_CMD" >> /tmp/launch_menu.trace
   $PYTHON_CMD --version >> /tmp/launch_menu.trace
@@ -409,7 +420,7 @@ fi
 
 # DEBUG INFO
 echo look loader
-unzip -l loader.jar
+"$PYTHON_CMD" -c "import zipfile,sys; [print(n) for n in zipfile.ZipFile('loader.jar').namelist()]"
 
 if [ "$DEVICE_NAME" = "TRIMUI-SMART-PRO" ]; then
   DISPLAY_WIDTH=1280
