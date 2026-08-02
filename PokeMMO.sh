@@ -233,11 +233,13 @@ case $selection in
         echo "[MENU] PokeMMO"
         cat data/mods/console_mod/dync/theme.xml > data/mods/console_mod/console/theme.xml
 
-        client_ui_theme=$(grep -E '^client.ui.theme=' config/main.properties | cut -d'=' -f2)
+        sed -i 's/^client\.ui\.theme=.*/client.ui.theme=console/' main_config.properties
 
-        sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.0/' config/main.properties
-        sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' config/main.properties
-        sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=false/' config/main.properties
+        client_ui_theme=$(grep -E '^client.ui.theme=' main_config.properties | cut -d'=' -f2)
+
+        sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.0/' main_config.properties
+        sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' main_config.properties
+        sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=false/' main_config.properties
 
         sed -i 's/is_mobile="true"/is_mobile="false"/' data/mods/console_mod/info.xml
         ;;
@@ -245,11 +247,12 @@ case $selection in
         echo "[MENU] PokeMMO Android"
         cat data/mods/console_mod/dync/theme.android.xml > data/mods/console_mod/console/theme.xml
 
-        client_ui_theme=$(grep -E '^client.ui.theme=' config/main.properties | cut -d'=' -f2)
+        sed -i 's/^client\.ui\.theme=.*/client.ui.theme=android/' main_config.properties
 
-        sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.8/' config/main.properties
-        sed -i 's/^client\.gui\.scale\.hidpifont=.*/client.gui.scale.hidpifont=true/' config/main.properties
-        sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=true/' config/main.properties
+        client_ui_theme=$(grep -E '^client.ui.theme=' main_config.properties | cut -d'=' -f2)
+        sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.8/' main_config.properties
+        sed -i 's/^client\.gui\.scale\.hidpifont=.*/client.gui.scale.hidpifont=true/' main_config.properties
+        sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=true/' main_config.properties
 
         sed -i 's/is_mobile="false"/is_mobile="true"/' data/mods/console_mod/info.xml
         ;;
@@ -257,11 +260,13 @@ case $selection in
         echo "[MENU] PokeMMO Small"
         cat data/mods/console_mod/dync/theme.small.xml > data/mods/console_mod/console/theme.xml
 
-        client_ui_theme=$(grep -E '^client.ui.theme=' config/main.properties | cut -d'=' -f2)
+        sed -i 's/^client\.ui\.theme=.*/client.ui.theme=console/' main_config.properties
 
-        sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.4/' config/main.properties
-        sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' config/main.properties
-        sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=false/' config/main.properties
+        client_ui_theme=$(grep -E '^client.ui.theme=' main_config.properties | cut -d'=' -f2)
+
+        sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.4/' main_config.properties
+        sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' main_config.properties
+        sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=false/' main_config.properties
 
         sed -i 's/is_mobile="true"/is_mobile="false"/' data/mods/console_mod/info.xml
         ;;
@@ -269,9 +274,6 @@ case $selection in
         echo "[MENU] PokeMMO Update"
         rm -rf /tmp/launch_menu.trace
         $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --trace &
-        if [ ! -f "main.properties" ]; then
-          cp config/main.properties main.properties
-        fi
         curl -L https://pokemmo.com/download_file/1/ -o _pokemmo.zip 2> /tmp/launch_menu.trace
         if [ ! -f "patch.zip" ]; then
           cp patch_applied.zip patch.zip
@@ -286,7 +288,6 @@ case $selection in
     6)
         echo "[MENU] PokeMMO Restore"
         cp patch_applied.zip patch.zip
-        rm -rf config/main.properties main.properties
         $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --show "PokeMMO Restored"
         pm_finish
 
@@ -321,16 +322,21 @@ case $selection in
         ;;
     *)
         echo "[MENU] Unknown option: $selection"
+
         cat data/mods/console_mod/dync/theme.xml > data/mods/console_mod/console/theme.xml
 
-        client_ui_theme=$(grep -E '^client.ui.theme=' config/main.properties | cut -d'=' -f2)
+        sed -i 's/^client\.ui\.theme=.*/client.ui.theme=console/' main_config.properties
 
-        sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.0/' config/main.properties
-        sed -i 's/^client\.gui\.scale\.hidpifont=.*/client.gui.scale.hidpifont=true/' config/main.properties
-        sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' config/main.properties
-        sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=false/' config/main.properties
+        client_ui_theme=$(grep -E '^client.ui.theme=' main_config.properties | cut -d'=' -f2)
+
+        sed -i 's/^client\.gui\.scale\.guiscale=.*/client.gui.scale.guiscale=1.0/' main_config.properties
+        sed -i 's/^client\.gui\.hud\.hotkeybar\.y=.*/client.gui.hud.hotkeybar.y=0/' main_config.properties
+        sed -i 's/^client\.ui\.theme\.mobile=.*/client.ui.theme\.mobile=false/' main_config.properties
 
         sed -i 's/is_mobile="true"/is_mobile="false"/' data/mods/console_mod/info.xml
+
+
+
         ;;
 esac
 
@@ -351,9 +357,6 @@ echo env_vars=$env_vars
 if [ -f "patch.zip" ]; then
   rm -rf /tmp/launch_menu.trace
   rm -rf src f com /tmp/pokemmo _mods f.jar loader.jar
-  if [ ! -f "main.properties" ]; then
-    cp config/main.properties main.properties
-  fi
   if [ ! -f "theme.xml" ]; then
     cp data/mods/console_mod/console/theme.xml theme.xml
   fi
@@ -363,7 +366,6 @@ if [ -f "patch.zip" ]; then
   pm_unzip patch.zip . > /tmp/launch_menu.trace
   pm_unzip PokeMMO.exe /tmp/pokemmo "f/" "com/badlogic/gdx/controllers/desktop/" >> /tmp/launch_menu.trace
   mv patch.zip patch_applied.zip
-  mv main.properties config/main.properties
   mv theme.xml data/mods/console_mod/console/theme.xml
   cp -rf _mods/* data/mods
   rm -rf _mods
@@ -392,6 +394,7 @@ echo "GPTOKEYB2   $GPTOKEYB2"
 echo "ENV_VARS    $ENV_VARS"
 
 $GPTOKEYB2 "PokeMMO" -c "./controls.ini" &
+cp -f main_config.properties config/main.properties
 $GAMEDIR/bin/linux/arm64/PokeMMO
 
 if [[ "$PM_CAN_MOUNT" != "N" ]]; then
