@@ -161,22 +161,11 @@ client.roms.nds3=roms/pokemon_heartgold.nds
 
 ### Login Without Keyboard Input
 
-If your device does not have a keyboard, you can try one of the following methods to log in:
-
-#### Option 1: pokemmo/credentials.txt
-
-Edit the file pokemmo/credentials.txt with your login credentials.
-
-This feature is tightly linked to the official PokeMMO client version.
-If the official game receives an update, Option 1 may stop working temporarily.
-
-If you notice that Option 1 stops working after a client update, please report it so that the port can be patched and restored as soon as possible.
-
-#### Option 2: Connect a Keyboard for First Login
+#### Option 1: Connect a Keyboard for First Login
 
 Temporarily connect a physical keyboard (USB or Bluetooth), log in as usual, and make sure to check the **"Remember Me"** option.
 
-#### Option 3: Type Password in Username Field (thanks ddrsoul)
+#### Option 2: Type Password in Username Field (thanks ddrsoul)
 
 Type your password in the **username** field, then **copy and paste** it into the password field. This allows you to use system copy/paste functions even without a keyboard.
 

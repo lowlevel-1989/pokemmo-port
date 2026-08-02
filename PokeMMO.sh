@@ -367,60 +367,8 @@ if [ -f "patch.zip" ]; then
   mv theme.xml data/mods/console_mod/console/theme.xml
   cp -rf _mods/* data/mods
   rm -rf _mods
-  for file in /tmp/pokemmo/f/*.class; do
-    echo "[CHECKING] $file" >> /tmp/launch_menu.trace
-    if grep -q -a "client.ui.login.username" "$file"; then
-      echo "[MATCH] $file" >> /tmp/launch_menu.trace
-      class_name="${file%.class}"
-      class_name="${class_name#/tmp/pokemmo/}"
-      class_name="${class_name//\//.}"
-      break
-    fi
-  done
-  echo "Generating f.jar" >> /tmp/launch_menu.trace
-  rm -rf credentials.javap.txt jamepad.javap.txt
-  echo "class_name $class_name" >> /tmp/launch_menu.trace
-  javap -v -classpath /tmp/pokemmo "$class_name" > credentials.javap.txt
-  javap -v -classpath /tmp/pokemmo com.badlogic.gdx.controllers.desktop.JamepadControllerManager > jamepad.javap.txt
-  echo jar cf f.jar -C /tmp/pokemmo f >> /tmp/launch_menu.trace
-  jar cf f.jar -C /tmp/pokemmo f
-  echo "Generating loader.jar" >> /tmp/launch_menu.trace
-  echo "Found Python interpreter: $PYTHON_CMD"
-  echo "Using interpreter: $PYTHON_CMD" >> /tmp/launch_menu.trace
-  $PYTHON_CMD --version >> /tmp/launch_menu.trace
-  $PYTHON_CMD parse_javap.py >> /tmp/launch_menu.trace
-  echo javac -d out/ -cp "f.jar:libs/*" src/*.java src/auto/*.java >> /tmp/launch_menu.trace
-  javac -d out/ -cp "f.jar:libs/*" src/*.java src/auto/*.java
-  cp -rf src/com/* out/com
-  ls -R src
-  echo jar cf loader.jar -C $GAMEDIR/out org -C $GAMEDIR/out com -C $GAMEDIR/out f >> /tmp/launch_menu.trace
-  jar cf loader.jar -C $GAMEDIR/out org -C $GAMEDIR/out com -C $GAMEDIR/out f
-  rm -rf out
-  sleep 1
   echo __END__ >> /tmp/launch_menu.trace
 fi
-
-if [ ! -f "loader.jar" ]; then
-  cp patch_applied.zip patch.zip
-  $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --show "ERROR: loader.jar"
-  sleep 10
-  pm_finish
-
-  if [[ "$PM_CAN_MOUNT" != "N" ]]; then
-    if [ "$westonpack" -eq 1 ]; then
-      $ESUDO umount "${weston_dir}"
-      $ESUDO umount "${mesa_dir}"
-    fi
-    $ESUDO umount "${JAVA_HOME}"
-    $ESUDO umount "${PYTHONHOME}"
-  fi
-
-  exit 1
-fi
-
-# DEBUG INFO
-echo look loader
-"$PYTHON_CMD" -c "import zipfile,sys; [print(n) for n in zipfile.ZipFile('loader.jar').namelist()]"
 
 if [ "$DEVICE_NAME" = "TRIMUI-SMART-PRO" ]; then
   DISPLAY_WIDTH=1280
@@ -433,42 +381,18 @@ if [ -n "$ESUDO" ]; then
 fi
 GPTOKEYB2=$(echo "$GPTOKEYB2" | sed 's/--preserve-env=SDL_GAMECONTROLLERCONFIG_FILE,/&SDL_GAMECONTROLLERCONFIG,/')
 
-COMMAND="CRUSTY_SHOW_CURSOR=1 WESTON_HEADLESS_WIDTH="$DISPLAY_WIDTH" WESTON_HEADLESS_HEIGHT="$DISPLAY_HEIGHT" $weston_dir/westonwrap.sh headless noop kiosk crusty_glx_gl4es"
-PATCH="loader.jar:libs/*:PokeMMO.exe"
-
-JAVA_OPTS="-Xms128M -Xmx384M -Dorg.lwjgl.util.Debug=true -Dfile.encoding=UTF-8"
 ENV_VARS="PATH="$PATH" JAVA_HOME="$JAVA_HOME" XDG_SESSION_TYPE=x11 GAMEDIR="$GAMEDIR""
-CLASS_PATH="-cp "${PATCH}" com.pokeemu.client.Client"
-
 echo "PokeMMO        $(cat RELEASE)"
 echo "controlfolder  $controlfolder"
 echo "theme          $client_ui_theme"
 
 echo "WESTOMPACK  $westonpack"
 echo "ESUDO       $ESUDO"
-echo "COMMAND     $COMMAND"
-echo "PATCH       $PATCH"
 echo "GPTOKEYB2   $GPTOKEYB2"
-echo "JAVA_OPTS   $JAVA_OPTS"
 echo "ENV_VARS    $ENV_VARS"
-echo "CLASS_PATH  $CLASS_PATH"
 
-$GPTOKEYB2 "java" -c "./controls.ini" &
-if [ "$westonpack" -eq 1 ]; then 
-  # Weston-specific environment
-  ENV_WESTON="$ENV_VARS XDG_DATA_HOME="$GAMEDIR" WAYLAND_DISPLAY="
-  
-  $ESUDO env $COMMAND $ENV_WESTON java $JAVA_OPTS $CLASS_PATH
-  
-  # Clean up Weston environment
-  $ESUDO "$weston_dir/westonwrap.sh" cleanup
-else
-  # Non-Weston environment with cursor fix
-  ENV_NON_WESTON="$ENV_VARS CRUSTY_SHOW_CURSOR=1"
-  
-  env $ENV_NON_WESTON java $JAVA_OPTS $CLASS_PATH
-fi
-
+$GPTOKEYB2 "PokeMMO" -c "./controls.ini" &
+$GAMEDIR/bin/linux/arm64/PokeMMO
 
 if [[ "$PM_CAN_MOUNT" != "N" ]]; then
   if [ "$westonpack" -eq 1 ]; then
