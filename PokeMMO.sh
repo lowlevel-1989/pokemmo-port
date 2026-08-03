@@ -383,19 +383,38 @@ if [ -n "$ESUDO" ]; then
 fi
 GPTOKEYB2=$(echo "$GPTOKEYB2" | sed 's/--preserve-env=SDL_GAMECONTROLLERCONFIG_FILE,/&SDL_GAMECONTROLLERCONFIG,/')
 
+COMMAND="CRUSTY_SHOW_CURSOR=1 WESTON_HEADLESS_WIDTH="$DISPLAY_WIDTH" WESTON_HEADLESS_HEIGHT="$DISPLAY_HEIGHT" $weston_dir/westonwrap.sh headless noop kiosk crusty_glx_gl4es"
+
 ENV_VARS="PATH="$PATH" JAVA_HOME="$JAVA_HOME" XDG_SESSION_TYPE=x11 GAMEDIR="$GAMEDIR""
+
 echo "PokeMMO        $(cat RELEASE)"
 echo "controlfolder  $controlfolder"
 echo "theme          $client_ui_theme"
 
 echo "WESTOMPACK  $westonpack"
 echo "ESUDO       $ESUDO"
+echo "COMMAND     $COMMAND"
 echo "GPTOKEYB2   $GPTOKEYB2"
 echo "ENV_VARS    $ENV_VARS"
 
 $GPTOKEYB2 "PokeMMO" -c "./controls.ini" &
 cp -f main_config.properties config/main.properties
-$GAMEDIR/bin/linux/arm64/PokeMMO
+
+if [ "$westonpack" -eq 1 ]; then 
+  # Weston-specific environment
+  ENV_WESTON="$ENV_VARS XDG_DATA_HOME="$GAMEDIR" WAYLAND_DISPLAY="
+  
+  $ESUDO env $COMMAND $ENV_WESTON $GAMEDIR/bin/linux/arm64/PokeMMO
+  
+  # Clean up Weston environment
+  $ESUDO "$weston_dir/westonwrap.sh" cleanup
+else
+  # Non-Weston environment with cursor fix
+  ENV_NON_WESTON="$ENV_VARS CRUSTY_SHOW_CURSOR=1"
+  
+  env $ENV_NON_WESTON $GAMEDIR/bin/linux/arm64/PokeMMO
+fi
+
 
 if [[ "$PM_CAN_MOUNT" != "N" ]]; then
   if [ "$westonpack" -eq 1 ]; then
