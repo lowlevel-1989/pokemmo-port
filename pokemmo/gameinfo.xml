@@ -3,8 +3,11 @@
   <game>
     <path>./PokeMMO.sh</path>
     <name>PokeMMO</name>
-    <desc>Unofficial port of PokeMMO for PortMaster-compatible devices. PokeMMO is a fan-made multiplayer online game that brings together various Pokémon generations in a single MMO experience.</desc>
+    <desc>Unofficial port of PokeMMO for PortMaster-compatible devices. PokeMMO is a fan-made multiplayer online game that brings together various Pokémon generations in a single MMO experience. Includes a launcher menu to download/update the official client, console, small and Android UI modes, a joystick mapper and shaders optimized for low-end GPUs.</desc>
+    <developer>lowlevel.1989</developer>
+    <publisher>lowlevel.1989</publisher>
     <genre>RPG</genre>
     <image>./pokemmo/cover.png</image>
+    <thumbnail>./pokemmo/screenshot.png</thumbnail>
   </game>
 </gameList>

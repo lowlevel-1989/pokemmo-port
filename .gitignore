@@ -7,3 +7,4 @@ pokemmo/com
 pokemmo/libs.jar
 pokemmo/src/auto/*.java
 *.javap.txt
+shaderfix_dump/

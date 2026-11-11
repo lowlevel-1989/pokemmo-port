@@ -159,7 +159,29 @@ fi
 # Use Python's zipfile module instead, which isn't affected by that
 # BusyBox limitation.
 pm_unzip() {
-  "$PYTHON_CMD" "$GAMEDIR/pmzipextract.py" "$@"
+  "$PYTHON_CMD" -u "$GAMEDIR/pmzipextract.py" "$@"
+}
+
+# Real-time progress window (launch_menu --trace).
+# The trace file is created BEFORE the window starts (no race), the window
+# watches this script's PID (never hangs if we die) and trace_end waits for
+# it to close (no two SDL windows at the same time).
+TRACE_FILE=/tmp/launch_menu.trace
+TRACE_PID=""
+trace_begin() {
+  rm -f "$TRACE_FILE"
+  : > "$TRACE_FILE"
+  "$GAMEDIR/menu/launch_menu.$DEVICE_ARCH" "$GAMEDIR/menu/menu.items" "$GAMEDIR/menu/FiraCode-Regular.ttf" \
+    --trace --trace-file "$TRACE_FILE" --title "$1" --pid $$ &
+  TRACE_PID=$!
+}
+trace() {
+  echo "$*" | tee -a "$TRACE_FILE"
+}
+trace_end() {
+  echo "__END__" >> "$TRACE_FILE"
+  [ -n "$TRACE_PID" ] && wait "$TRACE_PID" 2>/dev/null
+  TRACE_PID=""
 }
 
 if [ ! -f "credentials.txt" ]; then
@@ -272,18 +294,27 @@ case $selection in
         ;;
     5)
         echo "[MENU] PokeMMO Update"
-        rm -rf /tmp/launch_menu.trace
-        $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --trace &
-        curl -L https://pokemmo.com/download_file/1/ -o _pokemmo.zip 2> /tmp/launch_menu.trace
-        if [ ! -f "patch.zip" ]; then
-          cp patch_applied.zip patch.zip
+        trace_begin "PokeMMO Update"
+        trace "@STATUS Downloading PokeMMO..."
+        rm -f _pokemmo.zip
+        # --progress-bar writes "###  45.3%" with '\r': launch_menu draws it live
+        if curl -L --fail --retry 2 --connect-timeout 20 --progress-bar \
+             https://pokemmo.com/download_file/1/ -o _pokemmo.zip 2>> "$TRACE_FILE" \
+           && "$PYTHON_CMD" -c 'import sys,zipfile; sys.exit(zipfile.ZipFile(sys.argv[1]).testzip() is not None)' _pokemmo.zip; then
+          trace "Download OK ($(du -h _pokemmo.zip | cut -f1))"
+          if [ ! -f "patch.zip" ]; then
+            cp patch_applied.zip patch.zip
+          fi
+          trace "@PROGRESS 0"
+          if pm_unzip --progress _pokemmo.zip . >> "$TRACE_FILE"; then
+            rm -f PokeMMO.sh
+            trace "@STATUS Update installed, patches will be applied next"
+          fi
+        else
+          trace "__ERROR__ Download failed, game files were not touched"
         fi
-        pm_unzip _pokemmo.zip . >> /tmp/launch_menu.trace
-        rm _pokemmo.zip
-        rm PokeMMO.sh
-        echo "Generating PATCHES" >> /tmp/launch_menu.trace
-        sleep 1
-        echo __END__ >> /tmp/launch_menu.trace
+        rm -f _pokemmo.zip
+        trace_end
         ;;
     6)
         echo "[MENU] PokeMMO Restore"
@@ -355,21 +386,20 @@ echo ESUDO=$ESUDO
 echo env_vars=$env_vars
 
 if [ -f "patch.zip" ]; then
-  rm -rf /tmp/launch_menu.trace
+  trace_begin "Applying patches"
   rm -rf src f com /tmp/pokemmo _mods f.jar loader.jar
   if [ ! -f "theme.xml" ]; then
     cp data/mods/console_mod/console/theme.xml theme.xml
   fi
   cp -rf data/mods _mods
-  $GAMEDIR/menu/launch_menu.$DEVICE_ARCH $GAMEDIR/menu/menu.items $GAMEDIR/menu/FiraCode-Regular.ttf --trace &
   echo "pm_unzip patch.zip"
-  pm_unzip patch.zip . > /tmp/launch_menu.trace
-  pm_unzip PokeMMO.exe /tmp/pokemmo "f/" "com/badlogic/gdx/controllers/desktop/" >> /tmp/launch_menu.trace
+  pm_unzip --progress patch.zip . >> "$TRACE_FILE"
   mv patch.zip patch_applied.zip
   mv theme.xml data/mods/console_mod/console/theme.xml
   cp -rf _mods/* data/mods
   rm -rf _mods
-  echo __END__ >> /tmp/launch_menu.trace
+  trace "@STATUS Done"
+  trace_end
 fi
 
 if [ "$DEVICE_NAME" = "TRIMUI-SMART-PRO" ]; then
@@ -383,7 +413,14 @@ if [ -n "$ESUDO" ]; then
 fi
 GPTOKEYB2=$(echo "$GPTOKEYB2" | sed 's/--preserve-env=SDL_GAMECONTROLLERCONFIG_FILE,/&SDL_GAMECONTROLLERCONFIG,/')
 
-COMMAND="CRUSTY_SHOW_CURSOR=1 WESTON_HEADLESS_WIDTH="$DISPLAY_WIDTH" WESTON_HEADLESS_HEIGHT="$DISPLAY_HEIGHT" $weston_dir/westonwrap.sh headless noop kiosk crusty_glx_gl4es"
+# Shader fix: replaces libGDX built-in shaders with data/shaders/default.* and depth.*
+SHADERFIX=""
+if [ -f "$GAMEDIR/libshaderfix.$DEVICE_ARCH.so" ]; then
+  SHADERFIX="LD_PRELOAD=$GAMEDIR/libshaderfix.$DEVICE_ARCH.so"
+fi
+echo "SHADERFIX   $SHADERFIX"
+
+COMMAND="CRUSTY_SHOW_CURSOR=1 WESTON_HEADLESS_WIDTH="$DISPLAY_WIDTH" WESTON_HEADLESS_HEIGHT="$DISPLAY_HEIGHT" $SHADERFIX $weston_dir/westonwrap.sh headless noop kiosk crusty_glx_gl4es"
 
 ENV_VARS="PATH="$PATH" JAVA_HOME="$JAVA_HOME" XDG_SESSION_TYPE=x11 GAMEDIR="$GAMEDIR""
 
@@ -410,7 +447,7 @@ if [ "$westonpack" -eq 1 ]; then
   $ESUDO "$weston_dir/westonwrap.sh" cleanup
 else
   # Non-Weston environment with cursor fix
-  ENV_NON_WESTON="$ENV_VARS CRUSTY_SHOW_CURSOR=1"
+  ENV_NON_WESTON="$ENV_VARS CRUSTY_SHOW_CURSOR=1 $SHADERFIX"
   
   env $ENV_NON_WESTON $GAMEDIR/bin/linux/arm64/PokeMMO
 fi

@@ -5,7 +5,8 @@ set -e
 cd pokemmo
 
 rm -f patch.zip
-zip -r patch.zip config data libs src
+# only the folders that exist (libs/src are optional)
+zip -r patch.zip $(for d in config data libs src; do [ -e "$d" ] && echo "$d"; done)
 
 cd ..
 
@@ -15,6 +16,9 @@ zip -r pokemmo.zip . \
      'README.md' \
      'make_zip_autoinstall.sh' \
      'test/*' \
+     'tools/*' \
+     'shaderfix_dump/*' \
+     'pokemmo/shaderfix_dump/*' \
      '.gitignore' \
      'docs/*' \
      'build/*' \

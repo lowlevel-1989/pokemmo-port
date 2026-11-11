@@ -11,9 +11,9 @@
     "porter": [
       "lowlevel.1989"
     ],
-    "desc": "Unofficial port of PokeMMO for PortMaster-compatible devices. PokeMMO is a fan-made multiplayer online game that brings together various Pokémon generations in a single MMO experience.",
+    "desc": "Unofficial port of PokeMMO for PortMaster-compatible devices. PokeMMO is a fan-made multiplayer online game that brings together various Pokémon generations in a single MMO experience. Includes a launcher menu to download/update the official client, console, small and Android UI modes, a joystick mapper and shaders optimized for low-end GPUs.",
     "desc_md": null,
-    "inst": "Download the portable version of the PokeMMO client from https://pokemmo.com/en/downloads/portable. Extract the ZIP and copy both the PokeMMO.exe file and the data folder into /roms/ports/pokemmo.",
+    "inst": "Launch the port and select 'PokeMMO Update' in its menu to download the official PokeMMO client (internet required). A Pokémon Black or White (v1) ROM is required: copy it to ports/pokemmo/roms/pokemon_black.nds. Optional ROMs unlock more regions: pokemon_firered.gba, pokemon_emerald.gba, pokemon_platinum.nds, pokemon_heartgold.nds. See the README for login and controls.",
     "inst_md": null,
     "genres": [
       "adventure",
@@ -33,7 +33,9 @@
     "reqs": [
       "!lowres"
     ],
-    "arch": [],
+    "arch": [
+      "aarch64"
+    ],
     "min_glibc": ""
   }
 }
